@@ -1,20 +1,26 @@
 package com.example.demo.service;
 
+import com.example.demo.domain.mysql.JobEnv;
 import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.List;
 import java.util.Map;
 
 @Service
 public class CommandLineService {
 
-    public String getEchoString(Map<String, String> envMap, String script) {
+    public String getEchoString(List<JobEnv> jobEnvs, String script) {
+        System.out.println("===========");
+        System.out.println(jobEnvs);
+        System.out.println(script);
+        System.out.println("===========");
         ProcessBuilder pb = new ProcessBuilder("/bin/bash", "-c", "echo " + script);
-        Map<String, String> env = pb.environment();
-        for(String k: envMap.keySet()) {
-            env.put(k, envMap.get(k));
+        Map<String, String> envMap = pb.environment();
+        for(JobEnv env: jobEnvs) {
+            envMap.put(env.getEnvKey(), env.getEnvVal());
         }
 
         try {

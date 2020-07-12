@@ -10,4 +10,5 @@ import lombok.*;
 public class StepIO {
     private String id;
     private String source;
+    private String script;
 }

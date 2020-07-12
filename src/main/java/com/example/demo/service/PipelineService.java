@@ -19,10 +19,7 @@ import org.springframework.stereotype.Service;
 import javax.print.attribute.standard.JobStateReason;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -81,7 +78,7 @@ public class PipelineService {
                 runRepository.save(run);
             }
 
-            Map<String, String> envMap = new HashMap<>();
+            List<JobEnv> jobEnvs = new ArrayList<>();
             for(String ioId: inputFile.keySet()) {
                 JobFile jobFile = new JobFile();
                 jobFile.setJob(job);
@@ -94,21 +91,24 @@ public class PipelineService {
                 JobEnv jobEnv = new JobEnv();
                 jobEnv.setJob(job);
                 jobEnv.setEnvKey(ioId);
+                jobEnv.setIsValid(true);
                 jobEnv.setEnvVal(inputFile.get(ioId).getName());
                 jobEnvRepository.save(jobEnv);
-                envMap.put(ioId, inputFile.get(ioId).getName());
+                jobEnvs.add(jobEnv);
 
                 if(inputFile.get(ioId).getSampleId() != null) {
                     JobEnv jobEnv2 = new JobEnv();
                     jobEnv2.setJob(job);
+                    jobEnv2.setIsValid(true);
                     jobEnv2.setEnvKey("sample");
                     jobEnv2.setEnvVal(inputFile.get(ioId).getSampleId());
-                    envMap.put("sample", inputFile.get(ioId).getSampleId());
+                    jobEnvs.add(jobEnv2);
+                    jobEnvRepository.save(jobEnv2);
                 }
-            }
-            kubeClientService.runJob(job.getId(), 0L, "initializer", envMap, "genetica_base", "rm -rf *");
-        }
 
+            }
+            //kubeClientService.runJob(job.getId(), 0L, "initializer", jobEnvs, "genetica_base", Arrays.asList("rm -rf *"));
+        }
     }
 
     /*

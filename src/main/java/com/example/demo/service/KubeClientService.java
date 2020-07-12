@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.domain.mysql.JobEnv;
 import com.google.gson.JsonObject;
 import io.kubernetes.client.custom.V1Patch;
 import io.kubernetes.client.openapi.ApiClient;
@@ -22,10 +23,11 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 @Service
 public class KubeClientService {
-    public void addLabelToNode(String nodeName, String label) {
+    public void addLabelToNode(String nodeName, Long jobId) {
         try {
             ApiClient strategicMergePatchClient =
                     ClientBuilder.standard()
@@ -42,7 +44,7 @@ public class KubeClientService {
 
             ArrayList<JsonObject> arr = new ArrayList<>();
 
-            V1Patch patch = new V1Patch("{\"metadata\":{\"labels\":{\"jobId\":\"" + label + "\"}}}");
+            V1Patch patch = new V1Patch("{\"metadata\":{\"labels\":{\"jobId\":\"" + jobId + "\"}}}");
             api.patchNode(nodeName, patch, null, null, V1Patch.PATCH_FORMAT_JSON_MERGE_PATCH, null);
         } catch(ApiException e) {
             System.out.println(e.getResponseBody());
@@ -52,19 +54,24 @@ public class KubeClientService {
         }
     }
 
-    public void runJob(Long jobId, Long runId, String type, Map<String, String> envMap, String imageName, String command) {
-        List<V1EnvVar> envs = new ArrayList<>();
-        for(String k: envMap.keySet()) {
-            V1EnvVar v = new V1EnvVar();
-            v.setName(k);
-            v.setValue(envMap.get(k));
-            envs.add(v);
-        }
+    public void runJob(Long jobId, Long runId, String type, List<JobEnv> jobEnvs, String imageName, List<String> command) {
+        List<V1EnvVar> envs = jobEnvs.stream().map(e -> {
+            V1EnvVar env = new V1EnvVar();
+            env.setName(e.getEnvKey());
+            env.setValue(e.getEnvVal());
+            return env;
+        }).collect(Collectors.toList());
 
         Map<String, String> labels = new HashMap<>();
         labels.put("type", type);
         labels.put("jobId", String.valueOf(jobId));
         labels.put("runId", String.valueOf(runId));
+
+        String timeName = String.valueOf(System.nanoTime());
+        Map<String, String> nodeSelector = new HashMap<>();
+        if(!type.equals("initializer")) {
+            nodeSelector.put("jobId", String.valueOf(jobId));
+        }
 
         try {
             V1Job pod =
@@ -72,32 +79,45 @@ public class KubeClientService {
                             .withApiVersion("batch/v1")
                             .withKind("Job")
                             .withNewMetadata()
-                            .withName(String.valueOf(System.nanoTime()))
+                            .withName(timeName)
                             .withLabels(labels)
                             .endMetadata()
                             .withNewSpec()
                             .withNewTemplate()
                             .withNewSpec()
                             .addNewContainer()
-                            .withName(jobId + imageName)
+                            .withName("job-container")
                             .withImage(imageName)
+                            .addNewVolumeMount()
+                            .withMountPath("/genetica")
+                            .withName("genetica-volume")
+                            .endVolumeMount()
                             .withCommand(Arrays.asList("/bin/bash", "-c"))
-                            .withArgs(command)
+                            .withArgs(command.stream().collect(Collectors.joining(" && ")))
                             .withEnv(envs)
                             .endContainer()
+                            .withNodeSelector(nodeSelector)
+                            .addNewVolume()
+                            .withName("genetica-volume")
+                            .withNewHostPath()
+                            .withPath("/home/ec2-user")
+                            .endHostPath()
+                            .endVolume()
                             .withRestartPolicy("Never")
                             .endSpec()
                             .endTemplate()
-                            .withBackoffLimit(1)
+                            .withBackoffLimit(0)
                             .endSpec()
                             .build();
 
             ApiClient client = Config.defaultClient();
             Configuration.setDefaultApiClient(client);
 
+            System.out.println(Yaml.dump(pod));
+
             //CoreV1Api api = new CoreV1Api();
             BatchV1Api api = new BatchV1Api();
-            api.createNamespacedJob("default", pod, null, null, null);
+            api.createNamespacedJob("genetica-job", pod, null, null, null);
             System.out.println("Job started");
         } catch (Exception e) {
             e.printStackTrace();
