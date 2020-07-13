@@ -1,12 +1,15 @@
 package com.example.demo.domain.mysql;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Data
+@Getter
+@Setter
 public class Run {
     @Id
     @GeneratedValue
@@ -19,7 +22,8 @@ public class Run {
 
     private String stepId;
 
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private JobStatus status;
 
     private LocalDateTime startTime;
 

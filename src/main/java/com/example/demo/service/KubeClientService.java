@@ -54,7 +54,7 @@ public class KubeClientService {
         }
     }
 
-    public void runJob(Long jobId, Long runId, String type, List<JobEnv> jobEnvs, String imageName, List<String> command) {
+    public void runJob(Long taskId, Long jobId, Long runId, String type, List<JobEnv> jobEnvs, String imageName, List<String> command) {
         List<V1EnvVar> envs = jobEnvs.stream().map(e -> {
             V1EnvVar env = new V1EnvVar();
             env.setName(e.getEnvKey());
@@ -63,7 +63,9 @@ public class KubeClientService {
         }).collect(Collectors.toList());
 
         Map<String, String> labels = new HashMap<>();
+
         labels.put("type", type);
+        labels.put("taskId", String.valueOf(taskId));
         labels.put("jobId", String.valueOf(jobId));
         labels.put("runId", String.valueOf(runId));
 

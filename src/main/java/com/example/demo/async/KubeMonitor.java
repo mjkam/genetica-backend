@@ -7,6 +7,7 @@ import com.example.demo.repository.mysql.JobRepository;
 import com.example.demo.repository.mysql.RunRepository;
 import com.example.demo.service.CommandLineService;
 import com.example.demo.service.KubeClientService;
+import com.example.demo.service.MonitorService;
 import com.google.common.reflect.TypeToken;
 import io.kubernetes.client.custom.V1Patch;
 import io.kubernetes.client.openapi.ApiClient;
@@ -31,13 +32,7 @@ import java.util.concurrent.TimeUnit;
 @RequiredArgsConstructor
 public class KubeMonitor  {
     private final ServiceExecutor serviceExecutor;
-    private final JobRepository jobRepository;
-    private final RunRepository runRepository;
-    private final JobEnvRepository jobEnvRepository;
-    private final PipelineRepository pipelineRepository;
-    private final KubeClientService kubeClientService;
-    private final JobFileRepository jobFileRepository;
-    private final CommandLineService commandLineService;
+    private final MonitorService monitorService;
 
     public void run() {
         try {
@@ -61,7 +56,7 @@ public class KubeMonitor  {
                 V1Pod pod = item.object;
                 V1OwnerReference jobInfo = pod.getMetadata().getOwnerReferences().get(0);
                 V1Job job = batchV1Api.readNamespacedJob(jobInfo.getName(), "genetica-job", null, null, null);
-                serviceExecutor.runExecutor(new KubeEventHandler(job.getMetadata().getLabels(), pod.getStatus().getPhase(), pod.getSpec().getNodeName(), kubeClientService, pipelineRepository, jobEnvRepository, runRepository, commandLineService, jobFileRepository, jobRepository));
+                serviceExecutor.runExecutor(new KubeEventHandler(job.getMetadata().getLabels(), pod.getStatus().getPhase(), pod.getSpec().getNodeName(), monitorService));
             }
 
         } catch(Exception e) {

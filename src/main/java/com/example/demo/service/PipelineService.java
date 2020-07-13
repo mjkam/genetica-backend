@@ -65,7 +65,9 @@ public class PipelineService {
                 inputFile.put(ioId, files.get(i % files.size()));
             }
 
+            //Todo: 생성자 만들기
             Job job = new Job();
+            job.setStatus(JobStatus.Queued);
             job.setTask(newTask);
             job.setName(newTask.getName() + "-" + (i+1));
             jobRepository.save(job);
@@ -74,7 +76,7 @@ public class PipelineService {
                 Run run = new Run();
                 run.setJob(job);
                 run.setStepId(stepIds.get(j));
-                run.setStatus("Queued");
+                run.setStatus(JobStatus.Queued);
                 runRepository.save(run);
             }
 

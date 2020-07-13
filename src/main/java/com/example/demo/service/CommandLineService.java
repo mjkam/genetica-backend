@@ -13,12 +13,12 @@ import java.util.Map;
 public class CommandLineService {
 
     public String getEchoString(List<JobEnv> jobEnvs, String script) {
-        System.out.println("===========");
-        System.out.println(jobEnvs);
-        System.out.println(script);
-        System.out.println("===========");
         ProcessBuilder pb = new ProcessBuilder("/bin/bash", "-c", "echo " + script);
         Map<String, String> envMap = pb.environment();
+        System.out.println("=======================");
+        System.out.println(jobEnvs);
+        System.out.println(script);
+        System.out.println("=======================");
         for(JobEnv env: jobEnvs) {
             envMap.put(env.getEnvKey(), env.getEnvVal());
         }
@@ -33,7 +33,7 @@ public class CommandLineService {
             //System.out.println(output);
             //System.out.println("\nStandard Error:\n");
             //System.out.println(error);
-            return output;
+            return output.replace("\n", "").replace("\r", "");
         } catch (Exception e) {
             throw new RuntimeException();
         }

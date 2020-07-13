@@ -3,22 +3,30 @@ package com.example.demo;
 import com.example.demo.async.KubeEventHandler;
 import com.example.demo.domain.mongo.*;
 import com.example.demo.domain.mysql.File;
+import com.example.demo.domain.mysql.Job;
 import com.example.demo.domain.mysql.JobEnv;
+import com.example.demo.domain.mysql.Run;
 import com.example.demo.dto.request.InsertFileInfo;
 import com.example.demo.dto.request.RunPipelineRequest;
 import com.example.demo.repository.mongo.PipelineRepository;
 import com.example.demo.repository.mysql.*;
 import com.example.demo.service.CommandLineService;
 import com.example.demo.service.KubeClientService;
+import com.example.demo.service.MonitorService;
 import com.example.demo.service.PipelineService;
+import org.apache.tomcat.jni.Local;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.ConfigFileApplicationContextInitializer;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.*;
 
 @SpringBootTest
@@ -52,6 +60,9 @@ class DemoApplicationTests {
 
 	@Autowired
 	private CommandLineService commandLineService;
+
+	@Autowired
+	private MonitorService monitorService;
 
 
 
@@ -96,7 +107,7 @@ class DemoApplicationTests {
 				.id("bwa_mem_bundle_0_7_17")
 				.label("BWA MEM Bundle 0.7.17")
 				.in(Arrays.asList(new StepIO("reference_fasta", "untar_fasta.output_fasta", ""), new StepIO("input_read_1", "input_read_1", ""), new StepIO("input_read_2", "input_read_2", "")))
-				.out(Arrays.asList(new StepIO("aligned_bam", "", "")))
+				.out(Arrays.asList(new StepIO("aligned_bam", "", "${sample}_sorted.bam"), new StepIO("aligned_bam_bai", "", "${sample}_sorted.bam.bai")))
 				.run(bwaTool).build();
 
 
@@ -108,25 +119,6 @@ class DemoApplicationTests {
 
 		pipelineRepository.save(pipe);
 
-
-		/*
-		File file1 = new File();
-		file1.setName("TESTX_H7YRLADXX_S1_L001_R1_001.fastq.gz");
-		file1.setSampleId("TESTX_H7YRLADXX_S1_L001");
-		file1.setSize(10000L);
-
-		File file2 = new File();
-		file2.setName("TESTX_H7YRLADXX_S1_L001_R2_001.fastq.gz");
-		file2.setSampleId("TESTX_H7YRLADXX_S1_L001");
-		file2.setSize(10000L);
-
-		File file3 = new File();
-		file3.setName("human_g1k_v37_decoy.fasta.tar");
-		file3.setSize(100000000L);
-
-		fileRepository.save(file1);
-		fileRepository.save(file2);
-		fileRepository.save(file3);*/
 	}
 
 	@Test
@@ -181,20 +173,88 @@ class DemoApplicationTests {
 		insertFileInfo3.setId("input_read_2");
 		insertFileInfo3.setFileIds(Arrays.asList(3L, 5L));
 
-		request.setPipelineId("5f0b1e904ba103285d4ddbcf");
+		request.setPipelineId("5f0c6442a47a8f40df42c386");
 		request.setData(Arrays.asList(insertFileInfo1, insertFileInfo2, insertFileInfo3));
 
 		pipelineService.runPipeline(request);
+	}
 
+	@Test
+	void InitializerPending() {
 		Map<String, String> labels = new HashMap<>();
 		labels.put("type", "initializer");
+		labels.put("taskId", "6");
+		labels.put("jobId", "7");
+		labels.put("runId", "0");
+		String resultStatus = "Pending";
+		String nodeName = "minikube";
+		KubeEventHandler eventHandler = new KubeEventHandler(labels, resultStatus, nodeName, monitorService);
+		eventHandler.run();
+	}
+
+	@Test
+	void InitializeSucceeded() {
+		Map<String, String> labels = new HashMap<>();
+		labels.put("type", "initializer");
+		labels.put("taskId", "6");
 		labels.put("jobId", "7");
 		labels.put("runId", "0");
 		String resultStatus = "Succeeded";
 		String nodeName = "minikube";
-		KubeEventHandler eventHandler = new KubeEventHandler(labels, resultStatus, nodeName, kubeClientService, pipelineRepository, jobEnvRepository, runRepository, commandLineService, jobFileRepository, jobRepository);
+		KubeEventHandler eventHandler = new KubeEventHandler(labels, resultStatus, nodeName, monitorService);
 		eventHandler.run();
+	}
 
+	@Test
+	void Run1Running() {
+		Map<String, String> labels = new HashMap<>();
+		labels.put("type", "job");
+		labels.put("taskId", "6");
+		labels.put("jobId", "7");
+		labels.put("runId", "8");
+		String resultStatus = "Running";
+		String nodeName = "minikube";
+		KubeEventHandler eventHandler = new KubeEventHandler(labels, resultStatus, nodeName, monitorService);
+		eventHandler.run();
+	}
+
+	@Test
+	void Run1Success() {
+		Map<String, String> labels = new HashMap<>();
+		labels.put("type", "job");
+		labels.put("taskId", "6");
+		labels.put("jobId", "7");
+		labels.put("runId", "8");
+		String resultStatus = "Succeeded";
+		String nodeName = "minikube";
+		KubeEventHandler eventHandler = new KubeEventHandler(labels, resultStatus, nodeName, monitorService);
+		eventHandler.run();
+	}
+
+	@Test
+	void Run2Running() {
+		Map<String, String> labels = new HashMap<>();
+		labels.put("type", "job");
+		labels.put("taskId", "6");
+		labels.put("jobId", "7");
+		labels.put("runId", "9");
+		String resultStatus = "Running";
+		String nodeName = "minikube";
+		KubeEventHandler eventHandler = new KubeEventHandler(labels, resultStatus, nodeName, monitorService);
+		eventHandler.run();
+	}
+
+	@Test
+	void Run2Succeeded() {
+		Map<String, String> labels = new HashMap<>();
+		labels.put("type", "job");
+		labels.put("taskId", "6");
+		labels.put("jobId", "7");
+		labels.put("runId", "9");
+		String resultStatus = "Succeeded";
+		String nodeName = "minikube";
+		KubeEventHandler eventHandler = new KubeEventHandler(labels, resultStatus, nodeName, monitorService);
+		eventHandler.run();
 	}
 
 	@Test
@@ -205,8 +265,27 @@ class DemoApplicationTests {
 		labels.put("runId", "0");
 		String resultStatus = "Succeeded";
 		String nodeName = "minikube";
-		KubeEventHandler eventHandler = new KubeEventHandler(labels, resultStatus, nodeName, kubeClientService, pipelineRepository, jobEnvRepository, runRepository, commandLineService, jobFileRepository, jobRepository);
+		KubeEventHandler eventHandler = new KubeEventHandler(labels, resultStatus, nodeName, monitorService);
 		eventHandler.run();
+	}
+
+	@Test
+	void firstRunFinishTest() {
+		Map<String, String> labels = new HashMap<>();
+		labels.put("type", "job");
+		labels.put("jobId", "7");
+		labels.put("runId", "8");
+		String resultStatus = "Succeeded";
+		String nodeName = "minikube";
+		KubeEventHandler eventHandler = new KubeEventHandler(labels, resultStatus, nodeName, monitorService);
+		eventHandler.run();
+	}
+
+	@Test
+	void test2() {
+		Pipeline pipeline = pipelineRepository.findById("5f0b1e904ba103285d4ddbcf").get();
+		List<JobEnv> validEnvList = jobEnvRepository.findAllValidEnvsInJob(7L);
+		System.out.println(monitorService.findNextStep(pipeline, validEnvList, 7L));
 	}
 
 	@Test
@@ -223,5 +302,6 @@ class DemoApplicationTests {
 	void kubeClientServiceAddLabelTest() {
 		kubeClientService.addLabelToNode("minikube", 100L);
 	}
+
 
 }

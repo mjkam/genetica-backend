@@ -6,6 +6,7 @@ import lombok.*;
 @Setter
 @Builder
 @AllArgsConstructor
+@Data
 @NoArgsConstructor
 public class StepIO {
     private String id;
