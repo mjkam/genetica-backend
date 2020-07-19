@@ -109,7 +109,7 @@ public class PipelineService {
                 }
 
             }
-            //kubeClientService.runJob(job.getId(), 0L, "initializer", jobEnvs, "genetica_base", Arrays.asList("rm -rf *"));
+            kubeClientService.runJob(newTask.getId(), job.getId(), 0L, "initializer", jobEnvs, "338282184009.dkr.ecr.ap-northeast-2.amazonaws.com/myrepo:genetica_base", Arrays.asList("rm -rf *"));
         }
     }
 

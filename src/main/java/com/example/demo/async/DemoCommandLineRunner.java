@@ -11,7 +11,7 @@ public class DemoCommandLineRunner implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        //kubeMonitor.run();
+        kubeMonitor.run();
     }
 
 }

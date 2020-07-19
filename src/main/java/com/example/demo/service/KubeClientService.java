@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.domain.mysql.JobEnv;
 import com.google.gson.JsonObject;
+import io.kubernetes.client.custom.Quantity;
 import io.kubernetes.client.custom.V1Patch;
 import io.kubernetes.client.openapi.ApiClient;
 import io.kubernetes.client.openapi.ApiException;
@@ -55,6 +56,8 @@ public class KubeClientService {
     }
 
     public void runJob(Long taskId, Long jobId, Long runId, String type, List<JobEnv> jobEnvs, String imageName, List<String> command) {
+        String x = command.stream().collect(Collectors.joining(" && "));
+        System.out.println(x);
         List<V1EnvVar> envs = jobEnvs.stream().map(e -> {
             V1EnvVar env = new V1EnvVar();
             env.setName(e.getEnvKey());
@@ -75,6 +78,17 @@ public class KubeClientService {
             nodeSelector.put("jobId", String.valueOf(jobId));
         }
 
+        Map<String, Quantity> limit = new HashMap<>();
+        if(type.equals("initializer")) {
+            limit.put("cpu", new Quantity("3"));
+            limit.put("memory", new Quantity("5000000Ki"));
+        }
+
+        V1EnvFromSource es = new V1EnvFromSource();
+        V1ConfigMapEnvSource source = new V1ConfigMapEnvSource();
+        source.setName("config-dev");
+        es.setConfigMapRef(source);
+
         try {
             V1Job pod =
                     new V1JobBuilder()
@@ -90,12 +104,16 @@ public class KubeClientService {
                             .addNewContainer()
                             .withName("job-container")
                             .withImage(imageName)
+                            .withEnvFrom(es)
+                            .withNewResources()
+                            .withLimits(limit)
+                            .and()
                             .addNewVolumeMount()
                             .withMountPath("/genetica")
                             .withName("genetica-volume")
                             .endVolumeMount()
                             .withCommand(Arrays.asList("/bin/bash", "-c"))
-                            .withArgs(command.stream().collect(Collectors.joining(" && ")))
+                            .withArgs(x)
                             .withEnv(envs)
                             .endContainer()
                             .withNodeSelector(nodeSelector)
@@ -103,6 +121,7 @@ public class KubeClientService {
                             .withName("genetica-volume")
                             .withNewHostPath()
                             .withPath("/home/ec2-user")
+                            .withType("Directory")
                             .endHostPath()
                             .endVolume()
                             .withRestartPolicy("Never")

@@ -9,6 +9,7 @@ import lombok.*;
 @NoArgsConstructor
 public class ToolIO {
     String id;
+    String source;
     String label;
     String type;
     String script;

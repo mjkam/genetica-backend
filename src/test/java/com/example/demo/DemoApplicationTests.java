@@ -75,7 +75,7 @@ class DemoApplicationTests {
 		Tool unTarTool = Tool.builder()
 				.nameId("untar_fasta")
 				.label("untar fasta")
-				.image("genetica_base")
+				.image("338282184009.dkr.ecr.ap-northeast-2.amazonaws.com/myrepo:genetica_base")
 				.command("tar -xf ${input_tar_with_reference}")
 				.inputs(Arrays.asList(tio6))
 				.outputs(Arrays.asList(tio7)).build();
@@ -84,14 +84,14 @@ class DemoApplicationTests {
 		ToolIO tio2 = ToolIO.builder().id("input_read_1").label("input read 1").type("fileList").build();
 		ToolIO tio3 = ToolIO.builder().id("input_read_2").label("input read 2").type("fileList").build();
 
-		ToolIO tio4 = ToolIO.builder().id("aligned_bam").label("aligned BAM").type("fileList").script("${sample}_sorted.bam").build();
-		ToolIO tio5 = ToolIO.builder().id("aligned_bam_bai").label("aligned BAM BAI").type("fileList").script("${sample}_sorted.bam.bai").build();
+		ToolIO tio4 = ToolIO.builder().id("aligned_bam").label("aligned BAM").source("bwa_mem_bundle_0_7_17.aligned_bam").type("fileList").script("${sample}_sorted.bam").build();
+		ToolIO tio5 = ToolIO.builder().id("aligned_bam_bai").label("aligned BAM BAI").source("bwa_mem_bundle_0_7_17.aligned_bam_bai").type("fileList").script("${sample}_sorted.bam.bai").build();
 
 		Tool bwaTool = Tool.builder()
 				.nameId("bwa_mem_bundle_0_7_17")
 				.label("BWA MEM Bundle 0.7.17")
-				.image("bwa_0.7.17")
-				.command("bwa mem -R '@RG\\\\tID:1\\\\tPL:Illumina\\\\tSM:dnk_sample' -t 8 ${reference_fasta} ${input_read_1} ${input_read_2} | samtools view -bS - > ${sample}.bam && samtools sort ${sample}.bam > ${sample}_sorted.bam && samtools index ${sample}_sorted.bam")
+				.image("338282184009.dkr.ecr.ap-northeast-2.amazonaws.com/myrepo:bwa_0.7.17samtools_1.10")
+				.command("bwa mem -R \\'@RG\\\\\\tID:1\\\\\\tPL:Illumina\\\\\\tSM:dnk_sample\\' -t 8 ${reference_fasta} ${input_read_1} ${input_read_2} \\| samtools view -bS - \\> ${sample}.bam \\&\\& samtools sort ${sample}.bam \\> ${sample}_sorted.bam \\&\\& samtools index ${sample}_sorted.bam")
 				.inputs(Arrays.asList(tio1, tio2, tio3))
 				.outputs(Arrays.asList(tio4, tio5))
 				.build();
@@ -129,7 +129,7 @@ class DemoApplicationTests {
 	@Test
 	void runPipelineTest() {
 		File file1 = new File();
-		file1.setName("hg38.fasta.tar");
+		file1.setName("human_g1k_v37_decoy.fasta.tar");
 		file1.setSize(100000L);
 
 		File file2 = new File();
@@ -142,6 +142,7 @@ class DemoApplicationTests {
 		file3.setSize(1000L);
 		file3.setSampleId("TESTX_H7YRLADXX_S1_L001");
 
+		/*
 		File file4 = new File();
 		file4.setName("TESTX_H7YRLADXX_S1_L002_R1_001.fastq.gz");
 		file4.setSize(1000L);
@@ -150,13 +151,13 @@ class DemoApplicationTests {
 		File file5 = new File();
 		file5.setName("TESTX_H7YRLADXX_S1_L002_R2_001.fastq.gz");
 		file5.setSize(1000L);
-		file5.setSampleId("TESTX_H7YRLADXX_S1_L002");
+		file5.setSampleId("TESTX_H7YRLADXX_S1_L002");*/
 
 		fileRepository.save(file1);
 		fileRepository.save(file2);
 		fileRepository.save(file3);
-		fileRepository.save(file4);
-		fileRepository.save(file5);
+		//fileRepository.save(file4);
+		//fileRepository.save(file5);
 
 		RunPipelineRequest request = new RunPipelineRequest();
 
@@ -167,13 +168,13 @@ class DemoApplicationTests {
 
 		InsertFileInfo insertFileInfo2 = new InsertFileInfo();
 		insertFileInfo2.setId("input_read_1");
-		insertFileInfo2.setFileIds(Arrays.asList(2L, 4L));
+		insertFileInfo2.setFileIds(Arrays.asList(2L));
 
 		InsertFileInfo insertFileInfo3 = new InsertFileInfo();
 		insertFileInfo3.setId("input_read_2");
-		insertFileInfo3.setFileIds(Arrays.asList(3L, 5L));
+		insertFileInfo3.setFileIds(Arrays.asList(3L));
 
-		request.setPipelineId("5f0c6442a47a8f40df42c386");
+		request.setPipelineId("5f0dd336a0a22c74ccbc6df0");
 		request.setData(Arrays.asList(insertFileInfo1, insertFileInfo2, insertFileInfo3));
 
 		pipelineService.runPipeline(request);
@@ -183,8 +184,8 @@ class DemoApplicationTests {
 	void InitializerPending() {
 		Map<String, String> labels = new HashMap<>();
 		labels.put("type", "initializer");
-		labels.put("taskId", "6");
-		labels.put("jobId", "7");
+		labels.put("taskId", "4");
+		labels.put("jobId", "5");
 		labels.put("runId", "0");
 		String resultStatus = "Pending";
 		String nodeName = "minikube";
@@ -196,9 +197,9 @@ class DemoApplicationTests {
 	void InitializeSucceeded() {
 		Map<String, String> labels = new HashMap<>();
 		labels.put("type", "initializer");
-		labels.put("taskId", "6");
-		labels.put("jobId", "7");
-		labels.put("runId", "0");
+		labels.put("taskId", "4");
+		labels.put("jobId", "5");
+		labels.put("runId", "6");
 		String resultStatus = "Succeeded";
 		String nodeName = "minikube";
 		KubeEventHandler eventHandler = new KubeEventHandler(labels, resultStatus, nodeName, monitorService);
@@ -209,9 +210,9 @@ class DemoApplicationTests {
 	void Run1Running() {
 		Map<String, String> labels = new HashMap<>();
 		labels.put("type", "job");
-		labels.put("taskId", "6");
-		labels.put("jobId", "7");
-		labels.put("runId", "8");
+		labels.put("taskId", "4");
+		labels.put("jobId", "5");
+		labels.put("runId", "6");
 		String resultStatus = "Running";
 		String nodeName = "minikube";
 		KubeEventHandler eventHandler = new KubeEventHandler(labels, resultStatus, nodeName, monitorService);
@@ -222,9 +223,9 @@ class DemoApplicationTests {
 	void Run1Success() {
 		Map<String, String> labels = new HashMap<>();
 		labels.put("type", "job");
-		labels.put("taskId", "6");
-		labels.put("jobId", "7");
-		labels.put("runId", "8");
+		labels.put("taskId", "4");
+		labels.put("jobId", "5");
+		labels.put("runId", "6");
 		String resultStatus = "Succeeded";
 		String nodeName = "minikube";
 		KubeEventHandler eventHandler = new KubeEventHandler(labels, resultStatus, nodeName, monitorService);
@@ -235,9 +236,9 @@ class DemoApplicationTests {
 	void Run2Running() {
 		Map<String, String> labels = new HashMap<>();
 		labels.put("type", "job");
-		labels.put("taskId", "6");
-		labels.put("jobId", "7");
-		labels.put("runId", "9");
+		labels.put("taskId", "4");
+		labels.put("jobId", "5");
+		labels.put("runId", "6");
 		String resultStatus = "Running";
 		String nodeName = "minikube";
 		KubeEventHandler eventHandler = new KubeEventHandler(labels, resultStatus, nodeName, monitorService);
@@ -290,12 +291,13 @@ class DemoApplicationTests {
 
 	@Test
 	void commandLineServiceEchoTest() {
+		String script = "bwa mem -R '@RG\\tID:1\\tPL:Illumina\\tSM:dnk_sample' -t 8 ${reference_fasta} ${input_read_1} ${input_read_2} \\| samtools view -bS - \\> ${sample}.bam \\&\\& samtools sort ${sample}.bam \\> ${sample}_sorted.bam && samtools index ${sample}_sorted.bam";
 		JobEnv jobEnv = new JobEnv();
-		jobEnv.setEnvKey("input_tar_with_reference");
-		jobEnv.setEnvVal("hg38.fasta.tar");
+		jobEnv.setEnvKey("reference_fasta");
+		jobEnv.setEnvVal("hg38.fasta");
 		List<JobEnv> list = new ArrayList<>();
 		list.add(jobEnv);
-		System.out.println(commandLineService.getEchoString(list, "tar -xf ${input_tar_with_reference}"));
+		System.out.println(commandLineService.getEchoString(list, script));
 	}
 
 	@Test

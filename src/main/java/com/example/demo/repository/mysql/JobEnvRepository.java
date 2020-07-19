@@ -18,5 +18,8 @@ public interface JobEnvRepository extends JpaRepository<JobEnv, Long> {
     public void updateJobEnvRelatedtoRun(Long jobId, Long runId);
 
     @Query("SELECT j FROM JobEnv j WHERE j.job.id = :jobId AND j.runId = :runId")
-    List<JobEnv> findNewOutput(Long jobId, Long runId);
+    public List<JobEnv> findNewOutput(Long jobId, Long runId);
+
+    @Query("SELECT j FROM JobEnv j WHERE j.envKey = 'sample' AND j.job.id = :jobId AND j.runId = :runId")
+    public List<JobEnv> findSampleInRun(Long jobId, Long runId);
 }

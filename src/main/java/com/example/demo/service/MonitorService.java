@@ -3,6 +3,7 @@ package com.example.demo.service;
 import com.example.demo.domain.mongo.Pipeline;
 import com.example.demo.domain.mongo.Step;
 import com.example.demo.domain.mongo.StepIO;
+import com.example.demo.domain.mongo.ToolIO;
 import com.example.demo.domain.mysql.*;
 import com.example.demo.repository.mongo.PipelineRepository;
 import com.example.demo.repository.mysql.*;
@@ -13,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -28,6 +30,7 @@ public class MonitorService {
     private final RunRepository runRepository;
     private final JobFileRepository jobFileRepository;
     private final CommandLineService commandLineService;
+    private final FileRepository fileRepository;
 
     public void handleInitializer(Long taskId, Long jobId, String resultState, String nodeName) {
         Job job = jobRepository.findById(jobId).get();
@@ -42,6 +45,7 @@ public class MonitorService {
     }
 
     public void handleJobResult(Long taskId, Long jobId, Long runId, String resultState) {
+        Job job = jobRepository.findById(jobId).get();
         Run run = runRepository.findById(runId).get();
         run.setStatus(JobStatus.valueOf(resultState));
 
@@ -56,6 +60,34 @@ public class MonitorService {
         if(JobStatus.valueOf(resultState).equals(JobStatus.Succeeded)) {
             run.setFinishTime(LocalDateTime.now());
             jobEnvRepository.updateJobEnvRelatedtoRun(jobId, runId);
+
+            List<JobEnv> sampleEnvs = jobEnvRepository.findSampleInRun(jobId, runId);
+            List<JobEnv> outputEnvs  = jobEnvRepository.findNewOutput(jobId, runId);
+            Pipeline pipeline = pipelineRepository.findById(taskRepository.findById(taskId).get().getPipelineId()).get();
+
+            //List<File> newFiles = new ArrayList<>();
+            //List<JobFile> newJobFiles = new ArrayList<>();
+            for(JobEnv jobEnv: outputEnvs) {
+                for(ToolIO toolIO : pipeline.getOutputs()) {
+                    if(toolIO.getSource().equals(jobEnv.getEnvKey())) {
+                        File file = new File();
+                        file.setName(jobEnv.getEnvVal());
+                        if(sampleEnvs.size() > 0) {
+                            file.setSampleId(sampleEnvs.get(0).getEnvVal());
+                        }
+                        file.setSize(1000L);//Todo: S3 에서 가져와야함
+                        fileRepository.save(file);
+
+                        JobFile jobFile = new JobFile();
+                        jobFile.setIoType("output");
+                        jobFile.setJob(job);
+                        jobFile.setFile(file);
+                        jobFile.setTargetId(toolIO.getId());
+                        jobFileRepository.save(jobFile);
+                    }
+                }
+            }
+
             runNextRun(taskId, jobId);
         }
     }
@@ -127,13 +159,12 @@ public class MonitorService {
         return commands;
     }
 
-    private List<String> getS3CopyOutCommand(List<JobFile> jobFiles, Step step) {
-        List<JobFile> outputJobFiles = jobFiles.stream().filter(jf -> jf.getIoType().equals("output")).collect(Collectors.toList());
+    private List<String> getS3CopyOutCommand(List<JobEnv> outputEnvs, Pipeline pipeline) {
         List<String> commands = new ArrayList<>();
-        for(StepIO stepIO: step.getOut()) {
-            for(JobFile jobFile: outputJobFiles) {
-                if(stepIO.getSource().equals(jobFile.getTargetId())) {
-                    commands.add(String.format("aws s3 cp %s s3://genetica/", jobFile.getFile().getName()));
+        for(JobEnv jobEnv: outputEnvs) {
+            for(ToolIO toolIO : pipeline.getOutputs()) {
+                if(toolIO.getSource().equals(jobEnv.getEnvKey())) {
+                    commands.add(String.format("aws s3 cp %s s3://genetica/", jobEnv.getEnvVal()));
                 }
             }
         }
@@ -148,6 +179,9 @@ public class MonitorService {
             jobEnv.setIsValid(false);
             jobEnv.setRunId(run.getId());
             jobEnv.setEnvKey(step.getId() + "." + stepIO.getId());
+            System.out.println("##########################");
+            System.out.println(commandLineService.getEchoString(inputEnvs, stepIO.getScript()));
+            System.out.println("##########################");
             jobEnv.setEnvVal(commandLineService.getEchoString(inputEnvs, stepIO.getScript()));
             outputEnvs.add(jobEnv);
         }
@@ -203,8 +237,9 @@ public class MonitorService {
 
             List<String> command = new ArrayList<>();
             command = ListUtils.union(command, getS3CopyInCommand(jobFiles, nextStep));
+
             command.add(commandLineService.getEchoString(inputEnvs, nextStep.getRun().getCommand()));
-            command = ListUtils.union(command, getS3CopyOutCommand(jobFiles, nextStep));
+            command = ListUtils.union(command, getS3CopyOutCommand(outputEnvs, pipeline));
 
             kubeClientService.runJob(taskId, jobId, nextRun.getId(), "job", inputEnvs, nextStep.getRun().getImage(), command);
         }
