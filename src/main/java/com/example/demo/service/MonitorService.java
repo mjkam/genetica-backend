@@ -5,6 +5,7 @@ import com.example.demo.domain.mongo.Step;
 import com.example.demo.domain.mongo.StepIO;
 import com.example.demo.domain.mongo.ToolIO;
 import com.example.demo.domain.mysql.*;
+import com.example.demo.dto.KubeJob;
 import com.example.demo.repository.mongo.PipelineRepository;
 import com.example.demo.repository.mysql.*;
 import lombok.RequiredArgsConstructor;
@@ -184,29 +185,38 @@ public class MonitorService {
     }
 
     public void runNextRun(Long taskId, Long jobId) {
+        List<KubeJob> nextKubeJobs = findNextKubeJobs(taskId, jobId);
+        for(KubeJob kubeJob: nextKubeJobs) {
+            kubeClientService.runJob(kubeJob);
+        }
+    }
+
+    public List<KubeJob> findNextKubeJobs(Long taskId, Long jobId) {
+        List<KubeJob> kubeJobs = new ArrayList<>();
+
         Task task = taskRepository.findById(taskId).orElseThrow(() -> new RuntimeException());
         Job job = jobRepository.findById(jobId).orElseThrow(() -> new RuntimeException());
         Pipeline pipeline = pipelineRepository.findById(task.getPipelineId()).orElseThrow(() -> new RuntimeException());
         List<JobEnv> validEnvList = jobEnvRepository.findAllValidEnvsInJob(jobId);
 
         List<Step> nextSteps = pipeline.getNextSteps(validEnvList);
-        if(nextSteps.size() == 0) {
-            job.changeStatus();
-            job.setStatus(getResultStatusOfJob(jobId));
-            job.setFinishTime(LocalDateTime.now());
+//        if(nextSteps.size() == 0) {
+//            job.changeStatus();
+//            job.setStatus(getResultStatusOfJob(jobId));
+//            job.setFinishTime(LocalDateTime.now());
+//
+//            if(checkIfTaskFinished(taskId)) {
+//                task.setFinishTime(LocalDateTime.now());
+//            }
+//            return;
+//        }
 
-            if(checkIfTaskFinished(taskId)) {
-                task.setFinishTime(LocalDateTime.now());
-            }
-            return;
-        }
-
-        for(Step nextStep: nextSteps) {
-            Run nextRun = runRepository.findRun(jobId, nextStep.getId());
-            nextRun.setStatus(JobStatus.Pending);
-
-            List<JobEnv> inputEnvs = getInputEnvs(validEnvList, nextStep.getIn(), job);
-            List<JobEnv> outputEnvs = createOutputEnvs(inputEnvs, nextStep, job, nextRun);
+        List<Run> nextRuns = job.getNextRuns(nextSteps);
+        for(Run nextRun: nextRuns) {
+            List<JobEnv> inputEnvs = nextRun.getInputEnvs(validEnvList);
+            List<JobEnv> outputEnvs = nextRun.getOutputEnvs(validEnvList);
+//            List<JobEnv> inputEnvs = getInputEnvs(validEnvList, nextStep.getIn(), job);
+//            List<JobEnv> outputEnvs = createOutputEnvs(inputEnvs, nextStep, job, nextRun);
 
             jobEnvRepository.saveAll(outputEnvs);
 
@@ -214,11 +224,20 @@ public class MonitorService {
 
             List<String> command = new ArrayList<>();
             command = ListUtils.union(command, getS3CopyInCommand(jobFiles, nextStep));
-
             command.add(commandLineService.getEchoString(inputEnvs, nextStep.getRun().getCommand()));
             command = ListUtils.union(command, getS3CopyOutCommand(outputEnvs, pipeline));
+        }
 
-            kubeClientService.runJob(taskId, jobId, nextRun.getId(), "job", inputEnvs, nextStep.getRun().getImage(), command);
+       // for(Step nextStep: nextSteps) {
+//            job.getRuns()
+//            Run nextRun = runRepository.findRun(jobId, nextStep.getId());
+//            nextRun.setStatus(JobStatus.Pending);
+
+
+
+
+
+            //kubeClientService.runJob(taskId, jobId, nextRun.getId(), "job", inputEnvs, nextStep.getRun().getImage(), command);
         }
     }
 
