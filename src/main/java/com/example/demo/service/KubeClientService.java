@@ -45,6 +45,7 @@ public class KubeClientService {
     }
 
     public V1Job runJob(KubeJob kubeJob) {
+        //Todo: KubeJob 실행이 실패 했을 시 처리
         V1Job v1Job = getV1Job(kubeJob);
 
         try {

@@ -1,12 +1,14 @@
 package com.example.demo.domain.mysql;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Map;
 
 @Entity
 @Data
+@NoArgsConstructor
 public class JobFile {
     @Id
     @GeneratedValue

@@ -13,9 +13,6 @@ import java.util.stream.Collectors;
 
 @Getter
 public class KubeJob {
-    public static final String INITIALIZER_JOB = "INITIALIZER-JOB";
-    public static final String ANALYSIS_JOB = "ANALYSIS_JOB";
-
     private Long taskId;
     private Long jobId;
     private Long runId;

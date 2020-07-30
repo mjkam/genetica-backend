@@ -3,6 +3,7 @@ package com.example.demo.domain.mysql;
 import com.example.demo.domain.mongo.Step;
 import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -13,6 +14,7 @@ import java.util.stream.Collectors;
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
 public class Job {
     @Id
     @GeneratedValue
@@ -28,15 +30,11 @@ public class Job {
 
     private String name;
 
-    @Enumerated(EnumType.STRING)
-    private JobStatus status;
-
     private LocalDateTime startTime;
 
     private LocalDateTime finishTime;
 
     public Job(Task task, int idx) {
-        this.status = JobStatus.Queued;
         this.task = task;
         this.name = task.getName() + "-" + (idx + 1);
     }
@@ -52,11 +50,11 @@ public class Job {
         }
     }
 
-    public JobStatus getJobStatus() {
-        if(runs.stream().anyMatch(r -> r.isFailed())) return JobStatus.Failed;
-        if(runs.stream().anyMatch(r -> r.isRunning())) return JobStatus.Running;
-        return
-    }
+//    public JobStatus getJobStatus() {
+//        if(runs.stream().anyMatch(r -> r.isFailed())) return JobStatus.Failed;
+//        if(runs.stream().anyMatch(r -> r.isRunning())) return JobStatus.Running;
+//        return
+//    }
 
     public List<Run> getNextRuns(List<Step> nextSteps) {
         return runs.stream().filter(r -> nextSteps.stream().anyMatch(s -> s.getId().equals(r.getStepId()))).collect(Collectors.toList());

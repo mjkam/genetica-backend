@@ -11,6 +11,6 @@ public class KubeClientServiceTest {
     KubeClientService kubeClientService;
     @Test
     public void test1() {
-        kubeClientService.addLabelToNode("hello", 1000L);
+        System.out.println("@@");
     }
 }

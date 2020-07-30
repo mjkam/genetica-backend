@@ -28,21 +28,7 @@ public class PipelineService {
     private final TaskRepository taskRepository;
 
     private Pipeline findPipelineById(String pipelineId) {
-        Optional<Pipeline> pipelineOptional = pipelineRepository.findById(pipelineId);
-        if(!pipelineOptional.isPresent()) throw new RuntimeException();
-        return pipelineOptional.get();
-    }
-    public List<KubeJob> parseRequest(RunPipelineRequest request) {
-        List<KubeJob> kubeJobs = new ArrayList<>();
-
-        Pipeline pipeline = pipelineRepository.findById(request.getPipelineId()).get();
-        List<String> stepIds = pipeline.getSteps().stream().map(step -> step.getId()).collect(Collectors.toList());
-        Task newTask = new Task();
-        newTask.setName(pipeline.getNameId() + LocalDateTime.now());
-        newTask.setPipelineId(pipeline.getId());
-        newTask.setStartTime(LocalDateTime.now());
-        taskRepository.save(newTask);
-        //Task 생성
+        return pipelineRepository.findById(pipelineId).orElseThrow(() -> new RuntimeException());
     }
 
     private Map<String, List<File>> createInputFileMap(List<InputFileInfo> inputFileInfos) {
@@ -73,7 +59,9 @@ public class PipelineService {
         return toolInputFileMap;
     }
 
-    public void runPipeline(RunPipelineRequest request) {
+    public List<KubeJob> parseRequest(RunPipelineRequest request) {
+        List<KubeJob> kubeJobs = new ArrayList<>();
+
         Pipeline pipeline = findPipelineById(request.getPipelineId());
         Map<String, List<File>> inputsMap = createInputFileMap(request.getData());
         Integer maxLen = getMaxNumOfInputFile(inputsMap);
@@ -88,8 +76,8 @@ public class PipelineService {
             Job job = new Job(newTask, i);
             jobRepository.save(job);
 
-            for(int j=0; j<stepIds.size(); j++) {
-                Run run = new Run(job, stepIds.get(j));
+            for(String stepId: stepIds) {
+                Run run = new Run(job, stepId);
                 runRepository.save(run);
             }
 
@@ -114,17 +102,10 @@ public class PipelineService {
         return kubeJobs;
     }
 
-    private void runKubeJobs(List<KubeJob> kubeJobs) {
+    public void runPipeline(RunPipelineRequest request) {
+        List<KubeJob> kubeJobs = parseRequest(request);
         for(KubeJob job: kubeJobs) {
             kubeClientService.runJob(job);
         }
     }
-
-    public void runPipeline(RunPipelineRequest request) {
-        List<KubeJob> kubeJobs = parseRequest(request);
-        runKubeJobs(kubeJobs);
-    }
 }
-
-///1. 아웃풋 파일 넣기
-///2. 인풋파일과 아웃풋 파일 task

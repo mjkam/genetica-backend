@@ -1,15 +1,13 @@
 package com.example.demo.domain.mysql;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Map;
 
 @Entity
 @Data
+@NoArgsConstructor
 public class JobEnv {
     @Id
     @GeneratedValue

@@ -47,11 +47,4 @@ public class Run {
         if(status.equals(JobStatus.Running)) return true;
         return false;
     }
-
-    public List<JobEnv> getInputEnvs(List<JobEnv> envs) {
-
-    }
-
-    public List<JobEnv> getOutputEnvs(List<JobEnv> envs) {
-    }
 }

@@ -3,10 +3,8 @@ package com.example.demo;
 import com.example.demo.async.KubeEventHandler;
 import com.example.demo.domain.mongo.*;
 import com.example.demo.domain.mysql.File;
-import com.example.demo.domain.mysql.Job;
 import com.example.demo.domain.mysql.JobEnv;
-import com.example.demo.domain.mysql.Run;
-import com.example.demo.dto.request.InsertFileInfo;
+import com.example.demo.dto.request.InputFileInfo;
 import com.example.demo.dto.request.RunPipelineRequest;
 import com.example.demo.repository.mongo.PipelineRepository;
 import com.example.demo.repository.mysql.*;
@@ -14,16 +12,12 @@ import com.example.demo.service.CommandLineService;
 import com.example.demo.service.KubeClientService;
 import com.example.demo.service.MonitorService;
 import com.example.demo.service.PipelineService;
-import org.apache.tomcat.jni.Local;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.ConfigFileApplicationContextInitializer;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.Rollback;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -66,7 +60,7 @@ class DemoApplicationTests {
 
 
 
-	@Test
+	@BeforeEach
 	void insertPipeline() {
 		pipelineRepository.deleteAll();
 
@@ -121,9 +115,43 @@ class DemoApplicationTests {
 
 	}
 
+	@BeforeEach
+	void insertFiles() {
+		File file1 = new File();
+		file1.setName("human_g1k_v37_decoy.fasta.tar");
+		file1.setSize(100000L);
+
+		File file2 = new File();
+		file2.setName("TESTX_H7YRLADXX_S1_L001_R1_001.fastq.gz");
+		file2.setSize(1000L);
+		file2.setSampleId("TESTX_H7YRLADXX_S1_L001");
+
+		File file3 = new File();
+		file3.setName("TESTX_H7YRLADXX_S1_L001_R2_001.fastq.gz");
+		file3.setSize(1000L);
+		file3.setSampleId("TESTX_H7YRLADXX_S1_L001");
+
+		/*
+		File file4 = new File();
+		file4.setName("TESTX_H7YRLADXX_S1_L002_R1_001.fastq.gz");
+		file4.setSize(1000L);
+		file4.setSampleId("TESTX_H7YRLADXX_S1_L002");
+
+		File file5 = new File();
+		file5.setName("TESTX_H7YRLADXX_S1_L002_R2_001.fastq.gz");
+		file5.setSize(1000L);
+		file5.setSampleId("TESTX_H7YRLADXX_S1_L002");*/
+
+		fileRepository.save(file1);
+		fileRepository.save(file2);
+		fileRepository.save(file3);
+		//fileRepository.save(file4);
+		//fileRepository.save(file5);
+	}
+
 	@Test
-	void findPipe() {
-		//pipelineRepository.
+	void hello() {
+		System.out.println("@@");
 	}
 
 	@Test
@@ -162,15 +190,15 @@ class DemoApplicationTests {
 		RunPipelineRequest request = new RunPipelineRequest();
 
 
-		InsertFileInfo insertFileInfo1 = new InsertFileInfo();
+		InputFileInfo insertFileInfo1 = new InputFileInfo();
 		insertFileInfo1.setId("input_tar_with_reference");
 		insertFileInfo1.setFileIds(Arrays.asList(1L));
 
-		InsertFileInfo insertFileInfo2 = new InsertFileInfo();
+		InputFileInfo insertFileInfo2 = new InputFileInfo();
 		insertFileInfo2.setId("input_read_1");
 		insertFileInfo2.setFileIds(Arrays.asList(2L));
 
-		InsertFileInfo insertFileInfo3 = new InsertFileInfo();
+		InputFileInfo insertFileInfo3 = new InputFileInfo();
 		insertFileInfo3.setId("input_read_2");
 		insertFileInfo3.setFileIds(Arrays.asList(3L));
 
@@ -286,7 +314,7 @@ class DemoApplicationTests {
 	void test2() {
 		Pipeline pipeline = pipelineRepository.findById("5f0b1e904ba103285d4ddbcf").get();
 		List<JobEnv> validEnvList = jobEnvRepository.findAllValidEnvsInJob(7L);
-		System.out.println(monitorService.findNextStep(pipeline, validEnvList, 7L));
+//		System.out.println(monitorService.findNextStep(pipeline, validEnvList, 7L));
 	}
 
 	@Test
