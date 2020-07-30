@@ -1,26 +1,15 @@
 package com.example.demo.service;
 
 import com.example.demo.domain.mongo.Pipeline;
-import com.example.demo.domain.mongo.Step;
-import com.example.demo.domain.mongo.StepIO;
 import com.example.demo.domain.mysql.*;
-import com.example.demo.dto.request.InsertFileInfo;
+import com.example.demo.dto.request.InputFileInfo;
 import com.example.demo.dto.request.RunPipelineRequest;
 import com.example.demo.repository.mongo.PipelineRepository;
 import com.example.demo.repository.mysql.*;
-import io.kubernetes.client.openapi.ApiClient;
-import io.kubernetes.client.openapi.Configuration;
-import io.kubernetes.client.openapi.apis.CoreV1Api;
-import io.kubernetes.client.openapi.models.V1Pod;
-import io.kubernetes.client.util.Config;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import javax.print.attribute.standard.JobStateReason;
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -32,78 +21,75 @@ public class PipelineService {
     private final JobFileRepository jobFileRepository;
     private final RunRepository runRepository;
     private final JobEnvRepository jobEnvRepository;
-    private final CommandLineService commandLineService;
     private final KubeClientService kubeClientService;
 
     private final TaskRepository taskRepository;
 
-    public void runPipeline(RunPipelineRequest request) {
-        Pipeline pipeline = pipelineRepository.findById(request.getPipelineId()).get();
-        List<String> stepIds = pipeline.getSteps().stream().map(step -> step.getId()).collect(Collectors.toList());
-        Task newTask = new Task();
-        newTask.setName(pipeline.getNameId() + LocalDateTime.now());
-        newTask.setPipelineId(pipeline.getId());
-        newTask.setStartTime(LocalDateTime.now());
-        taskRepository.save(newTask);
-        //Task 생성
+    private Pipeline findPipelineById(String pipelineId) {
+        Optional<Pipeline> pipelineOptional = pipelineRepository.findById(pipelineId);
+        if(!pipelineOptional.isPresent()) throw new RuntimeException();
+        return pipelineOptional.get();
+    }
 
+    private Map<String, List<File>> createInputFileMap(List<InputFileInfo> inputFileInfos) {
         Map<String, List<File>> inputs = new HashMap<>();
 
-        int maxLen = 0;
-        for(int i=0; i<request.getData().size(); i++) {
-            InsertFileInfo fileInfo = request.getData().get(i);
-            List<File> files = fileRepository.findByIdIn(fileInfo.getFileIds());
-            inputs.put(fileInfo.getId(), files);
-            maxLen = Math.max(maxLen, fileInfo.getFileIds().size());
+        for(InputFileInfo inputFileInfo: inputFileInfos) {
+            List<File> files = fileRepository.findByIdIn(inputFileInfo.getFileIds());
+            inputs.put(inputFileInfo.getId(), files);
         }
 
-        System.out.println("maxLen: " + maxLen);
-        for(int i=0; i<maxLen; i++) {
-            Map<String, File> inputFile = new HashMap<>();
-            for(String ioId: inputs.keySet()) {
-                List<File> files = inputs.get(ioId);
-                inputFile.put(ioId, files.get(i % files.size()));
-            }
+        return inputs;
+    }
 
-            //Todo: 생성자 만들기
-            Job job = new Job();
-            job.setStatus(JobStatus.Queued);
-            job.setTask(newTask);
-            job.setName(newTask.getName() + "-" + (i+1));
+    private Integer getMaxNumOfInputFile(Map<String, List<File>> inputsMap) {
+        int maxNum = 0;
+        for(String inputTargetId: inputsMap.keySet()) {
+            maxNum = Math.max(inputsMap.get(inputTargetId).size(), maxNum);
+        }
+        return maxNum;
+    }
+
+    private Map<String, File> getToolInputFileMap(Map<String, List<File>> inputsMap, int idx) {
+        Map<String, File> toolInputFileMap = new HashMap<>();
+        for(String ioId: inputsMap.keySet()) {
+            List<File> files = inputsMap.get(ioId);
+            toolInputFileMap.put(ioId, files.get(idx % files.size()));
+        }
+        return toolInputFileMap;
+    }
+
+    public void runPipeline(RunPipelineRequest request) {
+        Pipeline pipeline = findPipelineById(request.getPipelineId());
+        Map<String, List<File>> inputsMap = createInputFileMap(request.getData());
+        Integer maxLen = getMaxNumOfInputFile(inputsMap);
+        List<String> stepIds = pipeline.getStepIds();
+
+        Task newTask = new Task(pipeline);
+        taskRepository.save(newTask);
+
+        for(int i=0; i<maxLen; i++) {
+            Map<String, File> toolInputFileMap = getToolInputFileMap(inputsMap, i);
+
+            Job job = new Job(newTask, i);
             jobRepository.save(job);
 
             for(int j=0; j<stepIds.size(); j++) {
-                Run run = new Run();
-                run.setJob(job);
-                run.setStepId(stepIds.get(j));
-                run.setStatus(JobStatus.Queued);
+                Run run = new Run(job, stepIds.get(j));
                 runRepository.save(run);
             }
 
             List<JobEnv> jobEnvs = new ArrayList<>();
-            for(String ioId: inputFile.keySet()) {
-                JobFile jobFile = new JobFile();
-                jobFile.setJob(job);
-                jobFile.setFile(inputFile.get(ioId));
-                jobFile.setIoType("input");
-                jobFile.setTargetId(ioId);
-
+            for(String ioId: toolInputFileMap.keySet()) {
+                JobFile jobFile = new JobFile(job, toolInputFileMap, ioId);
                 jobFileRepository.save(jobFile);
 
-                JobEnv jobEnv = new JobEnv();
-                jobEnv.setJob(job);
-                jobEnv.setEnvKey(ioId);
-                jobEnv.setIsValid(true);
-                jobEnv.setEnvVal(inputFile.get(ioId).getName());
+                JobEnv jobEnv = new JobEnv(job, ioId, toolInputFileMap.get(ioId).getSampleId(), true);
                 jobEnvRepository.save(jobEnv);
                 jobEnvs.add(jobEnv);
 
-                if(inputFile.get(ioId).getSampleId() != null) {
-                    JobEnv jobEnv2 = new JobEnv();
-                    jobEnv2.setJob(job);
-                    jobEnv2.setIsValid(true);
-                    jobEnv2.setEnvKey("sample");
-                    jobEnv2.setEnvVal(inputFile.get(ioId).getSampleId());
+                if(toolInputFileMap.get(ioId).getSampleId() != null) {
+                    JobEnv jobEnv2 = new JobEnv(job, "sample", toolInputFileMap.get(ioId).getSampleId(), true);
                     jobEnvs.add(jobEnv2);
                     jobEnvRepository.save(jobEnv2);
                 }
@@ -112,66 +98,6 @@ public class PipelineService {
             kubeClientService.runJob(newTask.getId(), job.getId(), 0L, "initializer", jobEnvs, "338282184009.dkr.ecr.ap-northeast-2.amazonaws.com/myrepo:genetica_base", Arrays.asList("rm -rf *"));
         }
     }
-
-    /*
-    public void runPipeline(RunPipelineRequest request) {
-        Pipeline pipeline = pipelineRepository.findById(request.getPipelineId()).get();
-        //파이프라인 검색
-        Map<String, List<File>> fileMap = new HashMap<>();
-        //맵 선언
-        List<String> parsedTools = new ArrayList<>();
-
-        for(InsertFileInfo insertFileInfo : request.getData()) {
-            fileMap.put(insertFileInfo.getId(), fileRepository.findByIdIn(insertFileInfo.getFileIds()));
-        }
-        //인풋데이터와 리퀘스트 데이터 매핑해서 맵에 넣음
-        for(Step step : pipeline.getSteps()) {
-            if(!parsedTools.contains(step.getId())) {
-                parseTool(fileMap, pipeline, step.getId(), parsedTools);
-            }
-        }
-        
-        //파싱 메서드 들어가
-        //아웃풋데이터 맵에 잇는데이터 이용하여 매핑
-    }*/
-
-
-    /*
-    public void parseTool(Map<String, List<File>> fileMap, Pipeline pipeline, String stepId, List<String> parsedTools) {
-        Step step = null;
-        for(Step st : pipeline.getSteps()) {
-            if(st.getId().equals(stepId)) {
-                step = st;
-                parsedTools.add(step.getId());
-                break;
-            }
-        }
-        Map<String, List<File>> envMap = new HashMap<>();
-        int maxLen = 0;
-        for(StepIO in : step.getIn()) {
-            if(fileMap.get(in.getSource()) != null) {
-                parseTool(fileMap, pipeline, in.getSource().split("/")[0], parsedTools);
-            }
-            envMap.put(in.getId(), envMap.get(in.getSource()));
-            maxLen = Math.max(maxLen, envMap.get(in.getSource()).size());
-        }
-
-        for(int i=0; i<maxLen; i++) {
-            Map<String, String> realEnvMap = new HashMap<>();
-            for(String k: envMap.keySet()) {
-                List<File> list = envMap.get(k);
-                File f = list.get(i % list.size());
-                realEnvMap.put(k, list.get(list.size() % i).getName());
-                realEnvMap.put("sample", f.getSampleId());
-            }
-            String cmd = commandLineService.getEchoString(realEnvMap, step.getRun().getCommand());
-
-            for(ToolIO toolIO : step.getRun().getOutputs()) {
-                toolIO.
-            }
-        }
-
-    }*/
 }
 
 ///1. 아웃풋 파일 넣기

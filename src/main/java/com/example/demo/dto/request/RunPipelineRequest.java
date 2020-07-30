@@ -7,8 +7,24 @@ import lombok.Setter;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+{
+    "pipelineId": xx,
+    "data": [
+        {
+            "id": xx,
+            "fileIds": [1,2,3],
+        }, ...
+    ]
+}
+ */
+
+
 @Data
 public class RunPipelineRequest {
     private String pipelineId;
-    private List<InsertFileInfo> data = new ArrayList<>();
+    private List<InputFileInfo> data = new ArrayList<>();
 }
+
+
+

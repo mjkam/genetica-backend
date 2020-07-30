@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Map;
 
 @Entity
 @Data
@@ -25,4 +26,11 @@ public class JobEnv {
     private String envKey;
 
     private String envVal;
+
+    public JobEnv(Job job, String key, String value, boolean isValid) {
+        this.job = job;
+        this.envKey = key;
+        this.envVal = value;
+        this.isValid = isValid;
+    }
 }

@@ -2,6 +2,7 @@ package com.example.demo.domain.mysql;
 
 import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -10,6 +11,7 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
 public class Run {
     @Id
     @GeneratedValue
@@ -28,4 +30,10 @@ public class Run {
     private LocalDateTime startTime;
 
     private LocalDateTime finishTime;
+
+    public Run(Job job, String stepId) {
+        this.job = job;
+        this.stepId = stepId;
+        this.status = JobStatus.Queued;
+    }
 }

@@ -28,4 +28,10 @@ public class Job {
     private LocalDateTime startTime;
 
     private LocalDateTime finishTime;
+
+    public Job(Task task, int idx) {
+        this.status = JobStatus.Queued;
+        this.task = task;
+        this.name = task.getName() + "-" + (idx+1);
+    }
 }

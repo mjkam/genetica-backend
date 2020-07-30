@@ -8,7 +8,7 @@ import java.util.List;
 
 @Getter
 @Setter
-public class InsertFileInfo {
+public class InputFileInfo {
     private String id;
     private List<Long> fileIds = new ArrayList<>();
 }

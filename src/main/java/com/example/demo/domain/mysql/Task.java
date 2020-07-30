@@ -1,5 +1,6 @@
 package com.example.demo.domain.mysql;
 
+import com.example.demo.domain.mongo.Pipeline;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -20,4 +21,11 @@ public class Task {
     private LocalDateTime startTime;
 
     private LocalDateTime finishTime;
+
+    public Task(Pipeline pipeline) {
+        LocalDateTime nowTime = LocalDateTime.now();
+        this.setName(pipeline.getNameId() + nowTime);
+        this.setPipelineId(pipeline.getId());
+        this.setStartTime(nowTime);
+    }
 }
