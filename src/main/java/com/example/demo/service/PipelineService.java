@@ -3,6 +3,8 @@ package com.example.demo.service;
 import com.example.demo.domain.mongo.Pipeline;
 import com.example.demo.domain.mysql.*;
 import com.example.demo.dto.request.InputFileInfo;
+import com.example.demo.dto.KubeJob;
+import com.example.demo.dto.KubeJobType;
 import com.example.demo.dto.request.RunPipelineRequest;
 import com.example.demo.repository.mongo.PipelineRepository;
 import com.example.demo.repository.mysql.*;
@@ -29,6 +31,18 @@ public class PipelineService {
         Optional<Pipeline> pipelineOptional = pipelineRepository.findById(pipelineId);
         if(!pipelineOptional.isPresent()) throw new RuntimeException();
         return pipelineOptional.get();
+    }
+    public List<KubeJob> parseRequest(RunPipelineRequest request) {
+        List<KubeJob> kubeJobs = new ArrayList<>();
+
+        Pipeline pipeline = pipelineRepository.findById(request.getPipelineId()).get();
+        List<String> stepIds = pipeline.getSteps().stream().map(step -> step.getId()).collect(Collectors.toList());
+        Task newTask = new Task();
+        newTask.setName(pipeline.getNameId() + LocalDateTime.now());
+        newTask.setPipelineId(pipeline.getId());
+        newTask.setStartTime(LocalDateTime.now());
+        taskRepository.save(newTask);
+        //Task 생성
     }
 
     private Map<String, List<File>> createInputFileMap(List<InputFileInfo> inputFileInfos) {
@@ -95,8 +109,20 @@ public class PipelineService {
                 }
 
             }
-            kubeClientService.runJob(newTask.getId(), job.getId(), 0L, "initializer", jobEnvs, "338282184009.dkr.ecr.ap-northeast-2.amazonaws.com/myrepo:genetica_base", Arrays.asList("rm -rf *"));
+            kubeJobs.add(new KubeJob(newTask.getId(), job.getId(), 0L, KubeJobType.INITIALIZER, jobEnvs));
         }
+        return kubeJobs;
+    }
+
+    private void runKubeJobs(List<KubeJob> kubeJobs) {
+        for(KubeJob job: kubeJobs) {
+            kubeClientService.runJob(job);
+        }
+    }
+
+    public void runPipeline(RunPipelineRequest request) {
+        List<KubeJob> kubeJobs = parseRequest(request);
+        runKubeJobs(kubeJobs);
     }
 }
 

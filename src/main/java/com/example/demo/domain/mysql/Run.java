@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Getter
@@ -35,5 +36,22 @@ public class Run {
         this.job = job;
         this.stepId = stepId;
         this.status = JobStatus.Queued;
+    }
+
+    public boolean isFailed() {
+        if(status.equals(JobStatus.Failed)) return true;
+        return false;
+    }
+
+    public boolean isRunning() {
+        if(status.equals(JobStatus.Running)) return true;
+        return false;
+    }
+
+    public List<JobEnv> getInputEnvs(List<JobEnv> envs) {
+
+    }
+
+    public List<JobEnv> getOutputEnvs(List<JobEnv> envs) {
     }
 }
