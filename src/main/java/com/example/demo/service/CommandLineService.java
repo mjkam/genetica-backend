@@ -13,9 +13,6 @@ import java.util.Map;
 public class CommandLineService {
 
     public String getEchoString(List<JobEnv> jobEnvs, String script) {
-        System.out.println("======");
-        System.out.println(script);
-        System.out.println("======");
         ProcessBuilder pb = new ProcessBuilder("/bin/bash", "-c", "echo " + script);
         Map<String, String> envMap = pb.environment();
         for(JobEnv env: jobEnvs) {

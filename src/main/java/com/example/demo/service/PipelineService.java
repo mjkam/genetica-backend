@@ -4,6 +4,8 @@ import com.example.demo.domain.mongo.Pipeline;
 import com.example.demo.domain.mongo.Step;
 import com.example.demo.domain.mongo.StepIO;
 import com.example.demo.domain.mysql.*;
+import com.example.demo.dto.KubeJob;
+import com.example.demo.dto.KubeJobType;
 import com.example.demo.dto.request.InsertFileInfo;
 import com.example.demo.dto.request.RunPipelineRequest;
 import com.example.demo.repository.mongo.PipelineRepository;
@@ -32,12 +34,13 @@ public class PipelineService {
     private final JobFileRepository jobFileRepository;
     private final RunRepository runRepository;
     private final JobEnvRepository jobEnvRepository;
-    private final CommandLineService commandLineService;
     private final KubeClientService kubeClientService;
 
     private final TaskRepository taskRepository;
 
-    public void runPipeline(RunPipelineRequest request) {
+    public List<KubeJob> parseRequest(RunPipelineRequest request) {
+        List<KubeJob> kubeJobs = new ArrayList<>();
+
         Pipeline pipeline = pipelineRepository.findById(request.getPipelineId()).get();
         List<String> stepIds = pipeline.getSteps().stream().map(step -> step.getId()).collect(Collectors.toList());
         Task newTask = new Task();
@@ -109,8 +112,20 @@ public class PipelineService {
                 }
 
             }
-            kubeClientService.runJob(newTask.getId(), job.getId(), 0L, "initializer", jobEnvs, "338282184009.dkr.ecr.ap-northeast-2.amazonaws.com/myrepo:genetica_base", Arrays.asList("rm -rf *"));
+            kubeJobs.add(new KubeJob(newTask.getId(), job.getId(), 0L, KubeJobType.INITIALIZER, jobEnvs));
         }
+        return kubeJobs;
+    }
+
+    private void runKubeJobs(List<KubeJob> kubeJobs) {
+        for(KubeJob job: kubeJobs) {
+            kubeClientService.runJob(job);
+        }
+    }
+
+    public void runPipeline(RunPipelineRequest request) {
+        List<KubeJob> kubeJobs = parseRequest(request);
+        runKubeJobs(kubeJobs);
     }
 
     /*

@@ -22,7 +22,6 @@ import io.kubernetes.client.util.Config;
 import io.kubernetes.client.util.Watch;
 import lombok.RequiredArgsConstructor;
 import okhttp3.OkHttpClient;
-import org.omg.SendingContext.RunTime;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 

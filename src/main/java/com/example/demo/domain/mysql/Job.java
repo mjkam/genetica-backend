@@ -28,4 +28,15 @@ public class Job {
     private LocalDateTime startTime;
 
     private LocalDateTime finishTime;
+
+    public void changeStatus(JobStatus status) {
+        if(status.equals(JobStatus.Running)) {
+            status = JobStatus.Running;
+            startTime = LocalDateTime.now();
+        } else if(status.equals(JobStatus.Failed)) {
+
+        } else if(status.equals(JobStatus.Succeeded)) {
+
+        }
+    }
 }

@@ -13,7 +13,7 @@ public class ServiceExecutor {
         executorService = Executors.newFixedThreadPool(10);
     }
 
-    public void runExecutor(Runnable runnableService) throws Exception{
+    public void runExecutor(Runnable runnableService){
         executorService.submit(runnableService);
     }
 }

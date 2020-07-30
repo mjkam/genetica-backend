@@ -28,4 +28,9 @@ public class Run {
     private LocalDateTime startTime;
 
     private LocalDateTime finishTime;
+
+    public boolean isFailed() {
+        if(status.equals(JobStatus.Failed)) return true;
+        return false;
+    }
 }

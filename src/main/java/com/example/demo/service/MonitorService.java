@@ -16,6 +16,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -32,32 +33,33 @@ public class MonitorService {
     private final CommandLineService commandLineService;
     private final FileRepository fileRepository;
 
-    public void handleInitializer(Long taskId, Long jobId, String resultState, String nodeName) {
-        Job job = jobRepository.findById(jobId).get();
-        if(JobStatus.valueOf(resultState).equals(JobStatus.Succeeded)) {
-            kubeClientService.addLabelToNode(nodeName, jobId);
-            job.setStatus(JobStatus.Running);
-            job.setStartTime(LocalDateTime.now());
+
+    public void handleInitializer(Long taskId, Long jobId, JobStatus resultStatus, String nodeName) {
+        Optional<Job> optionalJob = jobRepository.findById(jobId);
+        if(!optionalJob.isPresent()) throw new RuntimeException();
+        Job job = optionalJob.get();
+
+        //job.changeStatus(resultStatus);
+        if(resultStatus.equals(JobStatus.Succeeded)) {
+            kubeClientService.addLabelToNode(nodeName, job.getId());
             runNextRun(taskId, jobId);
-            return;
         }
-        job.setStatus(JobStatus.valueOf(resultState));
     }
 
-    public void handleJobResult(Long taskId, Long jobId, Long runId, String resultState) {
+    public void handleAnalysis(Long taskId, Long jobId, Long runId, JobStatus resultStatus) {
         Job job = jobRepository.findById(jobId).get();
         Run run = runRepository.findById(runId).get();
-        run.setStatus(JobStatus.valueOf(resultState));
+        run.setStatus(resultStatus);
 
-        if(JobStatus.valueOf(resultState).equals(JobStatus.Running)) {
+        if(resultStatus.equals(JobStatus.Running)) {
             run.setStartTime(LocalDateTime.now());
         }
 
-        if(JobStatus.valueOf(resultState).equals(JobStatus.Failed)) {
+        if(resultStatus.equals(JobStatus.Failed)) {
             run.setFinishTime(LocalDateTime.now());
         }
 
-        if(JobStatus.valueOf(resultState).equals(JobStatus.Succeeded)) {
+        if(resultStatus.equals(JobStatus.Succeeded)) {
             run.setFinishTime(LocalDateTime.now());
             jobEnvRepository.updateJobEnvRelatedtoRun(jobId, runId);
 
@@ -92,20 +94,6 @@ public class MonitorService {
         }
     }
 
-    private Boolean containsAllEnv(List<JobEnv> envs, List<StepIO> stepInputs) {
-        for(StepIO stepInput: stepInputs) {
-            boolean check = false;
-            for(JobEnv env: envs) {
-                if(stepInput.getSource().equals(env.getEnvKey())) {
-                    check = true;
-                    break;
-                }
-            }
-            if(!check) return false;
-        }
-        return true;
-    }
-
     private List<JobEnv> getInputEnvs(List<JobEnv> envs, List<StepIO> stepInputs, Job job) {
         List<JobEnv> newJobEnvs = new ArrayList<>();
         for(StepIO stepInput: stepInputs) {
@@ -131,19 +119,6 @@ public class MonitorService {
         }
 
         return newJobEnvs;
-    }
-
-    public List<Step> findNextStep(Pipeline pipeline, List<JobEnv> envs, Long jobId) {
-        List<Step> nextSteps = new ArrayList<>();
-        for(Step step : pipeline.getSteps()) {
-            if(containsAllEnv(envs, step.getIn())) {
-                Run run = runRepository.findRun(jobId, step.getId());
-                if(run.getStatus().equals(JobStatus.Queued)) {
-                    nextSteps.add(step);
-                }
-            }
-        }
-        return nextSteps;
     }
 
     private List<String> getS3CopyInCommand(List<JobFile> jobFiles, Step step) {
@@ -188,8 +163,9 @@ public class MonitorService {
         return outputEnvs;
     }
 
-    public JobStatus getResultStatusOfJob(Long jobId) {
+    public JobStatus getStatusOfJob(Long jobId) {
         List<Run> runs = runRepository.findRunsInJob(jobId);
+        if(runs.stream().anyMatch(r -> r.isFailed())) return
 
         for(Run run : runs) {
             if(run.getStatus().equals(JobStatus.Failed)) {
@@ -208,13 +184,14 @@ public class MonitorService {
     }
 
     public void runNextRun(Long taskId, Long jobId) {
-        Task task = taskRepository.findById(taskId).get();
-        Job job = jobRepository.findById(jobId).get();
-        Pipeline pipeline = pipelineRepository.findById(job.getTask().getPipelineId()).get();
+        Task task = taskRepository.findById(taskId).orElseThrow(() -> new RuntimeException());
+        Job job = jobRepository.findById(jobId).orElseThrow(() -> new RuntimeException());
+        Pipeline pipeline = pipelineRepository.findById(task.getPipelineId()).orElseThrow(() -> new RuntimeException());
         List<JobEnv> validEnvList = jobEnvRepository.findAllValidEnvsInJob(jobId);
 
-        List<Step> nextSteps = findNextStep(pipeline, validEnvList, jobId);
+        List<Step> nextSteps = pipeline.getNextSteps(validEnvList);
         if(nextSteps.size() == 0) {
+            job.changeStatus();
             job.setStatus(getResultStatusOfJob(jobId));
             job.setFinishTime(LocalDateTime.now());
 
