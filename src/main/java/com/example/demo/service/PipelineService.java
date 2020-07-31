@@ -86,7 +86,7 @@ public class PipelineService {
                 JobFile jobFile = new JobFile(job, toolInputFileMap, ioId);
                 jobFileRepository.save(jobFile);
 
-                JobEnv jobEnv = new JobEnv(job, ioId, toolInputFileMap.get(ioId).getSampleId(), true);
+                JobEnv jobEnv = new JobEnv(job, ioId, toolInputFileMap.get(ioId).getName(), true);
                 jobEnvRepository.save(jobEnv);
                 jobEnvs.add(jobEnv);
 
