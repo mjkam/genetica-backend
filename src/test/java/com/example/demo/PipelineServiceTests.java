@@ -4,25 +4,24 @@ import com.example.demo.domain.mongo.*;
 import com.example.demo.domain.mysql.File;
 import com.example.demo.dto.KubeJob;
 import com.example.demo.dto.KubeJobType;
-import com.example.demo.dto.request.InputFileInfo;
 import com.example.demo.dto.request.RunPipelineRequest;
+import com.example.demo.helper.FileManager;
+import com.example.demo.helper.PipelineManager;
+import com.example.demo.helper.RequestManager;
 import com.example.demo.repository.mongo.PipelineRepository;
 import com.example.demo.repository.mysql.FileRepository;
 import com.example.demo.service.PipelineService;
-import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.test.context.ActiveProfiles;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.hamcrest.collection.IsIterableContainingInAnyOrder.containsInAnyOrder;
 
+@ActiveProfiles("test")
 @SpringBootTest
 public class PipelineServiceTests {
     @Autowired
@@ -39,6 +38,7 @@ public class PipelineServiceTests {
 
     @BeforeEach
     void setup() {
+        pipelineRepository.deleteAll();
         List<File> files = FileManager.createWESInputFiles();
         files.stream().forEach(f -> fileRepository.save(f));
 

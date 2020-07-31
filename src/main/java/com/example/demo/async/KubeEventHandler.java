@@ -1,37 +1,16 @@
 package com.example.demo.async;
 
-import com.example.demo.domain.mongo.Pipeline;
-import com.example.demo.domain.mongo.Step;
-import com.example.demo.domain.mongo.StepIO;
 import com.example.demo.domain.mysql.*;
 import com.example.demo.dto.KubeJobType;
-import com.example.demo.repository.mongo.PipelineRepository;
-import com.example.demo.repository.mysql.JobEnvRepository;
-import com.example.demo.repository.mysql.JobFileRepository;
-import com.example.demo.repository.mysql.JobRepository;
-import com.example.demo.repository.mysql.RunRepository;
-import com.example.demo.service.CommandLineService;
-import com.example.demo.service.KubeClientService;
 import com.example.demo.service.MonitorService;
-import io.kubernetes.client.openapi.models.V1Job;
-import io.kubernetes.client.openapi.models.V1Pod;
-import io.kubernetes.client.util.Watch;
-import org.apache.commons.collections4.ListUtils;
-import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import java.time.LocalDateTime;
 import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class KubeEventHandler implements Runnable {
     private Map<String, String> labels;
     private JobStatus resultStatus;
     private String nodeName;
     private MonitorService monitorService;
-
 
     public KubeEventHandler(Map<String, String> labels,
                             String resultStatus,
@@ -42,6 +21,7 @@ public class KubeEventHandler implements Runnable {
         this.nodeName = nodeName;
         this.monitorService = monitorService;
     }
+
     @Override
     public void run() {
         KubeJobType kubeJobType = KubeJobType.valueOf(labels.get("type"));
@@ -50,7 +30,7 @@ public class KubeEventHandler implements Runnable {
         Long runId = Long.valueOf(labels.get("runId"));
 
         if(kubeJobType.equals(KubeJobType.INITIALIZER)) {
-            monitorService.handleInitializer(taskId, jobId, resultStatus, nodeName);
+            monitorService.handleInitializer(taskId, jobId, runId, resultStatus, nodeName);
         }
 
         if(kubeJobType.equals(KubeJobType.ANALYSIS)) {

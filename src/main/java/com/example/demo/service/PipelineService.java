@@ -80,6 +80,9 @@ public class PipelineService {
                 Run run = new Run(job, stepId);
                 runRepository.save(run);
             }
+            Run initializeRun = new Run(job, "");
+            runRepository.save(initializeRun);
+
 
             List<JobEnv> jobEnvs = new ArrayList<>();
             for(String ioId: toolInputFileMap.keySet()) {
@@ -97,7 +100,7 @@ public class PipelineService {
                 }
 
             }
-            kubeJobs.add(new KubeJob(newTask.getId(), job.getId(), 0L, KubeJobType.INITIALIZER, jobEnvs));
+            kubeJobs.add(new KubeJob(newTask.getId(), job.getId(), initializeRun.getId(), KubeJobType.INITIALIZER, jobEnvs));
         }
         return kubeJobs;
     }

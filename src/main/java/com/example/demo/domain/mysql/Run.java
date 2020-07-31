@@ -38,13 +38,13 @@ public class Run {
         this.status = JobStatus.Queued;
     }
 
-    public boolean isFailed() {
-        if(status.equals(JobStatus.Failed)) return true;
-        return false;
-    }
+    public void changeStatus(JobStatus status) {
+        this.status = status;
 
-    public boolean isRunning() {
-        if(status.equals(JobStatus.Running)) return true;
-        return false;
+        if(status.equals(JobStatus.Succeeded) || status.equals(JobStatus.Failed)) {
+            this.finishTime = LocalDateTime.now();
+        } else if(status.equals(JobStatus.Running)) {
+            this.startTime = LocalDateTime.now();
+        }
     }
 }

@@ -55,6 +55,7 @@ public class KubeMonitor  {
                 V1Pod pod = item.object;
                 V1OwnerReference jobInfo = pod.getMetadata().getOwnerReferences().get(0);
                 V1Job job = batchV1Api.readNamespacedJob(jobInfo.getName(), "genetica-job", null, null, null);
+
                 serviceExecutor.runExecutor(new KubeEventHandler(job.getMetadata().getLabels(), pod.getStatus().getPhase(), pod.getSpec().getNodeName(), monitorService));
             }
 

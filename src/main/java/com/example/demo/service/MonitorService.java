@@ -36,10 +36,11 @@ public class MonitorService {
     private final FileRepository fileRepository;
 
 
-    public void handleInitializer(Long taskId, Long jobId, JobStatus resultStatus, String nodeName) {
+    public void handleInitializer(Long taskId, Long jobId, Long runId, JobStatus resultStatus, String nodeName) {
         Job job = jobRepository.findById(jobId).orElseThrow(() -> new RuntimeException());
+        Run run = runRepository.findById(runId).orElseThrow(() -> new RuntimeException());
+        run.changeStatus(resultStatus);
 
-        //Todo: initializer Run 추가 필요. initializer 가 실패할 때 상태 변경 필요함.
         if(resultStatus.equals(JobStatus.Succeeded)) {
             kubeClientService.addLabelToNode(nodeName, job.getId());
             runNextRun(taskId, jobId);
@@ -47,28 +48,18 @@ public class MonitorService {
     }
 
     public void handleAnalysis(Long taskId, Long jobId, Long runId, JobStatus resultStatus) {
-        Job job = jobRepository.findById(jobId).get();
-        Run run = runRepository.findById(runId).get();
-        run.setStatus(resultStatus);
-
-        if(resultStatus.equals(JobStatus.Running)) {
-            run.setStartTime(LocalDateTime.now());
-        }
-
-        if(resultStatus.equals(JobStatus.Failed)) {
-            run.setFinishTime(LocalDateTime.now());
-        }
+        Task task = taskRepository.findById(taskId).orElseThrow(() -> new RuntimeException());
+        Job job = jobRepository.findById(jobId).orElseThrow(() -> new RuntimeException());
+        Run run = runRepository.findById(runId).orElseThrow(() -> new RuntimeException());
+        run.changeStatus(resultStatus);
 
         if(resultStatus.equals(JobStatus.Succeeded)) {
-            run.setFinishTime(LocalDateTime.now());
             jobEnvRepository.updateJobEnvRelatedtoRun(jobId, runId);
 
             List<JobEnv> sampleEnvs = jobEnvRepository.findSampleInRun(jobId, runId);
             List<JobEnv> outputEnvs  = jobEnvRepository.findNewOutput(jobId, runId);
-            Pipeline pipeline = pipelineRepository.findById(taskRepository.findById(taskId).get().getPipelineId()).get();
+            Pipeline pipeline = pipelineRepository.findById(task.getPipelineId()).orElseThrow(() -> new RuntimeException());
 
-            //List<File> newFiles = new ArrayList<>();
-            //List<JobFile> newJobFiles = new ArrayList<>();
             for(JobEnv jobEnv: outputEnvs) {
                 for(ToolIO toolIO : pipeline.getOutputs()) {
                     if(toolIO.getSource().equals(jobEnv.getEnvKey())) {
@@ -93,6 +84,8 @@ public class MonitorService {
             runNextRun(taskId, jobId);
         }
     }
+
+
 
     private List<JobEnv> getInputEnvs(List<JobEnv> envs, List<StepIO> stepInputs, Job job) {
         List<JobEnv> newJobEnvs = new ArrayList<>();
@@ -156,6 +149,8 @@ public class MonitorService {
         Pipeline pipeline = pipelineRepository.findById(task.getPipelineId()).orElseThrow(() -> new RuntimeException());
         List<JobEnv> validEnvs = jobEnvRepository.findAllValidEnvsInJob(jobId);
 
+        List<Step> nextSteps = pipeline.getNextSteps(validEnvs);
+
         List<KubeJob> nextKubeJobs = findNextKubeJobs(task, job, pipeline, validEnvs);
         for(KubeJob kubeJob: nextKubeJobs) {
             kubeClientService.runJob(kubeJob);
@@ -167,6 +162,10 @@ public class MonitorService {
         Long jobId = job.getId();
         List<KubeJob> kubeJobs = new ArrayList<>();
         List<Step> nextSteps = pipeline.getNextSteps(validEnvs);
+        //다음 잡을 찾음
+        //그 잡에 대한 명령어를 만들어야함
+        //
+
 
         for(Step nextStep: nextSteps) {
             Run nextRun = runRepository.findRun(jobId, nextStep.getId());

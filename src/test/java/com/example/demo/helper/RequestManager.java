@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.helper;
 
 import com.example.demo.domain.mongo.Pipeline;
 import com.example.demo.dto.KubeJob;

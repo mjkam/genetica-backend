@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.helper;
 
 import com.example.demo.domain.mongo.*;
 import com.example.demo.repository.mongo.PipelineRepository;

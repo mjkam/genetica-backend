@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.834s</div>
+<div class="counter">0.749s</div>
 <p>duration</p>
 </div>
 </td>
@@ -66,9 +66,6 @@
 <li>
 <a href="#tab1">Standard output</a>
 </li>
-<li>
-<a href="#tab2">Standard error</a>
-</li>
 </ul>
 <div id="tab0" class="tab">
 <h2>Tests</h2>
@@ -82,7 +79,7 @@
 </thead>
 <tr>
 <td class="success">parseRequestTest()</td>
-<td class="success">0.834s</td>
+<td class="success">0.749s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -90,22 +87,22 @@
 <div id="tab1" class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>10:36:32.249 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
-10:36:32.261 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
-10:36:32.285 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.example.demo.PipelineServiceTests] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
-10:36:32.295 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.example.demo.PipelineServiceTests], using SpringBootContextLoader
-10:36:32.299 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.example.demo.PipelineServiceTests]: class path resource [com/example/demo/PipelineServiceTests-context.xml] does not exist
-10:36:32.300 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.example.demo.PipelineServiceTests]: class path resource [com/example/demo/PipelineServiceTestsContext.groovy] does not exist
-10:36:32.301 [Test worker] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.example.demo.PipelineServiceTests]: no resource found for suffixes {-context.xml, Context.groovy}.
-10:36:32.302 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.demo.PipelineServiceTests]: PipelineServiceTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-10:36:32.335 [Test worker] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.example.demo.PipelineServiceTests]
-10:36:32.387 [Test worker] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [/Users/mjkam/Desktop/genetica-backend/build/classes/java/main/com/example/demo/DemoApplication.class]
-10:36:32.388 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.demo.DemoApplication for test class com.example.demo.PipelineServiceTests
-10:36:32.480 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [com.example.demo.PipelineServiceTests]: using defaults.
-10:36:32.481 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
-10:36:32.495 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@487b8d51, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@5a60d425, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@6420beb7, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@2905c2a2, org.springframework.test.context.support.DirtiesContextTestExecutionListener@3d00d3d6, org.springframework.test.context.transaction.TransactionalTestExecutionListener@611de9af, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@a9263d, org.springframework.test.context.event.EventPublishingTestExecutionListener@7bef458, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@3c1b191a, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@3245cfa7, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@7b148f1c, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@b78a812, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@6fcfb3ae, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@736b7107]
-10:36:32.499 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@144ac293 testClass = PipelineServiceTests, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@8b55a29 testClass = PipelineServiceTests, locations = '{}', classes = '{class com.example.demo.DemoApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@51b22457, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@14318048, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@46a71ec8, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@665d0c1, org.springframework.boot.test.context.SpringBootTestArgs@1], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true]], class annotated with @DirtiesContext [false] with mode [null].
-10:36:32.524 [Test worker] DEBUG org.springframework.test.context.support.TestPropertySourceUtils - Adding inlined properties to environment: {spring.jmx.enabled=false, org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}
+<pre>11:49:49.046 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+11:49:49.056 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+11:49:49.079 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.example.demo.PipelineServiceTests] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
+11:49:49.089 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.example.demo.PipelineServiceTests], using SpringBootContextLoader
+11:49:49.093 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.example.demo.PipelineServiceTests]: class path resource [com/example/demo/PipelineServiceTests-context.xml] does not exist
+11:49:49.093 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.example.demo.PipelineServiceTests]: class path resource [com/example/demo/PipelineServiceTestsContext.groovy] does not exist
+11:49:49.094 [Test worker] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.example.demo.PipelineServiceTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+11:49:49.094 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.demo.PipelineServiceTests]: PipelineServiceTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+11:49:49.174 [Test worker] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [/Users/mjkam/Desktop/genetica-backend/build/classes/java/main/com/example/demo/DemoApplication.class]
+11:49:49.175 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.demo.DemoApplication for test class com.example.demo.PipelineServiceTests
+11:49:49.261 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [com.example.demo.PipelineServiceTests]: using defaults.
+11:49:49.263 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+11:49:49.277 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@2d5fa529, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@5f89667d, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@7c5b4b3e, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@70324d25, org.springframework.test.context.support.DirtiesContextTestExecutionListener@2094c8e7, org.springframework.test.context.transaction.TransactionalTestExecutionListener@343af806, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@121e4704, org.springframework.test.context.event.EventPublishingTestExecutionListener@70277b07, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@76725614, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@156b7a14, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@75ad39da, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@3e199b2b, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@5abfb80a, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@144ac293]
+11:49:49.280 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@63a20289 testClass = PipelineServiceTests, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@77e2f8f5 testClass = PipelineServiceTests, locations = '{}', classes = '{class com.example.demo.DemoApplication}', contextInitializerClasses = '[]', activeProfiles = '{test}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@5968a502, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@2fbbbf7c, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@4da7ad69, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@51c8174a, org.springframework.boot.test.context.SpringBootTestArgs@1], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true]], class annotated with @DirtiesContext [false] with mode [null].
+11:49:49.302 [Test worker] DEBUG org.springframework.core.env.StandardEnvironment - Activating profiles [test]
+11:49:49.305 [Test worker] DEBUG org.springframework.test.context.support.TestPropertySourceUtils - Adding inlined properties to environment: {spring.jmx.enabled=false, org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -115,589 +112,498 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::        (v2.3.1.RELEASE)
 
-2020-07-31 10:36:32.809  INFO 82802 --- [    Test worker] com.example.demo.PipelineServiceTests    : Starting PipelineServiceTests on adminui-iMac.local with PID 82802 (started by mjkam in /Users/mjkam/Desktop/genetica-backend)
-2020-07-31 10:36:32.810  INFO 82802 --- [    Test worker] com.example.demo.PipelineServiceTests    : No active profile set, falling back to default profiles: default
-2020-07-31 10:36:33.423  INFO 82802 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
-2020-07-31 10:36:33.425  INFO 82802 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
-2020-07-31 10:36:33.467  INFO 82802 --- [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data JPA - Could not safely identify store assignment for repository candidate interface com.example.demo.repository.mongo.PipelineRepository. If you want this repository to be a JPA repository, consider annotating your entities with one of these annotations: javax.persistence.Entity, javax.persistence.MappedSuperclass (preferred), or consider extending one of the following types with your repository: org.springframework.data.jpa.repository.JpaRepository.
-2020-07-31 10:36:33.503  INFO 82802 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 70ms. Found 6 JPA repository interfaces.
-2020-07-31 10:36:33.528  INFO 82802 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
-2020-07-31 10:36:33.529  INFO 82802 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
-2020-07-31 10:36:33.536  INFO 82802 --- [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data MongoDB - Could not safely identify store assignment for repository candidate interface com.example.demo.repository.mysql.FileRepository. If you want this repository to be a MongoDB repository, consider annotating your entities with one of these annotations: org.springframework.data.mongodb.core.mapping.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.mongodb.repository.MongoRepository.
-2020-07-31 10:36:33.537  INFO 82802 --- [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data MongoDB - Could not safely identify store assignment for repository candidate interface com.example.demo.repository.mysql.JobEnvRepository. If you want this repository to be a MongoDB repository, consider annotating your entities with one of these annotations: org.springframework.data.mongodb.core.mapping.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.mongodb.repository.MongoRepository.
-2020-07-31 10:36:33.538  INFO 82802 --- [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data MongoDB - Could not safely identify store assignment for repository candidate interface com.example.demo.repository.mysql.JobFileRepository. If you want this repository to be a MongoDB repository, consider annotating your entities with one of these annotations: org.springframework.data.mongodb.core.mapping.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.mongodb.repository.MongoRepository.
-2020-07-31 10:36:33.538  INFO 82802 --- [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data MongoDB - Could not safely identify store assignment for repository candidate interface com.example.demo.repository.mysql.JobRepository. If you want this repository to be a MongoDB repository, consider annotating your entities with one of these annotations: org.springframework.data.mongodb.core.mapping.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.mongodb.repository.MongoRepository.
-2020-07-31 10:36:33.539  INFO 82802 --- [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data MongoDB - Could not safely identify store assignment for repository candidate interface com.example.demo.repository.mysql.RunRepository. If you want this repository to be a MongoDB repository, consider annotating your entities with one of these annotations: org.springframework.data.mongodb.core.mapping.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.mongodb.repository.MongoRepository.
-2020-07-31 10:36:33.539  INFO 82802 --- [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data MongoDB - Could not safely identify store assignment for repository candidate interface com.example.demo.repository.mysql.TaskRepository. If you want this repository to be a MongoDB repository, consider annotating your entities with one of these annotations: org.springframework.data.mongodb.core.mapping.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.mongodb.repository.MongoRepository.
-2020-07-31 10:36:33.543  INFO 82802 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 13ms. Found 1 MongoDB repository interfaces.
-2020-07-31 10:36:34.205  INFO 82802 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2020-07-31 10:36:34.277  INFO 82802 --- [         task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2020-07-31 10:36:34.317  INFO 82802 --- [         task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.17.Final
-2020-07-31 10:36:34.394  INFO 82802 --- [    Test worker] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[127.0.0.1:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms'}
-2020-07-31 10:36:34.446  INFO 82802 --- [127.0.0.1:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:23}] to 127.0.0.1:27017
-2020-07-31 10:36:34.450  INFO 82802 --- [127.0.0.1:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=127.0.0.1:27017, type=STANDALONE, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=8, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=3155472}
-2020-07-31 10:36:34.451  INFO 82802 --- [         task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
-2020-07-31 10:36:34.527  WARN 82802 --- [    Test worker] o.s.data.convert.CustomConversions       : Registering converter from class java.time.LocalDateTime to class org.joda.time.LocalDateTime as reading converter although it doesn't convert from a store-supported type! You might want to check your annotation setup at the converter implementation.
-2020-07-31 10:36:34.537  INFO 82802 --- [         task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2020-07-31 10:36:34.604  WARN 82802 --- [    Test worker] o.s.data.convert.CustomConversions       : Registering converter from class java.time.LocalDateTime to class org.joda.time.LocalDateTime as reading converter although it doesn't convert from a store-supported type! You might want to check your annotation setup at the converter implementation.
-2020-07-31 10:36:34.868  INFO 82802 --- [         task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2020-07-31 10:36:34.883  INFO 82802 --- [         task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-2020-07-31 10:36:34.927  WARN 82802 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2020-07-31 10:36:35.540  INFO 82802 --- [         task-1] org.hibernate.tuple.PojoInstantiator     : HHH000182: No default (no-argument) constructor for class: com.example.demo.domain.mysql.Task (class must be instantiated by Interceptor)
-2020-07-31 10:36:35.607  INFO 82802 --- [    Test worker] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
+2020-07-31 11:49:49.550  INFO 88820 --- [    Test worker] com.example.demo.PipelineServiceTests    : Starting PipelineServiceTests on adminui-iMac.local with PID 88820 (started by mjkam in /Users/mjkam/Desktop/genetica-backend)
+2020-07-31 11:49:49.551  INFO 88820 --- [    Test worker] com.example.demo.PipelineServiceTests    : The following profiles are active: test
+2020-07-31 11:49:50.088  INFO 88820 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-07-31 11:49:50.089  INFO 88820 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2020-07-31 11:49:50.125  INFO 88820 --- [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data JPA - Could not safely identify store assignment for repository candidate interface com.example.demo.repository.mongo.PipelineRepository. If you want this repository to be a JPA repository, consider annotating your entities with one of these annotations: javax.persistence.Entity, javax.persistence.MappedSuperclass (preferred), or consider extending one of the following types with your repository: org.springframework.data.jpa.repository.JpaRepository.
+2020-07-31 11:49:50.155  INFO 88820 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 60ms. Found 6 JPA repository interfaces.
+2020-07-31 11:49:50.176  INFO 88820 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-07-31 11:49:50.176  INFO 88820 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2020-07-31 11:49:50.182  INFO 88820 --- [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data MongoDB - Could not safely identify store assignment for repository candidate interface com.example.demo.repository.mysql.FileRepository. If you want this repository to be a MongoDB repository, consider annotating your entities with one of these annotations: org.springframework.data.mongodb.core.mapping.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.mongodb.repository.MongoRepository.
+2020-07-31 11:49:50.183  INFO 88820 --- [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data MongoDB - Could not safely identify store assignment for repository candidate interface com.example.demo.repository.mysql.JobEnvRepository. If you want this repository to be a MongoDB repository, consider annotating your entities with one of these annotations: org.springframework.data.mongodb.core.mapping.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.mongodb.repository.MongoRepository.
+2020-07-31 11:49:50.183  INFO 88820 --- [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data MongoDB - Could not safely identify store assignment for repository candidate interface com.example.demo.repository.mysql.JobFileRepository. If you want this repository to be a MongoDB repository, consider annotating your entities with one of these annotations: org.springframework.data.mongodb.core.mapping.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.mongodb.repository.MongoRepository.
+2020-07-31 11:49:50.184  INFO 88820 --- [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data MongoDB - Could not safely identify store assignment for repository candidate interface com.example.demo.repository.mysql.JobRepository. If you want this repository to be a MongoDB repository, consider annotating your entities with one of these annotations: org.springframework.data.mongodb.core.mapping.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.mongodb.repository.MongoRepository.
+2020-07-31 11:49:50.184  INFO 88820 --- [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data MongoDB - Could not safely identify store assignment for repository candidate interface com.example.demo.repository.mysql.RunRepository. If you want this repository to be a MongoDB repository, consider annotating your entities with one of these annotations: org.springframework.data.mongodb.core.mapping.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.mongodb.repository.MongoRepository.
+2020-07-31 11:49:50.185  INFO 88820 --- [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data MongoDB - Could not safely identify store assignment for repository candidate interface com.example.demo.repository.mysql.TaskRepository. If you want this repository to be a MongoDB repository, consider annotating your entities with one of these annotations: org.springframework.data.mongodb.core.mapping.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.mongodb.repository.MongoRepository.
+2020-07-31 11:49:50.189  INFO 88820 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12ms. Found 1 MongoDB repository interfaces.
+2020-07-31 11:49:50.806  INFO 88820 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-07-31 11:49:50.878  INFO 88820 --- [         task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-07-31 11:49:50.917  INFO 88820 --- [         task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.17.Final
+2020-07-31 11:49:51.011  INFO 88820 --- [    Test worker] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[127.0.0.1:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms'}
+2020-07-31 11:49:51.064  INFO 88820 --- [127.0.0.1:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:29}] to 127.0.0.1:27017
+2020-07-31 11:49:51.069  INFO 88820 --- [127.0.0.1:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=127.0.0.1:27017, type=STANDALONE, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=8, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=3315445}
+2020-07-31 11:49:51.074  INFO 88820 --- [         task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-07-31 11:49:51.142  WARN 88820 --- [    Test worker] o.s.data.convert.CustomConversions       : Registering converter from class java.time.LocalDateTime to class org.joda.time.LocalDateTime as reading converter although it doesn't convert from a store-supported type! You might want to check your annotation setup at the converter implementation.
+2020-07-31 11:49:51.173  INFO 88820 --- [         task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-07-31 11:49:51.218  WARN 88820 --- [    Test worker] o.s.data.convert.CustomConversions       : Registering converter from class java.time.LocalDateTime to class org.joda.time.LocalDateTime as reading converter although it doesn't convert from a store-supported type! You might want to check your annotation setup at the converter implementation.
+2020-07-31 11:49:51.544  INFO 88820 --- [         task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-07-31 11:49:51.555  WARN 88820 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-07-31 11:49:51.561  INFO 88820 --- [         task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2020-07-31 11:49:52.221  INFO 88820 --- [         task-1] org.hibernate.tuple.PojoInstantiator     : HHH000182: No default (no-argument) constructor for class: com.example.demo.domain.mysql.Task (class must be instantiated by Interceptor)
+2020-07-31 11:49:52.252  INFO 88820 --- [    Test worker] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
 Hibernate: alter table job drop foreign key FK254nno87adyfj7u782rofifjp
-2020-07-31 10:36:35.730  INFO 82802 --- [         task-1] p6spy                                    : #1596159395730 | took 21ms | statement | connection 1| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:52.411  INFO 88820 --- [         task-1] p6spy                                    : #1596163792411 | took 16ms | statement | connection 1| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 alter table job drop foreign key FK254nno87adyfj7u782rofifjp
 alter table job drop foreign key FK254nno87adyfj7u782rofifjp;
 Hibernate: alter table job_env drop foreign key FKgrm1bdqxx0t4dhamw137o3eq0
-2020-07-31 10:36:35.743  INFO 82802 --- [         task-1] p6spy                                    : #1596159395742 | took 10ms | statement | connection 1| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:52.428  INFO 88820 --- [         task-1] p6spy                                    : #1596163792428 | took 14ms | statement | connection 1| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 alter table job_env drop foreign key FKgrm1bdqxx0t4dhamw137o3eq0
 alter table job_env drop foreign key FKgrm1bdqxx0t4dhamw137o3eq0;
 Hibernate: alter table job_file drop foreign key FK8knl4ogeiq0q72tlsjmegyp8b
-2020-07-31 10:36:35.755  INFO 82802 --- [         task-1] p6spy                                    : #1596159395755 | took 10ms | statement | connection 1| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:52.443  INFO 88820 --- [         task-1] p6spy                                    : #1596163792443 | took 12ms | statement | connection 1| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 alter table job_file drop foreign key FK8knl4ogeiq0q72tlsjmegyp8b
 alter table job_file drop foreign key FK8knl4ogeiq0q72tlsjmegyp8b;
 Hibernate: alter table job_file drop foreign key FK3akbfvw7xwgfotqtch0lfsgq0
-2020-07-31 10:36:35.767  INFO 82802 --- [         task-1] p6spy                                    : #1596159395767 | took 10ms | statement | connection 1| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:52.458  INFO 88820 --- [         task-1] p6spy                                    : #1596163792458 | took 12ms | statement | connection 1| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 alter table job_file drop foreign key FK3akbfvw7xwgfotqtch0lfsgq0
 alter table job_file drop foreign key FK3akbfvw7xwgfotqtch0lfsgq0;
 Hibernate: alter table run drop foreign key FKg9pq5w6yp29s73hcbcqetj2bj
-2020-07-31 10:36:35.781  INFO 82802 --- [         task-1] p6spy                                    : #1596159395781 | took 10ms | statement | connection 1| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:52.472  INFO 88820 --- [         task-1] p6spy                                    : #1596163792472 | took 10ms | statement | connection 1| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 alter table run drop foreign key FKg9pq5w6yp29s73hcbcqetj2bj
 alter table run drop foreign key FKg9pq5w6yp29s73hcbcqetj2bj;
 Hibernate: drop table if exists file
-2020-07-31 10:36:35.793  INFO 82802 --- [         task-1] p6spy                                    : #1596159395793 | took 11ms | statement | connection 1| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:52.489  INFO 88820 --- [         task-1] p6spy                                    : #1596163792489 | took 15ms | statement | connection 1| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 drop table if exists file
 drop table if exists file;
 Hibernate: drop table if exists hibernate_sequence
-2020-07-31 10:36:35.809  INFO 82802 --- [         task-1] p6spy                                    : #1596159395809 | took 13ms | statement | connection 1| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:52.507  INFO 88820 --- [         task-1] p6spy                                    : #1596163792507 | took 16ms | statement | connection 1| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 drop table if exists hibernate_sequence
 drop table if exists hibernate_sequence;
 Hibernate: drop table if exists job
-2020-07-31 10:36:35.826  INFO 82802 --- [         task-1] p6spy                                    : #1596159395826 | took 14ms | statement | connection 1| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:52.525  INFO 88820 --- [         task-1] p6spy                                    : #1596163792525 | took 14ms | statement | connection 1| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 drop table if exists job
 drop table if exists job;
 Hibernate: drop table if exists job_env
-2020-07-31 10:36:35.841  INFO 82802 --- [         task-1] p6spy                                    : #1596159395841 | took 13ms | statement | connection 1| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:52.543  INFO 88820 --- [         task-1] p6spy                                    : #1596163792543 | took 15ms | statement | connection 1| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 drop table if exists job_env
 drop table if exists job_env;
 Hibernate: drop table if exists job_file
-2020-07-31 10:36:35.858  INFO 82802 --- [         task-1] p6spy                                    : #1596159395858 | took 14ms | statement | connection 1| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:52.559  INFO 88820 --- [         task-1] p6spy                                    : #1596163792559 | took 13ms | statement | connection 1| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 drop table if exists job_file
 drop table if exists job_file;
 Hibernate: drop table if exists run
-2020-07-31 10:36:35.872  INFO 82802 --- [         task-1] p6spy                                    : #1596159395872 | took 11ms | statement | connection 1| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:52.575  INFO 88820 --- [         task-1] p6spy                                    : #1596163792575 | took 14ms | statement | connection 1| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 drop table if exists run
 drop table if exists run;
 Hibernate: drop table if exists task
-2020-07-31 10:36:35.887  INFO 82802 --- [         task-1] p6spy                                    : #1596159395887 | took 13ms | statement | connection 1| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:52.591  INFO 88820 --- [         task-1] p6spy                                    : #1596163792591 | took 13ms | statement | connection 1| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 drop table if exists task
 drop table if exists task;
 Hibernate: create table file (file_id bigint not null, name varchar(255), sample_id varchar(255), size bigint, primary key (file_id)) engine=InnoDB
-2020-07-31 10:36:35.903  INFO 82802 --- [         task-1] p6spy                                    : #1596159395903 | took 12ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:52.614  INFO 88820 --- [         task-1] p6spy                                    : #1596163792614 | took 18ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 create table file (file_id bigint not null, name varchar(255), sample_id varchar(255), size bigint, primary key (file_id)) engine=InnoDB
 create table file (file_id bigint not null, name varchar(255), sample_id varchar(255), size bigint, primary key (file_id)) engine=InnoDB;
 Hibernate: create table hibernate_sequence (next_val bigint) engine=InnoDB
-2020-07-31 10:36:35.919  INFO 82802 --- [         task-1] p6spy                                    : #1596159395919 | took 13ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:52.632  INFO 88820 --- [         task-1] p6spy                                    : #1596163792632 | took 15ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 create table hibernate_sequence (next_val bigint) engine=InnoDB
 create table hibernate_sequence (next_val bigint) engine=InnoDB;
 Hibernate: insert into hibernate_sequence values ( 1 )
-2020-07-31 10:36:35.926  INFO 82802 --- [         task-1] p6spy                                    : #1596159395925 | took 5ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:52.640  INFO 88820 --- [         task-1] p6spy                                    : #1596163792640 | took 5ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 insert into hibernate_sequence values ( 1 )
 insert into hibernate_sequence values ( 1 );
 Hibernate: insert into hibernate_sequence values ( 1 )
-2020-07-31 10:36:35.932  INFO 82802 --- [         task-1] p6spy                                    : #1596159395932 | took 4ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:52.648  INFO 88820 --- [         task-1] p6spy                                    : #1596163792648 | took 5ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 insert into hibernate_sequence values ( 1 )
 insert into hibernate_sequence values ( 1 );
 Hibernate: insert into hibernate_sequence values ( 1 )
-2020-07-31 10:36:35.937  INFO 82802 --- [         task-1] p6spy                                    : #1596159395937 | took 4ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:52.655  INFO 88820 --- [         task-1] p6spy                                    : #1596163792655 | took 5ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 insert into hibernate_sequence values ( 1 )
 insert into hibernate_sequence values ( 1 );
 Hibernate: insert into hibernate_sequence values ( 1 )
-2020-07-31 10:36:35.943  INFO 82802 --- [         task-1] p6spy                                    : #1596159395943 | took 4ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:52.662  INFO 88820 --- [         task-1] p6spy                                    : #1596163792662 | took 5ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 insert into hibernate_sequence values ( 1 )
 insert into hibernate_sequence values ( 1 );
 Hibernate: insert into hibernate_sequence values ( 1 )
-2020-07-31 10:36:35.949  INFO 82802 --- [         task-1] p6spy                                    : #1596159395949 | took 4ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:52.669  INFO 88820 --- [         task-1] p6spy                                    : #1596163792669 | took 4ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 insert into hibernate_sequence values ( 1 )
 insert into hibernate_sequence values ( 1 );
 Hibernate: insert into hibernate_sequence values ( 1 )
-2020-07-31 10:36:35.956  INFO 82802 --- [         task-1] p6spy                                    : #1596159395956 | took 4ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:52.676  INFO 88820 --- [         task-1] p6spy                                    : #1596163792676 | took 4ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 insert into hibernate_sequence values ( 1 )
 insert into hibernate_sequence values ( 1 );
 Hibernate: create table job (job_id bigint not null, finish_time datetime(6), name varchar(255), start_time datetime(6), task_id bigint, primary key (job_id)) engine=InnoDB
-2020-07-31 10:36:35.972  INFO 82802 --- [         task-1] p6spy                                    : #1596159395972 | took 14ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:52.695  INFO 88820 --- [         task-1] p6spy                                    : #1596163792695 | took 16ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 create table job (job_id bigint not null, finish_time datetime(6), name varchar(255), start_time datetime(6), task_id bigint, primary key (job_id)) engine=InnoDB
 create table job (job_id bigint not null, finish_time datetime(6), name varchar(255), start_time datetime(6), task_id bigint, primary key (job_id)) engine=InnoDB;
 Hibernate: create table job_env (id bigint not null, env_key varchar(255), env_val varchar(255), is_valid bit, run_id bigint, job_id bigint, primary key (id)) engine=InnoDB
-2020-07-31 10:36:35.990  INFO 82802 --- [         task-1] p6spy                                    : #1596159395990 | took 14ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:52.713  INFO 88820 --- [         task-1] p6spy                                    : #1596163792713 | took 16ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 create table job_env (id bigint not null, env_key varchar(255), env_val varchar(255), is_valid bit, run_id bigint, job_id bigint, primary key (id)) engine=InnoDB
 create table job_env (id bigint not null, env_key varchar(255), env_val varchar(255), is_valid bit, run_id bigint, job_id bigint, primary key (id)) engine=InnoDB;
 Hibernate: create table job_file (id bigint not null, io_type varchar(255), target_id varchar(255), file_id bigint, job_id bigint, primary key (id)) engine=InnoDB
-2020-07-31 10:36:36.008  INFO 82802 --- [         task-1] p6spy                                    : #1596159396008 | took 15ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:52.731  INFO 88820 --- [         task-1] p6spy                                    : #1596163792731 | took 14ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 create table job_file (id bigint not null, io_type varchar(255), target_id varchar(255), file_id bigint, job_id bigint, primary key (id)) engine=InnoDB
 create table job_file (id bigint not null, io_type varchar(255), target_id varchar(255), file_id bigint, job_id bigint, primary key (id)) engine=InnoDB;
 Hibernate: create table run (run_id bigint not null, finish_time datetime(6), start_time datetime(6), status varchar(255), step_id varchar(255), job_id bigint, primary key (run_id)) engine=InnoDB
-2020-07-31 10:36:36.025  INFO 82802 --- [         task-1] p6spy                                    : #1596159396025 | took 13ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:52.750  INFO 88820 --- [         task-1] p6spy                                    : #1596163792750 | took 17ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 create table run (run_id bigint not null, finish_time datetime(6), start_time datetime(6), status varchar(255), step_id varchar(255), job_id bigint, primary key (run_id)) engine=InnoDB
 create table run (run_id bigint not null, finish_time datetime(6), start_time datetime(6), status varchar(255), step_id varchar(255), job_id bigint, primary key (run_id)) engine=InnoDB;
 Hibernate: create table task (task_id bigint not null, finish_time datetime(6), name varchar(255), pipeline_id varchar(255), start_time datetime(6), primary key (task_id)) engine=InnoDB
-2020-07-31 10:36:36.043  INFO 82802 --- [         task-1] p6spy                                    : #1596159396043 | took 14ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:52.770  INFO 88820 --- [         task-1] p6spy                                    : #1596163792770 | took 18ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 create table task (task_id bigint not null, finish_time datetime(6), name varchar(255), pipeline_id varchar(255), start_time datetime(6), primary key (task_id)) engine=InnoDB
 create table task (task_id bigint not null, finish_time datetime(6), name varchar(255), pipeline_id varchar(255), start_time datetime(6), primary key (task_id)) engine=InnoDB;
 Hibernate: alter table job add constraint FK254nno87adyfj7u782rofifjp foreign key (task_id) references task (task_id)
-2020-07-31 10:36:36.078  INFO 82802 --- [         task-1] p6spy                                    : #1596159396078 | took 33ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:52.811  INFO 88820 --- [         task-1] p6spy                                    : #1596163792811 | took 38ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 alter table job add constraint FK254nno87adyfj7u782rofifjp foreign key (task_id) references task (task_id)
 alter table job add constraint FK254nno87adyfj7u782rofifjp foreign key (task_id) references task (task_id);
 Hibernate: alter table job_env add constraint FKgrm1bdqxx0t4dhamw137o3eq0 foreign key (job_id) references job (job_id)
-2020-07-31 10:36:36.114  INFO 82802 --- [         task-1] p6spy                                    : #1596159396114 | took 33ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:52.848  INFO 88820 --- [         task-1] p6spy                                    : #1596163792848 | took 35ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 alter table job_env add constraint FKgrm1bdqxx0t4dhamw137o3eq0 foreign key (job_id) references job (job_id)
 alter table job_env add constraint FKgrm1bdqxx0t4dhamw137o3eq0 foreign key (job_id) references job (job_id);
 Hibernate: alter table job_file add constraint FK8knl4ogeiq0q72tlsjmegyp8b foreign key (file_id) references file (file_id)
-2020-07-31 10:36:36.154  INFO 82802 --- [         task-1] p6spy                                    : #1596159396154 | took 37ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:52.884  INFO 88820 --- [         task-1] p6spy                                    : #1596163792884 | took 34ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 alter table job_file add constraint FK8knl4ogeiq0q72tlsjmegyp8b foreign key (file_id) references file (file_id)
 alter table job_file add constraint FK8knl4ogeiq0q72tlsjmegyp8b foreign key (file_id) references file (file_id);
 Hibernate: alter table job_file add constraint FK3akbfvw7xwgfotqtch0lfsgq0 foreign key (job_id) references job (job_id)
-2020-07-31 10:36:36.195  INFO 82802 --- [         task-1] p6spy                                    : #1596159396195 | took 39ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:52.923  INFO 88820 --- [         task-1] p6spy                                    : #1596163792923 | took 36ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 alter table job_file add constraint FK3akbfvw7xwgfotqtch0lfsgq0 foreign key (job_id) references job (job_id)
 alter table job_file add constraint FK3akbfvw7xwgfotqtch0lfsgq0 foreign key (job_id) references job (job_id);
 Hibernate: alter table run add constraint FKg9pq5w6yp29s73hcbcqetj2bj foreign key (job_id) references job (job_id)
-2020-07-31 10:36:36.232  INFO 82802 --- [         task-1] p6spy                                    : #1596159396232 | took 35ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:52.962  INFO 88820 --- [         task-1] p6spy                                    : #1596163792962 | took 37ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 alter table run add constraint FKg9pq5w6yp29s73hcbcqetj2bj foreign key (job_id) references job (job_id)
 alter table run add constraint FKg9pq5w6yp29s73hcbcqetj2bj foreign key (job_id) references job (job_id);
-2020-07-31 10:36:36.235  INFO 82802 --- [         task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2020-07-31 10:36:36.242  INFO 82802 --- [         task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2020-07-31 10:36:36.639  INFO 82802 --- [    Test worker] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
-2020-07-31 10:36:36.646  INFO 82802 --- [    Test worker] com.example.demo.PipelineServiceTests    : Started PipelineServiceTests in 4.115 seconds (JVM running for 4.988)
-Monitor start
+2020-07-31 11:49:52.964  INFO 88820 --- [         task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-07-31 11:49:52.972  INFO 88820 --- [         task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-07-31 11:49:53.289  INFO 88820 --- [    Test worker] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+2020-07-31 11:49:53.296  INFO 88820 --- [    Test worker] com.example.demo.PipelineServiceTests    : Started PipelineServiceTests in 3.983 seconds (JVM running for 4.835)
+2020-07-31 11:49:53.457  INFO 88820 --- [    Test worker] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:2, serverValue:30}] to 127.0.0.1:27017
 Hibernate: select next_val as id_val from hibernate_sequence for update
-2020-07-31 10:36:36.877  INFO 82802 --- [    Test worker] p6spy                                    : #1596159396877 | took 3ms | statement | connection 4| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.502  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793502 | took 3ms | statement | connection 4| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 select next_val as id_val from hibernate_sequence for update
 select next_val as id_val from hibernate_sequence for update;
 Hibernate: update hibernate_sequence set next_val= ? where next_val=?
-2020-07-31 10:36:36.880  INFO 82802 --- [    Test worker] p6spy                                    : #1596159396880 | took 1ms | statement | connection 4| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.505  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793505 | took 1ms | statement | connection 4| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 update hibernate_sequence set next_val= ? where next_val=?
 update hibernate_sequence set next_val= 2 where next_val=1;
-2020-07-31 10:36:36.889  INFO 82802 --- [    Test worker] p6spy                                    : #1596159396889 | took 8ms | commit | connection 4| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.513  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793513 | took 8ms | commit | connection 4| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 
 ;
 Hibernate: insert into file (name, sample_id, size, file_id) values (?, ?, ?, ?)
-2020-07-31 10:36:36.912  INFO 82802 --- [    Test worker] p6spy                                    : #1596159396911 | took 2ms | statement | connection 3| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.532  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793532 | took 1ms | statement | connection 3| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 insert into file (name, sample_id, size, file_id) values (?, ?, ?, ?)
 insert into file (name, sample_id, size, file_id) values ('human_g1k_v37_decoy.fasta.tar', NULL, 100000, 1);
-2020-07-31 10:36:36.917  INFO 82802 --- [    Test worker] p6spy                                    : #1596159396917 | took 3ms | commit | connection 3| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.537  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793537 | took 3ms | commit | connection 3| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 
 ;
 Hibernate: select next_val as id_val from hibernate_sequence for update
-2020-07-31 10:36:36.925  INFO 82802 --- [    Test worker] p6spy                                    : #1596159396925 | took 1ms | statement | connection 6| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.544  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793544 | took 1ms | statement | connection 6| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 select next_val as id_val from hibernate_sequence for update
 select next_val as id_val from hibernate_sequence for update;
 Hibernate: update hibernate_sequence set next_val= ? where next_val=?
-2020-07-31 10:36:36.927  INFO 82802 --- [    Test worker] p6spy                                    : #1596159396927 | took 1ms | statement | connection 6| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.547  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793547 | took 1ms | statement | connection 6| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 update hibernate_sequence set next_val= ? where next_val=?
 update hibernate_sequence set next_val= 3 where next_val=2;
-2020-07-31 10:36:36.931  INFO 82802 --- [    Test worker] p6spy                                    : #1596159396931 | took 3ms | commit | connection 6| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.550  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793550 | took 2ms | commit | connection 6| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 
 ;
 Hibernate: insert into file (name, sample_id, size, file_id) values (?, ?, ?, ?)
-2020-07-31 10:36:36.935  INFO 82802 --- [    Test worker] p6spy                                    : #1596159396935 | took 1ms | statement | connection 5| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.553  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793553 | took 1ms | statement | connection 5| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 insert into file (name, sample_id, size, file_id) values (?, ?, ?, ?)
 insert into file (name, sample_id, size, file_id) values ('TESTX_H7YRLADXX_S1_L001_R1_001.fastq.gz', 'TESTX_H7YRLADXX_S1_L001', 1000, 2);
-2020-07-31 10:36:36.938  INFO 82802 --- [    Test worker] p6spy                                    : #1596159396938 | took 2ms | commit | connection 5| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.556  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793556 | took 2ms | commit | connection 5| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 
 ;
 Hibernate: select next_val as id_val from hibernate_sequence for update
-2020-07-31 10:36:36.945  INFO 82802 --- [    Test worker] p6spy                                    : #1596159396945 | took 1ms | statement | connection 8| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.563  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793563 | took 1ms | statement | connection 8| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 select next_val as id_val from hibernate_sequence for update
 select next_val as id_val from hibernate_sequence for update;
 Hibernate: update hibernate_sequence set next_val= ? where next_val=?
-2020-07-31 10:36:36.947  INFO 82802 --- [    Test worker] p6spy                                    : #1596159396947 | took 1ms | statement | connection 8| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.565  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793565 | took 1ms | statement | connection 8| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 update hibernate_sequence set next_val= ? where next_val=?
 update hibernate_sequence set next_val= 4 where next_val=3;
-2020-07-31 10:36:36.951  INFO 82802 --- [    Test worker] p6spy                                    : #1596159396951 | took 3ms | commit | connection 8| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.568  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793568 | took 2ms | commit | connection 8| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 
 ;
 Hibernate: insert into file (name, sample_id, size, file_id) values (?, ?, ?, ?)
-2020-07-31 10:36:36.955  INFO 82802 --- [    Test worker] p6spy                                    : #1596159396955 | took 1ms | statement | connection 7| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.571  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793571 | took 1ms | statement | connection 7| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 insert into file (name, sample_id, size, file_id) values (?, ?, ?, ?)
 insert into file (name, sample_id, size, file_id) values ('TESTX_H7YRLADXX_S1_L001_R2_001.fastq.gz', 'TESTX_H7YRLADXX_S1_L001', 1000, 3);
-2020-07-31 10:36:36.958  INFO 82802 --- [    Test worker] p6spy                                    : #1596159396958 | took 2ms | commit | connection 7| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.574  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793574 | took 2ms | commit | connection 7| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 
 ;
 Hibernate: select next_val as id_val from hibernate_sequence for update
-2020-07-31 10:36:36.966  INFO 82802 --- [    Test worker] p6spy                                    : #1596159396966 | took 1ms | statement | connection 10| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.584  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793584 | took 3ms | statement | connection 10| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 select next_val as id_val from hibernate_sequence for update
 select next_val as id_val from hibernate_sequence for update;
 Hibernate: update hibernate_sequence set next_val= ? where next_val=?
-2020-07-31 10:36:36.973  INFO 82802 --- [    Test worker] p6spy                                    : #1596159396973 | took 5ms | statement | connection 10| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.586  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793586 | took 1ms | statement | connection 10| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 update hibernate_sequence set next_val= ? where next_val=?
 update hibernate_sequence set next_val= 5 where next_val=4;
-2020-07-31 10:36:36.978  INFO 82802 --- [    Test worker] p6spy                                    : #1596159396978 | took 3ms | commit | connection 10| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.589  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793589 | took 2ms | commit | connection 10| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 
 ;
 Hibernate: insert into file (name, sample_id, size, file_id) values (?, ?, ?, ?)
-2020-07-31 10:36:36.983  INFO 82802 --- [    Test worker] p6spy                                    : #1596159396982 | took 1ms | statement | connection 9| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.593  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793593 | took 1ms | statement | connection 9| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 insert into file (name, sample_id, size, file_id) values (?, ?, ?, ?)
 insert into file (name, sample_id, size, file_id) values ('TESTX_H7YRLADXX_S1_L002_R1_001.fastq.gz', 'TESTX_H7YRLADXX_S1_L002', 1000, 4);
-2020-07-31 10:36:36.986  INFO 82802 --- [    Test worker] p6spy                                    : #1596159396986 | took 2ms | commit | connection 9| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.597  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793597 | took 3ms | commit | connection 9| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 
 ;
 Hibernate: select next_val as id_val from hibernate_sequence for update
-2020-07-31 10:36:36.993  INFO 82802 --- [    Test worker] p6spy                                    : #1596159396993 | took 1ms | statement | connection 12| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.603  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793603 | took 1ms | statement | connection 12| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 select next_val as id_val from hibernate_sequence for update
 select next_val as id_val from hibernate_sequence for update;
 Hibernate: update hibernate_sequence set next_val= ? where next_val=?
-2020-07-31 10:36:36.996  INFO 82802 --- [    Test worker] p6spy                                    : #1596159396996 | took 1ms | statement | connection 12| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.605  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793605 | took 1ms | statement | connection 12| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 update hibernate_sequence set next_val= ? where next_val=?
 update hibernate_sequence set next_val= 6 where next_val=5;
-2020-07-31 10:36:37.000  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397000 | took 3ms | commit | connection 12| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.609  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793609 | took 3ms | commit | connection 12| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 
 ;
 Hibernate: insert into file (name, sample_id, size, file_id) values (?, ?, ?, ?)
-2020-07-31 10:36:37.004  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397004 | took 1ms | statement | connection 11| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.614  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793614 | took 1ms | statement | connection 11| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 insert into file (name, sample_id, size, file_id) values (?, ?, ?, ?)
 insert into file (name, sample_id, size, file_id) values ('TESTX_H7YRLADXX_S1_L002_R2_001.fastq.gz', 'TESTX_H7YRLADXX_S1_L002', 1000, 5);
-2020-07-31 10:36:37.008  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397008 | took 3ms | commit | connection 11| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.617  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793617 | took 3ms | commit | connection 11| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 
 ;
-2020-07-31 10:36:37.079  INFO 82802 --- [    Test worker] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:2, serverValue:24}] to 127.0.0.1:27017
 Hibernate: select file0_.file_id as file_id1_0_, file0_.name as name2_0_, file0_.sample_id as sample_i3_0_, file0_.size as size4_0_ from file file0_ where file0_.file_id in (?)
-2020-07-31 10:36:37.179  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397179 | took 2ms | statement | connection 13| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.723  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793723 | took 1ms | statement | connection 13| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 select file0_.file_id as file_id1_0_, file0_.name as name2_0_, file0_.sample_id as sample_i3_0_, file0_.size as size4_0_ from file file0_ where file0_.file_id in (?)
 select file0_.file_id as file_id1_0_, file0_.name as name2_0_, file0_.sample_id as sample_i3_0_, file0_.size as size4_0_ from file file0_ where file0_.file_id in (1);
 Hibernate: select file0_.file_id as file_id1_0_, file0_.name as name2_0_, file0_.sample_id as sample_i3_0_, file0_.size as size4_0_ from file file0_ where file0_.file_id in (?)
-2020-07-31 10:36:37.188  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397188 | took 1ms | statement | connection 14| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.731  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793731 | took 1ms | statement | connection 14| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 select file0_.file_id as file_id1_0_, file0_.name as name2_0_, file0_.sample_id as sample_i3_0_, file0_.size as size4_0_ from file file0_ where file0_.file_id in (?)
 select file0_.file_id as file_id1_0_, file0_.name as name2_0_, file0_.sample_id as sample_i3_0_, file0_.size as size4_0_ from file file0_ where file0_.file_id in (2);
 Hibernate: select file0_.file_id as file_id1_0_, file0_.name as name2_0_, file0_.sample_id as sample_i3_0_, file0_.size as size4_0_ from file file0_ where file0_.file_id in (?)
-2020-07-31 10:36:37.191  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397191 | took 1ms | statement | connection 15| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.734  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793734 | took 1ms | statement | connection 15| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 select file0_.file_id as file_id1_0_, file0_.name as name2_0_, file0_.sample_id as sample_i3_0_, file0_.size as size4_0_ from file file0_ where file0_.file_id in (?)
 select file0_.file_id as file_id1_0_, file0_.name as name2_0_, file0_.sample_id as sample_i3_0_, file0_.size as size4_0_ from file file0_ where file0_.file_id in (3);
 Hibernate: select next_val as id_val from hibernate_sequence for update
-2020-07-31 10:36:37.202  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397202 | took 1ms | statement | connection 17| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.743  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793743 | took 1ms | statement | connection 17| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 select next_val as id_val from hibernate_sequence for update
 select next_val as id_val from hibernate_sequence for update;
 Hibernate: update hibernate_sequence set next_val= ? where next_val=?
-2020-07-31 10:36:37.204  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397204 | took 1ms | statement | connection 17| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.746  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793746 | took 1ms | statement | connection 17| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 update hibernate_sequence set next_val= ? where next_val=?
 update hibernate_sequence set next_val= 7 where next_val=6;
-2020-07-31 10:36:37.208  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397208 | took 3ms | commit | connection 17| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.749  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793749 | took 3ms | commit | connection 17| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 
 ;
 Hibernate: insert into task (finish_time, name, pipeline_id, start_time, task_id) values (?, ?, ?, ?, ?)
-2020-07-31 10:36:37.217  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397217 | took 2ms | statement | connection 16| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.755  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793755 | took 2ms | statement | connection 16| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 insert into task (finish_time, name, pipeline_id, start_time, task_id) values (?, ?, ?, ?, ?)
-insert into task (finish_time, name, pipeline_id, start_time, task_id) values (NULL, 'GATK4 WES PIPELINE2020-07-31T10:36:37.194713', '5f2375a5251a807494b36811', '2020-07-31T10:36:37.194+0900', 6);
-2020-07-31 10:36:37.221  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397221 | took 3ms | commit | connection 16| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+insert into task (finish_time, name, pipeline_id, start_time, task_id) values (NULL, 'GATK4 WES PIPELINE2020-07-31T11:49:53.737267', '5f2386d104d3204b8b49b52a', '2020-07-31T11:49:53.737+0900', 6);
+2020-07-31 11:49:53.759  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793759 | took 3ms | commit | connection 16| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 
 ;
 Hibernate: select next_val as id_val from hibernate_sequence for update
-2020-07-31 10:36:37.230  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397230 | took 1ms | statement | connection 19| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.768  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793768 | took 1ms | statement | connection 19| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 select next_val as id_val from hibernate_sequence for update
 select next_val as id_val from hibernate_sequence for update;
 Hibernate: update hibernate_sequence set next_val= ? where next_val=?
-2020-07-31 10:36:37.233  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397233 | took 1ms | statement | connection 19| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.769  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793769 | took 1ms | statement | connection 19| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 update hibernate_sequence set next_val= ? where next_val=?
 update hibernate_sequence set next_val= 8 where next_val=7;
-2020-07-31 10:36:37.237  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397237 | took 4ms | commit | connection 19| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.773  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793773 | took 3ms | commit | connection 19| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 
 ;
 Hibernate: insert into job (finish_time, name, start_time, task_id, job_id) values (?, ?, ?, ?, ?)
-2020-07-31 10:36:37.243  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397243 | took 2ms | statement | connection 18| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.779  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793779 | took 1ms | statement | connection 18| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 insert into job (finish_time, name, start_time, task_id, job_id) values (?, ?, ?, ?, ?)
-insert into job (finish_time, name, start_time, task_id, job_id) values (NULL, 'GATK4 WES PIPELINE2020-07-31T10:36:37.194713-1', NULL, 6, 7);
-2020-07-31 10:36:37.247  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397247 | took 2ms | commit | connection 18| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+insert into job (finish_time, name, start_time, task_id, job_id) values (NULL, 'GATK4 WES PIPELINE2020-07-31T11:49:53.737267-1', NULL, 6, 7);
+2020-07-31 11:49:53.783  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793783 | took 3ms | commit | connection 18| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 
 ;
 Hibernate: select next_val as id_val from hibernate_sequence for update
-2020-07-31 10:36:37.256  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397256 | took 1ms | statement | connection 21| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.792  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793792 | took 1ms | statement | connection 21| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 select next_val as id_val from hibernate_sequence for update
 select next_val as id_val from hibernate_sequence for update;
 Hibernate: update hibernate_sequence set next_val= ? where next_val=?
-2020-07-31 10:36:37.258  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397258 | took 1ms | statement | connection 21| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.794  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793794 | took 1ms | statement | connection 21| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 update hibernate_sequence set next_val= ? where next_val=?
 update hibernate_sequence set next_val= 9 where next_val=8;
-2020-07-31 10:36:37.262  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397262 | took 3ms | commit | connection 21| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.798  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793798 | took 3ms | commit | connection 21| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 
 ;
 Hibernate: insert into run (finish_time, job_id, start_time, status, step_id, run_id) values (?, ?, ?, ?, ?, ?)
-2020-07-31 10:36:37.266  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397266 | took 1ms | statement | connection 20| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.802  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793802 | took 1ms | statement | connection 20| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 insert into run (finish_time, job_id, start_time, status, step_id, run_id) values (?, ?, ?, ?, ?, ?)
 insert into run (finish_time, job_id, start_time, status, step_id, run_id) values (NULL, 7, NULL, 'Queued', 'untar_fasta', 8);
-2020-07-31 10:36:37.269  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397269 | took 3ms | commit | connection 20| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.805  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793805 | took 2ms | commit | connection 20| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 
 ;
 Hibernate: select next_val as id_val from hibernate_sequence for update
-2020-07-31 10:36:37.276  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397276 | took 1ms | statement | connection 23| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.811  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793811 | took 1ms | statement | connection 23| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 select next_val as id_val from hibernate_sequence for update
 select next_val as id_val from hibernate_sequence for update;
 Hibernate: update hibernate_sequence set next_val= ? where next_val=?
-2020-07-31 10:36:37.278  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397278 | took 1ms | statement | connection 23| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.813  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793813 | took 1ms | statement | connection 23| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 update hibernate_sequence set next_val= ? where next_val=?
 update hibernate_sequence set next_val= 10 where next_val=9;
-2020-07-31 10:36:37.282  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397282 | took 3ms | commit | connection 23| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.817  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793817 | took 3ms | commit | connection 23| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 
 ;
 Hibernate: insert into run (finish_time, job_id, start_time, status, step_id, run_id) values (?, ?, ?, ?, ?, ?)
-2020-07-31 10:36:37.287  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397287 | took 1ms | statement | connection 22| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.821  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793821 | took 1ms | statement | connection 22| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 insert into run (finish_time, job_id, start_time, status, step_id, run_id) values (?, ?, ?, ?, ?, ?)
 insert into run (finish_time, job_id, start_time, status, step_id, run_id) values (NULL, 7, NULL, 'Queued', 'bwa_mem_bundle_0_7_17', 9);
-2020-07-31 10:36:37.290  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397290 | took 3ms | commit | connection 22| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.825  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793825 | took 3ms | commit | connection 22| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 
 ;
 Hibernate: select next_val as id_val from hibernate_sequence for update
-2020-07-31 10:36:37.299  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397299 | took 1ms | statement | connection 25| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.832  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793832 | took 1ms | statement | connection 25| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 select next_val as id_val from hibernate_sequence for update
 select next_val as id_val from hibernate_sequence for update;
 Hibernate: update hibernate_sequence set next_val= ? where next_val=?
-2020-07-31 10:36:37.301  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397301 | took 1ms | statement | connection 25| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.834  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793834 | took 1ms | statement | connection 25| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 update hibernate_sequence set next_val= ? where next_val=?
 update hibernate_sequence set next_val= 11 where next_val=10;
-2020-07-31 10:36:37.305  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397305 | took 3ms | commit | connection 25| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.838  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793838 | took 3ms | commit | connection 25| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 
 ;
-Hibernate: insert into job_file (file_id, io_type, job_id, target_id, id) values (?, ?, ?, ?, ?)
-2020-07-31 10:36:37.309  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397309 | took 1ms | statement | connection 24| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
-insert into job_file (file_id, io_type, job_id, target_id, id) values (?, ?, ?, ?, ?)
-insert into job_file (file_id, io_type, job_id, target_id, id) values (3, 'input', 7, 'input_read_2', 10);
-2020-07-31 10:36:37.312  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397312 | took 2ms | commit | connection 24| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+Hibernate: insert into run (finish_time, job_id, start_time, status, step_id, run_id) values (?, ?, ?, ?, ?, ?)
+2020-07-31 11:49:53.842  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793842 | took 1ms | statement | connection 24| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+insert into run (finish_time, job_id, start_time, status, step_id, run_id) values (?, ?, ?, ?, ?, ?)
+insert into run (finish_time, job_id, start_time, status, step_id, run_id) values (NULL, 7, NULL, 'Queued', '', 10);
+2020-07-31 11:49:53.846  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793846 | took 3ms | commit | connection 24| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 
 ;
 Hibernate: select next_val as id_val from hibernate_sequence for update
-2020-07-31 10:36:37.321  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397321 | took 1ms | statement | connection 27| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.853  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793853 | took 1ms | statement | connection 27| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 select next_val as id_val from hibernate_sequence for update
 select next_val as id_val from hibernate_sequence for update;
 Hibernate: update hibernate_sequence set next_val= ? where next_val=?
-2020-07-31 10:36:37.323  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397323 | took 1ms | statement | connection 27| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.855  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793855 | took 1ms | statement | connection 27| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 update hibernate_sequence set next_val= ? where next_val=?
 update hibernate_sequence set next_val= 12 where next_val=11;
-2020-07-31 10:36:37.327  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397327 | took 3ms | commit | connection 27| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.859  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793859 | took 3ms | commit | connection 27| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 
 ;
-Hibernate: insert into job_env (env_key, env_val, is_valid, job_id, run_id, id) values (?, ?, ?, ?, ?, ?)
-2020-07-31 10:36:37.332  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397332 | took 1ms | statement | connection 26| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
-insert into job_env (env_key, env_val, is_valid, job_id, run_id, id) values (?, ?, ?, ?, ?, ?)
-insert into job_env (env_key, env_val, is_valid, job_id, run_id, id) values ('input_read_2', 'TESTX_H7YRLADXX_S1_L001_R2_001.fastq.gz', true, 7, NULL, 11);
-2020-07-31 10:36:37.336  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397336 | took 3ms | commit | connection 26| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+Hibernate: insert into job_file (file_id, io_type, job_id, target_id, id) values (?, ?, ?, ?, ?)
+2020-07-31 11:49:53.863  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793863 | took 1ms | statement | connection 26| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+insert into job_file (file_id, io_type, job_id, target_id, id) values (?, ?, ?, ?, ?)
+insert into job_file (file_id, io_type, job_id, target_id, id) values (3, 'input', 7, 'input_read_2', 11);
+2020-07-31 11:49:53.867  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793867 | took 2ms | commit | connection 26| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 
 ;
 Hibernate: select next_val as id_val from hibernate_sequence for update
-2020-07-31 10:36:37.342  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397342 | took 1ms | statement | connection 29| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.875  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793875 | took 1ms | statement | connection 29| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 select next_val as id_val from hibernate_sequence for update
 select next_val as id_val from hibernate_sequence for update;
 Hibernate: update hibernate_sequence set next_val= ? where next_val=?
-2020-07-31 10:36:37.344  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397344 | took 1ms | statement | connection 29| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.877  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793877 | took 1ms | statement | connection 29| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 update hibernate_sequence set next_val= ? where next_val=?
 update hibernate_sequence set next_val= 13 where next_val=12;
-2020-07-31 10:36:37.348  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397348 | took 3ms | commit | connection 29| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.881  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793881 | took 3ms | commit | connection 29| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 
 ;
 Hibernate: insert into job_env (env_key, env_val, is_valid, job_id, run_id, id) values (?, ?, ?, ?, ?, ?)
-2020-07-31 10:36:37.353  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397353 | took 1ms | statement | connection 28| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.884  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793884 | took 1ms | statement | connection 28| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 insert into job_env (env_key, env_val, is_valid, job_id, run_id, id) values (?, ?, ?, ?, ?, ?)
-insert into job_env (env_key, env_val, is_valid, job_id, run_id, id) values ('sample', 'TESTX_H7YRLADXX_S1_L001', true, 7, NULL, 12);
-2020-07-31 10:36:37.356  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397356 | took 3ms | commit | connection 28| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+insert into job_env (env_key, env_val, is_valid, job_id, run_id, id) values ('input_read_2', 'TESTX_H7YRLADXX_S1_L001_R2_001.fastq.gz', true, 7, NULL, 12);
+2020-07-31 11:49:53.887  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793887 | took 2ms | commit | connection 28| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 
 ;
 Hibernate: select next_val as id_val from hibernate_sequence for update
-2020-07-31 10:36:37.364  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397364 | took 1ms | statement | connection 31| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.895  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793895 | took 2ms | statement | connection 31| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 select next_val as id_val from hibernate_sequence for update
 select next_val as id_val from hibernate_sequence for update;
 Hibernate: update hibernate_sequence set next_val= ? where next_val=?
-2020-07-31 10:36:37.368  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397368 | took 2ms | statement | connection 31| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.897  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793897 | took 1ms | statement | connection 31| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 update hibernate_sequence set next_val= ? where next_val=?
 update hibernate_sequence set next_val= 14 where next_val=13;
-2020-07-31 10:36:37.372  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397372 | took 3ms | commit | connection 31| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.901  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793901 | took 3ms | commit | connection 31| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 
 ;
-Hibernate: insert into job_file (file_id, io_type, job_id, target_id, id) values (?, ?, ?, ?, ?)
-2020-07-31 10:36:37.376  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397376 | took 1ms | statement | connection 30| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
-insert into job_file (file_id, io_type, job_id, target_id, id) values (?, ?, ?, ?, ?)
-insert into job_file (file_id, io_type, job_id, target_id, id) values (2, 'input', 7, 'input_read_1', 13);
-2020-07-31 10:36:37.379  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397379 | took 2ms | commit | connection 30| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+Hibernate: insert into job_env (env_key, env_val, is_valid, job_id, run_id, id) values (?, ?, ?, ?, ?, ?)
+2020-07-31 11:49:53.905  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793905 | took 1ms | statement | connection 30| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+insert into job_env (env_key, env_val, is_valid, job_id, run_id, id) values (?, ?, ?, ?, ?, ?)
+insert into job_env (env_key, env_val, is_valid, job_id, run_id, id) values ('sample', 'TESTX_H7YRLADXX_S1_L001', true, 7, NULL, 13);
+2020-07-31 11:49:53.908  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793908 | took 2ms | commit | connection 30| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 
 ;
 Hibernate: select next_val as id_val from hibernate_sequence for update
-2020-07-31 10:36:37.385  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397385 | took 1ms | statement | connection 33| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.915  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793915 | took 1ms | statement | connection 33| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 select next_val as id_val from hibernate_sequence for update
 select next_val as id_val from hibernate_sequence for update;
 Hibernate: update hibernate_sequence set next_val= ? where next_val=?
-2020-07-31 10:36:37.387  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397387 | took 1ms | statement | connection 33| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.917  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793917 | took 1ms | statement | connection 33| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 update hibernate_sequence set next_val= ? where next_val=?
 update hibernate_sequence set next_val= 15 where next_val=14;
-2020-07-31 10:36:37.391  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397391 | took 3ms | commit | connection 33| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
-
-;
-Hibernate: insert into job_env (env_key, env_val, is_valid, job_id, run_id, id) values (?, ?, ?, ?, ?, ?)
-2020-07-31 10:36:37.395  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397395 | took 1ms | statement | connection 32| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
-insert into job_env (env_key, env_val, is_valid, job_id, run_id, id) values (?, ?, ?, ?, ?, ?)
-insert into job_env (env_key, env_val, is_valid, job_id, run_id, id) values ('input_read_1', 'TESTX_H7YRLADXX_S1_L001_R1_001.fastq.gz', true, 7, NULL, 14);
-2020-07-31 10:36:37.399  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397399 | took 3ms | commit | connection 32| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
-
-;
-Hibernate: select next_val as id_val from hibernate_sequence for update
-2020-07-31 10:36:37.406  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397406 | took 1ms | statement | connection 35| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
-select next_val as id_val from hibernate_sequence for update
-select next_val as id_val from hibernate_sequence for update;
-Hibernate: update hibernate_sequence set next_val= ? where next_val=?
-2020-07-31 10:36:37.408  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397408 | took 1ms | statement | connection 35| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
-update hibernate_sequence set next_val= ? where next_val=?
-update hibernate_sequence set next_val= 16 where next_val=15;
-2020-07-31 10:36:37.412  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397412 | took 3ms | commit | connection 35| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
-
-;
-Hibernate: insert into job_env (env_key, env_val, is_valid, job_id, run_id, id) values (?, ?, ?, ?, ?, ?)
-2020-07-31 10:36:37.416  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397416 | took 1ms | statement | connection 34| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
-insert into job_env (env_key, env_val, is_valid, job_id, run_id, id) values (?, ?, ?, ?, ?, ?)
-insert into job_env (env_key, env_val, is_valid, job_id, run_id, id) values ('sample', 'TESTX_H7YRLADXX_S1_L001', true, 7, NULL, 15);
-2020-07-31 10:36:37.419  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397419 | took 3ms | commit | connection 34| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
-
-;
-Hibernate: select next_val as id_val from hibernate_sequence for update
-2020-07-31 10:36:37.427  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397427 | took 1ms | statement | connection 37| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
-select next_val as id_val from hibernate_sequence for update
-select next_val as id_val from hibernate_sequence for update;
-Hibernate: update hibernate_sequence set next_val= ? where next_val=?
-2020-07-31 10:36:37.430  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397430 | took 2ms | statement | connection 37| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
-update hibernate_sequence set next_val= ? where next_val=?
-update hibernate_sequence set next_val= 17 where next_val=16;
-2020-07-31 10:36:37.434  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397434 | took 3ms | commit | connection 37| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.920  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793920 | took 2ms | commit | connection 33| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 
 ;
 Hibernate: insert into job_file (file_id, io_type, job_id, target_id, id) values (?, ?, ?, ?, ?)
-2020-07-31 10:36:37.439  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397439 | took 2ms | statement | connection 36| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.923  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793923 | took 1ms | statement | connection 32| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 insert into job_file (file_id, io_type, job_id, target_id, id) values (?, ?, ?, ?, ?)
-insert into job_file (file_id, io_type, job_id, target_id, id) values (1, 'input', 7, 'input_tar_with_reference', 16);
-2020-07-31 10:36:37.442  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397442 | took 3ms | commit | connection 36| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+insert into job_file (file_id, io_type, job_id, target_id, id) values (2, 'input', 7, 'input_read_1', 14);
+2020-07-31 11:49:53.928  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793928 | took 4ms | commit | connection 32| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 
 ;
 Hibernate: select next_val as id_val from hibernate_sequence for update
-2020-07-31 10:36:37.449  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397449 | took 1ms | statement | connection 39| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.934  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793934 | took 1ms | statement | connection 35| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 select next_val as id_val from hibernate_sequence for update
 select next_val as id_val from hibernate_sequence for update;
 Hibernate: update hibernate_sequence set next_val= ? where next_val=?
-2020-07-31 10:36:37.451  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397451 | took 1ms | statement | connection 39| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.936  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793936 | took 1ms | statement | connection 35| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 update hibernate_sequence set next_val= ? where next_val=?
-update hibernate_sequence set next_val= 18 where next_val=17;
-2020-07-31 10:36:37.455  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397455 | took 4ms | commit | connection 39| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+update hibernate_sequence set next_val= 16 where next_val=15;
+2020-07-31 11:49:53.939  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793939 | took 3ms | commit | connection 35| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 
 ;
 Hibernate: insert into job_env (env_key, env_val, is_valid, job_id, run_id, id) values (?, ?, ?, ?, ?, ?)
-2020-07-31 10:36:37.459  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397459 | took 1ms | statement | connection 38| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-07-31 11:49:53.943  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793943 | took 1ms | statement | connection 34| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 insert into job_env (env_key, env_val, is_valid, job_id, run_id, id) values (?, ?, ?, ?, ?, ?)
-insert into job_env (env_key, env_val, is_valid, job_id, run_id, id) values ('input_tar_with_reference', 'human_g1k_v37_decoy.fasta.tar', true, 7, NULL, 17);
-2020-07-31 10:36:37.463  INFO 82802 --- [    Test worker] p6spy                                    : #1596159397463 | took 3ms | commit | connection 38| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+insert into job_env (env_key, env_val, is_valid, job_id, run_id, id) values ('input_read_1', 'TESTX_H7YRLADXX_S1_L001_R1_001.fastq.gz', true, 7, NULL, 15);
+2020-07-31 11:49:53.947  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793947 | took 3ms | commit | connection 34| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 
 ;
-[JobEnv(id=11, job=com.example.demo.domain.mysql.Job@3fa0b3ed, runId=null, isValid=true, envKey=input_read_2, envVal=TESTX_H7YRLADXX_S1_L001_R2_001.fastq.gz), JobEnv(id=12, job=com.example.demo.domain.mysql.Job@3fa0b3ed, runId=null, isValid=true, envKey=sample, envVal=TESTX_H7YRLADXX_S1_L001), JobEnv(id=14, job=com.example.demo.domain.mysql.Job@3fa0b3ed, runId=null, isValid=true, envKey=input_read_1, envVal=TESTX_H7YRLADXX_S1_L001_R1_001.fastq.gz), JobEnv(id=15, job=com.example.demo.domain.mysql.Job@3fa0b3ed, runId=null, isValid=true, envKey=sample, envVal=TESTX_H7YRLADXX_S1_L001), JobEnv(id=17, job=com.example.demo.domain.mysql.Job@3fa0b3ed, runId=null, isValid=true, envKey=input_tar_with_reference, envVal=human_g1k_v37_decoy.fasta.tar)]
-</pre>
-</span>
-</div>
-<div id="tab2" class="tab">
-<h2>Standard error</h2>
-<span class="code">
-<pre>java.lang.NullPointerException
-	at io.kubernetes.client.util.ClientBuilder.kubeconfig(ClientBuilder.java:245)
-	at io.kubernetes.client.util.ClientBuilder.getClientBuilder(ClientBuilder.java:114)
-	at io.kubernetes.client.util.ClientBuilder.standard(ClientBuilder.java:93)
-	at io.kubernetes.client.util.ClientBuilder.standard(ClientBuilder.java:85)
-	at io.kubernetes.client.util.Config.defaultClient(Config.java:113)
-	at com.example.demo.async.KubeMonitor.run(KubeMonitor.java:39)
-	at com.example.demo.async.DemoCommandLineRunner.run(DemoCommandLineRunner.java:16)
-	at org.springframework.boot.SpringApplication.callRunner(SpringApplication.java:795)
-	at org.springframework.boot.SpringApplication.callRunners(SpringApplication.java:779)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:322)
-	at org.springframework.boot.test.context.SpringBootContextLoader.loadContext(SpringBootContextLoader.java:120)
-	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:99)
-	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:124)
-	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:123)
-	at org.springframework.test.context.web.ServletTestExecutionListener.setUpRequestContextIfNecessary(ServletTestExecutionListener.java:190)
-	at org.springframework.test.context.web.ServletTestExecutionListener.prepareTestInstance(ServletTestExecutionListener.java:132)
-	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:244)
-	at org.springframework.test.context.junit.jupiter.SpringExtension.postProcessTestInstance(SpringExtension.java:98)
-	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$5(ClassBasedTestDescriptor.java:341)
-	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.executeAndMaskThrowable(ClassBasedTestDescriptor.java:346)
-	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$6(ClassBasedTestDescriptor.java:341)
-	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:195)
-	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:177)
-	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1624)
-	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:484)
-	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:474)
-	at java.base/java.util.stream.StreamSpliterators$WrappingSpliterator.forEachRemaining(StreamSpliterators.java:312)
-	at java.base/java.util.stream.Streams$ConcatSpliterator.forEachRemaining(Streams.java:735)
-	at java.base/java.util.stream.Streams$ConcatSpliterator.forEachRemaining(Streams.java:734)
-	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:658)
-	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.invokeTestInstancePostProcessors(ClassBasedTestDescriptor.java:340)
-	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.instantiateAndPostProcessTestInstance(ClassBasedTestDescriptor.java:263)
-	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$2(ClassBasedTestDescriptor.java:256)
-	at java.base/java.util.Optional.orElseGet(Optional.java:362)
-	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$3(ClassBasedTestDescriptor.java:255)
-	at org.junit.jupiter.engine.execution.TestInstancesProvider.getTestInstances(TestInstancesProvider.java:29)
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$prepare$0(TestMethodTestDescriptor.java:108)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:107)
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:71)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$prepare$1(NodeTestTask.java:107)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.prepare(NodeTestTask.java:107)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:75)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1510)
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:139)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125)
-	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1510)
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:139)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125)
-	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80)
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:32)
-	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
-	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:51)
-	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:248)
-	at org.junit.platform.launcher.core.DefaultLauncher.lambda$execute$5(DefaultLauncher.java:211)
-	at org.junit.platform.launcher.core.DefaultLauncher.withInterceptedStreams(DefaultLauncher.java:226)
-	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:199)
-	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:132)
-	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.processAllTestClasses(JUnitPlatformTestClassProcessor.java:99)
-	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.access$000(JUnitPlatformTestClassProcessor.java:79)
-	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor.stop(JUnitPlatformTestClassProcessor.java:75)
-	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.stop(SuiteTestClassProcessor.java:61)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33)
-	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:94)
-	at com.sun.proxy.$Proxy2.stop(Unknown Source)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker.stop(TestWorker.java:132)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:182)
-	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:164)
-	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:413)
-	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
-	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:48)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
-	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:56)
-	at java.base/java.lang.Thread.run(Thread.java:832)
+Hibernate: select next_val as id_val from hibernate_sequence for update
+2020-07-31 11:49:53.953  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793953 | took 1ms | statement | connection 37| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+select next_val as id_val from hibernate_sequence for update
+select next_val as id_val from hibernate_sequence for update;
+Hibernate: update hibernate_sequence set next_val= ? where next_val=?
+2020-07-31 11:49:53.955  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793955 | took 1ms | statement | connection 37| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+update hibernate_sequence set next_val= ? where next_val=?
+update hibernate_sequence set next_val= 17 where next_val=16;
+2020-07-31 11:49:53.958  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793958 | took 3ms | commit | connection 37| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+
+;
+Hibernate: insert into job_env (env_key, env_val, is_valid, job_id, run_id, id) values (?, ?, ?, ?, ?, ?)
+2020-07-31 11:49:53.962  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793962 | took 1ms | statement | connection 36| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+insert into job_env (env_key, env_val, is_valid, job_id, run_id, id) values (?, ?, ?, ?, ?, ?)
+insert into job_env (env_key, env_val, is_valid, job_id, run_id, id) values ('sample', 'TESTX_H7YRLADXX_S1_L001', true, 7, NULL, 16);
+2020-07-31 11:49:53.965  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793965 | took 3ms | commit | connection 36| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+
+;
+Hibernate: select next_val as id_val from hibernate_sequence for update
+2020-07-31 11:49:53.971  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793971 | took 1ms | statement | connection 39| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+select next_val as id_val from hibernate_sequence for update
+select next_val as id_val from hibernate_sequence for update;
+Hibernate: update hibernate_sequence set next_val= ? where next_val=?
+2020-07-31 11:49:53.972  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793972 | took 1ms | statement | connection 39| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+update hibernate_sequence set next_val= ? where next_val=?
+update hibernate_sequence set next_val= 18 where next_val=17;
+2020-07-31 11:49:53.975  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793975 | took 2ms | commit | connection 39| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+
+;
+Hibernate: insert into job_file (file_id, io_type, job_id, target_id, id) values (?, ?, ?, ?, ?)
+2020-07-31 11:49:53.980  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793980 | took 1ms | statement | connection 38| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+insert into job_file (file_id, io_type, job_id, target_id, id) values (?, ?, ?, ?, ?)
+insert into job_file (file_id, io_type, job_id, target_id, id) values (1, 'input', 7, 'input_tar_with_reference', 17);
+2020-07-31 11:49:53.984  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793984 | took 4ms | commit | connection 38| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+
+;
+Hibernate: select next_val as id_val from hibernate_sequence for update
+2020-07-31 11:49:53.992  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793992 | took 1ms | statement | connection 41| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+select next_val as id_val from hibernate_sequence for update
+select next_val as id_val from hibernate_sequence for update;
+Hibernate: update hibernate_sequence set next_val= ? where next_val=?
+2020-07-31 11:49:53.994  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793994 | took 1ms | statement | connection 41| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+update hibernate_sequence set next_val= ? where next_val=?
+update hibernate_sequence set next_val= 19 where next_val=18;
+2020-07-31 11:49:53.997  INFO 88820 --- [    Test worker] p6spy                                    : #1596163793997 | took 3ms | commit | connection 41| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+
+;
+Hibernate: insert into job_env (env_key, env_val, is_valid, job_id, run_id, id) values (?, ?, ?, ?, ?, ?)
+2020-07-31 11:49:54.002  INFO 88820 --- [    Test worker] p6spy                                    : #1596163794002 | took 1ms | statement | connection 40| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+insert into job_env (env_key, env_val, is_valid, job_id, run_id, id) values (?, ?, ?, ?, ?, ?)
+insert into job_env (env_key, env_val, is_valid, job_id, run_id, id) values ('input_tar_with_reference', 'human_g1k_v37_decoy.fasta.tar', true, 7, NULL, 18);
+2020-07-31 11:49:54.006  INFO 88820 --- [    Test worker] p6spy                                    : #1596163794006 | took 3ms | commit | connection 40| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+
+;
+[JobEnv(id=12, job=com.example.demo.domain.mysql.Job@2eeccc5d, runId=null, isValid=true, envKey=input_read_2, envVal=TESTX_H7YRLADXX_S1_L001_R2_001.fastq.gz), JobEnv(id=13, job=com.example.demo.domain.mysql.Job@2eeccc5d, runId=null, isValid=true, envKey=sample, envVal=TESTX_H7YRLADXX_S1_L001), JobEnv(id=15, job=com.example.demo.domain.mysql.Job@2eeccc5d, runId=null, isValid=true, envKey=input_read_1, envVal=TESTX_H7YRLADXX_S1_L001_R1_001.fastq.gz), JobEnv(id=16, job=com.example.demo.domain.mysql.Job@2eeccc5d, runId=null, isValid=true, envKey=sample, envVal=TESTX_H7YRLADXX_S1_L001), JobEnv(id=18, job=com.example.demo.domain.mysql.Job@2eeccc5d, runId=null, isValid=true, envKey=input_tar_with_reference, envVal=human_g1k_v37_decoy.fasta.tar)]
 </pre>
 </span>
 </div>
@@ -709,7 +615,7 @@ insert into job_env (env_key, env_val, is_valid, job_id, run_id, id) values ('in
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 6.4.1</a> at 2020. 7. 31. 오전 10:36:37</p>
+<a href="http://www.gradle.org">Gradle 6.4.1</a> at 2020. 7. 31. 오전 11:49:54</p>
 </div>
 </div>
 </body>

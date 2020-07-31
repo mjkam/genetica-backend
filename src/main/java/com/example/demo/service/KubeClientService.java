@@ -57,8 +57,7 @@ public class KubeClientService {
             BatchV1Api api = new BatchV1Api();
             return api.createNamespacedJob("genetica-job", v1Job, null, null, null);
         } catch (Exception e) {
-            e.printStackTrace();
-            throw new RuntimeException();
+            throw new RuntimeException(e);
         }
     }
 
