@@ -53,6 +53,7 @@ public class KubeMonitor  {
                             new TypeToken<Watch.Response<V1Pod>>() {}.getType());
             for (Watch.Response<V1Pod> item : watch) {
                 V1Pod pod = item.object;
+                pod.getSpec().getContainers().get(0).getE
                 V1OwnerReference jobInfo = pod.getMetadata().getOwnerReferences().get(0);
                 V1Job job = batchV1Api.readNamespacedJob(jobInfo.getName(), "genetica-job", null, null, null);
 

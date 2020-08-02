@@ -133,11 +133,10 @@ public class MonitorService {
         return commands;
     }
 
-    private List<JobEnv> createOutputEnvs(List<JobEnv> inputEnvs, Step step, Job job, Run run) {
+    private List<JobEnv> createOutputEnvs(List<JobEnv> inputEnvs, Step step, Job job) {
         List<JobEnv> outputEnvs = new ArrayList<>();
         for(StepIO stepIO: step.getOut()) {
             JobEnv jobEnv = new JobEnv(job, step.getId() + "." + stepIO.getId(), commandLineService.getEchoString(inputEnvs, stepIO.getScript()), false);
-            //jobEnv.setRunId(run.getId());
             outputEnvs.add(jobEnv);
         }
         return outputEnvs;
@@ -168,14 +167,14 @@ public class MonitorService {
 
 
         for(Step nextStep: nextSteps) {
-            Run nextRun = runRepository.findRun(jobId, nextStep.getId());
-            nextRun.setStatus(JobStatus.Pending);
+//            Run nextRun = runRepository.findRun(jobId, nextStep.getId());
+//            nextRun.setStatus(JobStatus.Pending);
 
             List<JobEnv> inputEnvs = getInputEnvs(validEnvs, nextStep.getIn(), job);
-            List<JobEnv> outputEnvs = createOutputEnvs(inputEnvs, nextStep, job, nextRun);
+            List<JobEnv> outputEnvs = createOutputEnvs(inputEnvs, nextStep, job);
 
             //Todo: 밖으로 빼고싶음
-            jobEnvRepository.saveAll(outputEnvs);
+//            jobEnvRepository.saveAll(outputEnvs);
 
             List<JobFile> jobFiles = jobFileRepository.findJobFilesInJob(jobId);
 
@@ -185,7 +184,7 @@ public class MonitorService {
             command.add(commandLineService.getEchoString(inputEnvs, nextStep.getRun().getCommand()));
             command = ListUtils.union(command, getS3CopyOutCommand(outputEnvs, pipeline));
 
-            kubeJobs.add(new KubeJob(taskId, jobId, nextRun.getId(), KubeJobType.ANALYSIS, inputEnvs, nextStep.getRun().getImage(), command));
+            //kubeJobs.add(new KubeJob(taskId, jobId, nextRun.getId(), KubeJobType.ANALYSIS, inputEnvs, nextStep.getRun().getImage(), command));
         }
         return kubeJobs;
     }

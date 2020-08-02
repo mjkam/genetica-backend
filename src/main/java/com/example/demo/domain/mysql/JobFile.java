@@ -26,10 +26,10 @@ public class JobFile {
 
     private String targetId;
 
-    public JobFile(Job job, Map<String, File> toolInputFileMap, String ioId) {
+    public JobFile(Job job, File file, String ioId) {
         this.job = job;
-        this.file = toolInputFileMap.get(ioId);
-        this.ioType = "input"; // Todo: Enum 으로 변경
+        this.file = file;
+        this.ioType = "input"; // Todo: Enum 으로 변경 //필요 없을수도?
         this.targetId = ioId;
     }
 }

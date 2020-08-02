@@ -17,21 +17,21 @@ public class KubeJob {
     private Long jobId;
     private Long runId;
     private KubeJobType kubeJobType;
-    private List<JobEnv> jobEnvs;
+    private List<V1EnvVar> envs;
     private String imageName;
     private List<String> command;
 
-    public KubeJob(Long taskId, Long jobId, Long runId, KubeJobType kubeJobType, List<JobEnv> jobEnvs, String imageName, List<String> command) {
+    public KubeJob(Long taskId, Long jobId, Long runId, KubeJobType kubeJobType, List<V1EnvVar> envs, String imageName, List<String> command) {
         this.taskId = taskId;
         this.jobId = jobId;
         this.runId = runId;
         this.kubeJobType = kubeJobType;
-        this.jobEnvs = jobEnvs;
+        this.envs = envs;
         this.imageName = imageName;
         this.command = command;
     }
 
-    public KubeJob(Long taskId, Long jobId, Long runId, KubeJobType kubeJobType, List<JobEnv> jobEnvs) {
+    public KubeJob(Long taskId, Long jobId, Long runId, KubeJobType kubeJobType, List<V1EnvVar> jobEnvs) {
         this.taskId = taskId;
         this.jobId = jobId;
         this.runId = runId;

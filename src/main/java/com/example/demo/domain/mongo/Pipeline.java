@@ -1,5 +1,6 @@
 package com.example.demo.domain.mongo;
 
+import com.example.demo.domain.mysql.Job;
 import com.example.demo.domain.mysql.JobEnv;
 import com.example.demo.domain.mysql.JobStatus;
 import com.example.demo.domain.mysql.Run;
@@ -29,8 +30,10 @@ public class Pipeline {
 
     private List<Step> steps;
 
-    public List<String> getStepIds() {
-        return steps.stream().map(step -> step.getId()).collect(Collectors.toList());
+    public List<Run> getAllRuns(Job job) {
+        List<Run> runs = steps.stream().map(step -> new Run(job, step.getId())).collect(Collectors.toList());
+        runs.add(new Run(job, ""));//initializer job
+        return runs;
     }
 
 
