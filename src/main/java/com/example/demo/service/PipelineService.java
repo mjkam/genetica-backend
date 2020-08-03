@@ -9,6 +9,7 @@ import com.example.demo.dto.request.RunPipelineRequest;
 import com.example.demo.repository.mongo.PipelineRepository;
 import com.example.demo.repository.mysql.*;
 import com.example.demo.service.helper.TaskData;
+import com.example.demo.util.KubeUtil;
 import io.kubernetes.client.openapi.models.V1EnvVar;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,7 +28,6 @@ public class PipelineService {
     private final JobRepository jobRepository;
     private final JobFileRepository jobFileRepository;
     private final RunRepository runRepository;
-    //private final JobEnvRepository jobEnvRepository;
     private final KubeClientService kubeClientService;
     private final TaskRepository taskRepository;
 
@@ -90,21 +90,13 @@ public class PipelineService {
     public List<V1EnvVar> createJobEnvsFromInputsMap(Map<String, File> jobInputFileMap) {
         List<V1EnvVar> jobEnvs = new ArrayList<>();
         for(String ioId: jobInputFileMap.keySet()) {
-            jobEnvs.add(createKubeEnv(ioId, jobInputFileMap.get(ioId).getName()));
+            jobEnvs.add(KubeUtil.createKubeEnv(ioId, jobInputFileMap.get(ioId).getName()));
             if(jobInputFileMap.get(ioId).getSampleId() != null) {
-                jobEnvs.add(createKubeEnv("sample", jobInputFileMap.get(ioId).getSampleId()));
+                jobEnvs.add(KubeUtil.createKubeEnv("sample", jobInputFileMap.get(ioId).getSampleId()));
             }
         }
         return jobEnvs;
     }
-
-    public V1EnvVar createKubeEnv(String name, String value) {
-        V1EnvVar env = new V1EnvVar();
-        env.setName(name);
-        env.setValue(value);
-        return env;
-    }
-
 
     private Map<String, List<File>> createInputFileMap(List<InputFileInfo> inputFileInfos) {
         Map<String, List<File>> inputs = new HashMap<>();
