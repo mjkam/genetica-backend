@@ -91,7 +91,7 @@ public class KubeClientService {
                         .endVolumeMount()
                         .withCommand(Arrays.asList("/bin/bash", "-c"))
                         .withArgs(kubeJob.getCommandStr())
-                        .withEnv(kubeJob.getEnvVars())
+                        .withEnv(kubeJob.getKubeEnvs())
                         .endContainer()
                         .withNodeSelector(kubeJob.getNodeSelector())
                         .addNewVolume()

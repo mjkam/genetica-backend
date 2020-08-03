@@ -16,7 +16,7 @@ public class OutputData {
         this.files.add(f);
     }
 
-    public void addJobFile(JobFile jf) {
-        this.jobFiles.add(jf);
+    public void addJobFile(List<JobFile> jf) {
+        this.jobFiles.addAll(jf);
     }
 }

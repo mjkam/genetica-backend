@@ -50,13 +50,7 @@ public class Job {
         }
     }
 
-//    public JobStatus getJobStatus() {
-//        if(runs.stream().anyMatch(r -> r.isFailed())) return JobStatus.Failed;
-//        if(runs.stream().anyMatch(r -> r.isRunning())) return JobStatus.Running;
-//        return
-//    }
-
-    public List<Run> getNextRuns(List<Step> nextSteps) {
-        return runs.stream().filter(r -> nextSteps.stream().anyMatch(s -> s.getId().equals(r.getStepId()))).collect(Collectors.toList());
+    public List<Run> getFinishedRuns() {
+        return runs.stream().filter(r -> r.getStatus().equals(JobStatus.Succeeded)).collect(Collectors.toList());
     }
 }

@@ -4,15 +4,12 @@ import com.example.demo.domain.mongo.Pipeline;
 import com.example.demo.domain.mysql.*;
 import com.example.demo.dto.request.InputFileInfo;
 import com.example.demo.dto.KubeJob;
-import com.example.demo.dto.KubeJobType;
 import com.example.demo.dto.request.RunPipelineRequest;
 import com.example.demo.repository.mongo.PipelineRepository;
 import com.example.demo.repository.mysql.*;
 import com.example.demo.service.helper.TaskData;
 import com.example.demo.util.KubeUtil;
 import io.kubernetes.client.openapi.models.V1EnvVar;
-import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -30,7 +27,6 @@ public class PipelineService {
     private final RunRepository runRepository;
     private final KubeClientService kubeClientService;
     private final TaskRepository taskRepository;
-
 
 
     public void runPipeline(RunPipelineRequest request) {
