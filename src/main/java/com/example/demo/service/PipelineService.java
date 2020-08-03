@@ -21,41 +21,26 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class PipelineService {
-
     private final PipelineRepository pipelineRepository;
     private final FileRepository fileRepository;
     private final JobRepository jobRepository;
     private final JobFileRepository jobFileRepository;
     private final RunRepository runRepository;
-    //private final JobEnvRepository jobEnvRepository;
     private final KubeClientService kubeClientService;
     private final TaskRepository taskRepository;
-
 
 
     public void runPipeline(RunPipelineRequest request) {
         Pipeline pipeline = pipelineRepository.findById(request.getPipelineId()).orElseThrow(() -> new RuntimeException());
         Map<String, List<File>> inputsMap = createInputFileMap(request.getData());
-        Integer maxLen = getMaxNumOfInputFile(inputsMap);
 
-        TaskData taskData = createTaskData(inputsMap, pipeline, maxLen);
+        TaskData taskData = createTaskData(inputsMap, pipeline);
         insertParsedTask(taskData);
 
-        List<KubeJob> kubeJobs = createKubeJobsFromParsedTask(taskData);
+        List<KubeJob> kubeJobs = taskData.createInitializerKubeJobs();
         for(KubeJob job: kubeJobs) {
             kubeClientService.runJob(job);
         }
-    }
-
-    public List<KubeJob> createKubeJobsFromParsedTask(TaskData taskData) {
-        List<KubeJob> kubeJobs = new ArrayList<>();
-        Task task = taskData.getTask();
-        for(Job job: taskData.getJobs()) {
-
-        }
-        KubeJob kubeJob = new KubeJob(task.getId(), )
-
-        return kubeJobs;
     }
 
     public void insertParsedTask(TaskData taskData) {
@@ -65,7 +50,8 @@ public class PipelineService {
         jobFileRepository.saveAll(taskData.getJobFiles());
     }
 
-    public TaskData createTaskData(Map<String, List<File>> inputsMap, Pipeline pipeline, int maxLen) {
+    public TaskData createTaskData(Map<String, List<File>> inputsMap, Pipeline pipeline) {
+        int maxLen = getMaxNumOfInputFile(inputsMap);
         TaskData taskData = new TaskData();
 
         Task newTask = new Task(pipeline);
@@ -106,7 +92,7 @@ public class PipelineService {
     }
 
 
-    private Map<String, List<File>> createInputFileMap(List<InputFileInfo> inputFileInfos) {
+    public Map<String, List<File>> createInputFileMap(List<InputFileInfo> inputFileInfos) {
         Map<String, List<File>> inputs = new HashMap<>();
 
         for(InputFileInfo inputFileInfo: inputFileInfos) {

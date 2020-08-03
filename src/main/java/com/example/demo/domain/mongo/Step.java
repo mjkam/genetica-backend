@@ -1,6 +1,5 @@
 package com.example.demo.domain.mongo;
 
-import com.example.demo.domain.mysql.JobEnv;
 import lombok.*;
 
 import java.util.List;
@@ -17,10 +16,10 @@ public class Step {
     private List<StepIO> out;
     private Tool run;
 
-    public Boolean isRunnable(List<JobEnv> envs) {
-        for(StepIO stepInput: in) {
-            if(!stepInput.isReady(envs)) return false;
-        }
-        return true;
-    }
+//    public Boolean isRunnable(List<JobEnv> envs) {
+//        for(StepIO stepInput: in) {
+//            if(!stepInput.isReady(envs)) return false;
+//        }
+//        return true;
+//    }
 }

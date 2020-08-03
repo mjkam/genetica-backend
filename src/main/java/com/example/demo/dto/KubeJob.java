@@ -1,6 +1,5 @@
 package com.example.demo.dto;
 
-import com.example.demo.domain.mysql.JobEnv;
 import io.kubernetes.client.custom.Quantity;
 import io.kubernetes.client.openapi.models.V1EnvVar;
 import lombok.Getter;
@@ -36,7 +35,7 @@ public class KubeJob {
         this.jobId = jobId;
         this.runId = runId;
         this.kubeJobType = kubeJobType;
-        this.jobEnvs = jobEnvs;
+        this.envs = jobEnvs;
         this.imageName = "338282184009.dkr.ecr.ap-northeast-2.amazonaws.com/myrepo:genetica_base";
         this.command = Arrays.asList("rm -rf *");
     }
@@ -45,14 +44,14 @@ public class KubeJob {
         return command.stream().collect(Collectors.joining(" && "));
     }
 
-    public List<V1EnvVar> getEnvVars() {
-        return jobEnvs.stream().map(e -> {
-            V1EnvVar env = new V1EnvVar();
-            env.setName(e.getEnvKey());
-            env.setValue(e.getEnvVal());
-            return env;
-        }).collect(Collectors.toList());
-    }
+//    public List<V1EnvVar> getEnvVars() {
+//        return jobEnvs.stream().map(e -> {
+//            V1EnvVar env = new V1EnvVar();
+//            env.setName(e.getEnvKey());
+//            env.setValue(e.getEnvVal());
+//            return env;
+//        }).collect(Collectors.toList());
+//    }
 
     public Map<String, String> getLabels() {
         Map<String, String> labels = new HashMap<>();

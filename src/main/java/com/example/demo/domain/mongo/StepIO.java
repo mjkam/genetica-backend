@@ -1,6 +1,5 @@
 package com.example.demo.domain.mongo;
 
-import com.example.demo.domain.mysql.JobEnv;
 import lombok.*;
 
 import java.util.List;
@@ -16,7 +15,7 @@ public class StepIO {
     private String source;
     private String script;
 
-    public boolean isReady(List<JobEnv> jobEnvs) {
-        return jobEnvs.stream().anyMatch(env -> env.getEnvKey().equals(source));
-    }
+//    public boolean isReady(List<JobEnv> jobEnvs) {
+//        return jobEnvs.stream().anyMatch(env -> env.getEnvKey().equals(source));
+//    }
 }
