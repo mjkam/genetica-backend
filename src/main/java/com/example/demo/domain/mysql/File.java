@@ -10,7 +10,6 @@ import javax.persistence.Id;
 
 @Entity
 @Getter
-@Setter
 public class File {
     @Id
     @GeneratedValue
@@ -22,4 +21,10 @@ public class File {
     private Long size;
 
     private String sampleId;
+
+    public File(String name, Long size, String sampleId) {
+        this.name = name;
+        this.size = size;
+        this.sampleId = sampleId;
+    }
 }

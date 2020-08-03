@@ -6,6 +6,7 @@ import io.kubernetes.client.openapi.ApiClient;
 import io.kubernetes.client.openapi.Configuration;
 import io.kubernetes.client.openapi.apis.BatchV1Api;
 import io.kubernetes.client.openapi.apis.CoreV1Api;
+import io.kubernetes.client.openapi.models.V1EnvVar;
 import io.kubernetes.client.openapi.models.V1Job;
 import io.kubernetes.client.openapi.models.V1OwnerReference;
 import io.kubernetes.client.openapi.models.V1Pod;
@@ -15,6 +16,7 @@ import lombok.RequiredArgsConstructor;
 import okhttp3.OkHttpClient;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 @Component
@@ -43,10 +45,14 @@ public class KubeMonitor  {
                             new TypeToken<Watch.Response<V1Pod>>() {}.getType());
             for (Watch.Response<V1Pod> item : watch) {
                 V1Pod pod = item.object;
+<<<<<<< HEAD
+=======
+                List<V1EnvVar> kubeEnvs = pod.getSpec().getContainers().get(0).getEnv();
+>>>>>>> 43cfa364b26eb221f5df6ad76fce34a71b3a88ac
                 V1OwnerReference jobInfo = pod.getMetadata().getOwnerReferences().get(0);
                 V1Job job = batchV1Api.readNamespacedJob(jobInfo.getName(), "genetica-job", null, null, null);
 
-                serviceExecutor.runExecutor(new KubeEventHandler(job.getMetadata().getLabels(), pod.getStatus().getPhase(), pod.getSpec().getNodeName(), monitorService));
+                serviceExecutor.runExecutor(new KubeEventHandler(job.getMetadata().getLabels(), pod.getStatus().getPhase(), pod.getSpec().getNodeName(), kubeEnvs, monitorService));
             }
 
         } catch(Exception e) {

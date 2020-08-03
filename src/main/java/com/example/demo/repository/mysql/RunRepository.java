@@ -12,4 +12,7 @@ public interface RunRepository extends JpaRepository<Run, Long> {
 
     @Query("SELECT r FROM Run r WHERE r.job.id = :jobId")
     List<Run> findRunsInJob(Long jobId);
+
+    @Query("SELECT r FROM Run r JOIN FETCH r.job j JOIN FETCH j.task WHERE r.id = :runId")
+    Run findRunWithJoinById(Long runId);
 }
