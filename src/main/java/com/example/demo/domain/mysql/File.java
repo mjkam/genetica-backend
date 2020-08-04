@@ -27,4 +27,9 @@ public class File {
         this.size = size;
         this.sampleId = sampleId;
     }
+
+    public File(String name, Long size) {
+        this.name = name;
+        this.size = size;
+    }
 }

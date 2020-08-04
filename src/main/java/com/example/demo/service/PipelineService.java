@@ -73,22 +73,14 @@ public class PipelineService {
 
     public List<V1EnvVar> createJobEnvsFromInputsMap(Map<String, File> jobInputFileMap) {
         List<V1EnvVar> jobEnvs = new ArrayList<>();
-        for(String ioId: jobInputFileMap.keySet()) {
+        for (String ioId : jobInputFileMap.keySet()) {
             jobEnvs.add(KubeUtil.createKubeEnv(ioId, jobInputFileMap.get(ioId).getName()));
-            if(jobInputFileMap.get(ioId).getSampleId() != null) {
+            if (jobInputFileMap.get(ioId).getSampleId() != null) {
                 jobEnvs.add(KubeUtil.createKubeEnv("sample", jobInputFileMap.get(ioId).getSampleId()));
             }
         }
         return jobEnvs;
     }
-
-    public V1EnvVar createKubeEnv(String name, String value) {
-        V1EnvVar env = new V1EnvVar();
-        env.setName(name);
-        env.setValue(value);
-        return env;
-    }
-
 
     public Map<String, List<File>> createInputFileMap(List<InputFileInfo> inputFileInfos) {
         Map<String, List<File>> inputs = new HashMap<>();
