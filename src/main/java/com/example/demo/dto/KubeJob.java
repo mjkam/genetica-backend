@@ -30,16 +30,12 @@ public class KubeJob {
         this.command = command;
     }
 
-    public KubeJob(Long taskId, Long jobId, Long runId, KubeJobType kubeJobType, List<V1EnvVar> jobEnvs) {
+    public KubeJob(Long taskId, Long jobId, Long runId, List<V1EnvVar> jobEnvs) {
         this.taskId = taskId;
         this.jobId = jobId;
         this.runId = runId;
-        this.kubeJobType = kubeJobType;
-<<<<<<< HEAD
-        this.envs = jobEnvs;
-=======
+        this.kubeJobType = KubeJobType.INITIALIZER;
         this.kubeEnvs = jobEnvs;
->>>>>>> 43cfa364b26eb221f5df6ad76fce34a71b3a88ac
         this.imageName = "338282184009.dkr.ecr.ap-northeast-2.amazonaws.com/myrepo:genetica_base";
         this.command = Arrays.asList("rm -rf *");
     }
@@ -47,18 +43,6 @@ public class KubeJob {
     public String getCommandStr() {
         return command.stream().collect(Collectors.joining(" && "));
     }
-
-<<<<<<< HEAD
-//    public List<V1EnvVar> getEnvVars() {
-//        return jobEnvs.stream().map(e -> {
-//            V1EnvVar env = new V1EnvVar();
-//            env.setName(e.getEnvKey());
-//            env.setValue(e.getEnvVal());
-//            return env;
-//        }).collect(Collectors.toList());
-//    }
-=======
->>>>>>> 43cfa364b26eb221f5df6ad76fce34a71b3a88ac
 
     public Map<String, String> getLabels() {
         Map<String, String> labels = new HashMap<>();

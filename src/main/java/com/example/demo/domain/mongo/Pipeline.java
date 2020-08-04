@@ -37,14 +37,7 @@ public class Pipeline {
         return steps.stream().filter(step -> step.isRunnable(finishedRuns)).collect(Collectors.toList());
     }
 
-<<<<<<< HEAD
-
-//    public List<Step> getNextSteps(List<JobEnv> validEnvList) {
-//        return steps.stream().filter(step -> step.isRunnable(validEnvList)).collect(Collectors.toList());
-//    }
-=======
     public Step getStep(String stepId) {
         return steps.stream().filter(s -> s.getId().equals(stepId)).findFirst().orElseThrow(()-> new RuntimeException());
     }
->>>>>>> 43cfa364b26eb221f5df6ad76fce34a71b3a88ac
 }
