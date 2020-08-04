@@ -29,7 +29,6 @@ public class Pipeline {
 
     public List<Run> getAllRuns(Job job) {
         List<Run> runs = steps.stream().map(step -> new Run(job, step.getId())).collect(Collectors.toList());
-        runs.add(new Run(job, ""));//initializer job
         return runs;
     }
 

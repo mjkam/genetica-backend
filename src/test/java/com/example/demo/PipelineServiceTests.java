@@ -1,77 +1,94 @@
 package com.example.demo;
 
-import com.example.demo.domain.mongo.*;
+import com.example.demo.domain.mongo.Pipeline;
 import com.example.demo.domain.mysql.File;
-import com.example.demo.domain.mysql.Job;
 import com.example.demo.dto.KubeJob;
-import com.example.demo.dto.KubeJobType;
 import com.example.demo.dto.request.RunPipelineRequest;
-import com.example.demo.helper.FileManager;
-import com.example.demo.helper.PipelineManager;
-import com.example.demo.helper.RequestManager;
+import com.example.demo.helper.FileBuilder;
+import com.example.demo.helper.PipelineBuilder;
+import com.example.demo.helper.PipelineRunRequestBuilder;
 import com.example.demo.repository.mongo.PipelineRepository;
-import com.example.demo.repository.mysql.FileRepository;
-import com.example.demo.service.PipelineService;
-import com.example.demo.service.helper.TaskData;
+import com.example.demo.repository.mysql.*;
+import com.example.demo.service.PipelineRunner;
 import io.kubernetes.client.openapi.models.V1EnvVar;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
+import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.internal.bytebuddy.matcher.ElementMatchers.is;
+import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.BDDMockito.given;
 
 @ActiveProfiles("test")
 @SpringBootTest
 public class PipelineServiceTests {
-    @Autowired
-    PipelineRepository pipelineRepository;
-
-    @Autowired
+    @Mock
     FileRepository fileRepository;
+    @Mock
+    PipelineRepository pipelineRepository;
+    @Mock
+    TaskRepository taskRepository;
+    @Mock
+    JobRepository jobRepository;
+    @Mock
+    RunRepository runRepository;
+    @Mock
+    JobFileRepository jobFileRepository;
 
-    @Autowired
-    PipelineService pipelineService;
+    @InjectMocks
+    PipelineRunner pipelineRunner;
 
-    private Pipeline pipeline;
+
+    List<File> files;
+    File reference;
+    File fq11;
+    File fq12;
+    File fq21;
+    File fq22;
 
 
     @BeforeEach
-    void setup() {
-        pipelineRepository.deleteAll();
-        List<File> files = FileManager.createWESInputFiles();
-        files.stream().forEach(f -> fileRepository.save(f));
+    public void setUp() {
+        files = FileBuilder.createFiles();
+        reference = files.get(0);
+        fq11 = files.get(1);
+        fq12 = files.get(2);
+        fq21 = files.get(3);
+        fq22 = files.get(4);
 
-        pipeline = PipelineManager.createSmallPipeline();
-        pipelineRepository.save(pipeline);
+        given(fileRepository.findByIdIn(Arrays.asList(1L))).willReturn(Arrays.asList(reference));
+        given(fileRepository.findByIdIn(Arrays.asList(2L, 4L))).willReturn(Arrays.asList(fq11, fq21));
+        given(fileRepository.findByIdIn(Arrays.asList(3L, 5L))).willReturn(Arrays.asList(fq12, fq22));
     }
 
     @Test
-    void createTaskDataTest() {
-        RunPipelineRequest request = RequestManager.createRunPipelineRequest(pipeline);
-        Pipeline pipeline = pipelineRepository.findAll().get(0);
-        Map<String, List<File>> inputsMap = pipelineService.createInputFileMap(request.getData());
+    void runPipelineTest() {
+        //given
+        Pipeline pipeline = PipelineBuilder.createSmallPipeline();
+        RunPipelineRequest request = PipelineRunRequestBuilder.createRunPipelineRequest(pipeline);
 
-        TaskData taskData = pipelineService.createTaskData(inputsMap, pipeline);
+        given(pipelineRepository.findById(anyString())).willReturn(Optional.of(pipeline));
 
-        assertThat(taskData.getTask().getPipelineId()).isEqualTo(pipeline.getId());
-        assertThat(taskData.getJobs().size()).isEqualTo(2);
-        assertThat(taskData.getRuns().size()).isEqualTo(4);
-        assertThat(taskData.getRuns()).extracting("stepId").contains("untar_fasta", "bwa_mem_bundle_0_7_17");
-        assertThat(taskData.getJobFiles().size()).isEqualTo(6);
-        assertThat(taskData.getJobFiles()).extracting("file").extracting("name").contains("TESTX_H7YRLADXX_S1_L001_R1_001.fastq.gz", "TESTX_H7YRLADXX_S1_L001_R2_001.fastq.gz", "TESTX_H7YRLADXX_S1_L001", "human_g1k_v37_decoy.fasta.tar");
+        //when
+        List<KubeJob> kubeJobs = pipelineRunner.parseRunRequest(request);
 
-        Map<Job, List<V1EnvVar>> envs = taskData.getEnvs();
-        List<Job> jobs = taskData.getJobs();
-        for(Map.Entry<Job, List<V1EnvVar>> elem: envs.entrySet()) {
-            assertThat(jobs).contains(elem.getKey());
-            assertThat(elem.getValue()).extracting("name").contains("input_read_1", "input_read_2", "sample", "input_tar_with_reference");
-            assertThat(elem.getValue()).extracting("value").contains("TESTX_H7YRLADXX_S1_L001_R1_001.fastq.gz", "TESTX_H7YRLADXX_S1_L001_R2_001.fastq.gz", "TESTX_H7YRLADXX_S1_L002_R1_001.fastq.gz", "TESTX_H7YRLADXX_S1_L002_R2_001.fastq.gz", "TESTX_H7YRLADXX_S1_L001", "TESTX_H7YRLADXX_S1_L002", "human_g1k_v37_decoy.fasta.tar");
-        }
-        //System.out.println(kubeJobs.get(0).getJobEnvs());
+        //then
+        List<String> names = Arrays.asList("input_read_1", "input_read_2", "input_tar_with_reference", "sample");
+        List<String> values = files.stream().map(f -> f.getName()).collect(Collectors.toList());
+
+        assertThat(kubeJobs.size()).isEqualTo(2);
+        assertThat(kubeJobs.get(0).getKubeEnvs()).extracting("name").containsAll(names);
+        assertThat(kubeJobs).extracting("kubeEnvs").flatExtracting(l -> (List<V1EnvVar>)l).extracting("value").containsAll(values);
     }
 }

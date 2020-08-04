@@ -1,123 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.example.demo.PipelineServiceTests" tests="1" skipped="0" failures="1" errors="0" timestamp="2020-08-02T14:13:20" hostname="MinJaeui-MacBookPro.local" time="0.473">
+<testsuite name="com.example.demo.PipelineServiceTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-08-04T14:41:43" hostname="MinJaeui-MacBookPro.local" time="0.151">
   <properties/>
-  <testcase name="createTaskDataTest()" classname="com.example.demo.PipelineServiceTests" time="0.473">
-    <failure message="org.opentest4j.AssertionFailedError: &#10;Expecting:&#10; &lt;1&gt;&#10;to be equal to:&#10; &lt;2&gt;&#10;but was not." type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: 
-Expecting:
- &lt;1&gt;
-to be equal to:
- &lt;2&gt;
-but was not.
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at com.example.demo.PipelineServiceTests.createTaskDataTest(PipelineServiceTests.java:62)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:686)
-	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
-	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
-	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:149)
-	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:140)
-	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:84)
-	at org.junit.jupiter.engine.execution.ExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(ExecutableInvoker.java:115)
-	at org.junit.jupiter.engine.execution.ExecutableInvoker.lambda$invoke$0(ExecutableInvoker.java:105)
-	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
-	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
-	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
-	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
-	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:104)
-	at org.junit.jupiter.engine.execution.ExecutableInvoker.invoke(ExecutableInvoker.java:98)
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$6(TestMethodTestDescriptor.java:212)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:208)
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:137)
-	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:71)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:135)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125)
-	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80)
-	at java.util.ArrayList.forEach(ArrayList.java:1257)
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:139)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125)
-	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80)
-	at java.util.ArrayList.forEach(ArrayList.java:1257)
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:139)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:125)
-	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:135)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:123)
-	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:122)
-	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:80)
-	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:32)
-	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
-	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:51)
-	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:248)
-	at org.junit.platform.launcher.core.DefaultLauncher.lambda$execute$5(DefaultLauncher.java:211)
-	at org.junit.platform.launcher.core.DefaultLauncher.withInterceptedStreams(DefaultLauncher.java:226)
-	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:199)
-	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:132)
-	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.processAllTestClasses(JUnitPlatformTestClassProcessor.java:99)
-	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.access$000(JUnitPlatformTestClassProcessor.java:79)
-	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor.stop(JUnitPlatformTestClassProcessor.java:75)
-	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.stop(SuiteTestClassProcessor.java:61)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33)
-	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:94)
-	at com.sun.proxy.$Proxy2.stop(Unknown Source)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker.stop(TestWorker.java:132)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:182)
-	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:164)
-	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:413)
-	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
-	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:48)
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
-	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:56)
-	at java.lang.Thread.run(Thread.java:748)
-</failure>
-  </testcase>
-  <system-out><![CDATA[23:13:14.863 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
-23:13:14.875 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
-23:13:14.905 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.example.demo.PipelineServiceTests] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
-23:13:14.920 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.example.demo.PipelineServiceTests], using SpringBootContextLoader
-23:13:14.925 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.example.demo.PipelineServiceTests]: class path resource [com/example/demo/PipelineServiceTests-context.xml] does not exist
-23:13:14.926 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.example.demo.PipelineServiceTests]: class path resource [com/example/demo/PipelineServiceTestsContext.groovy] does not exist
-23:13:14.926 [Test worker] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.example.demo.PipelineServiceTests]: no resource found for suffixes {-context.xml, Context.groovy}.
-23:13:14.927 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.demo.PipelineServiceTests]: PipelineServiceTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-23:13:15.051 [Test worker] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [/Users/minjaekam/Desktop/genetica-backend/build/classes/java/main/com/example/demo/DemoApplication.class]
-23:13:15.052 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.demo.DemoApplication for test class com.example.demo.PipelineServiceTests
-23:13:15.164 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [com.example.demo.PipelineServiceTests]: using defaults.
-23:13:15.165 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
-23:13:15.178 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@1f328798, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@13bffc4e, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@4e049f98, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@244f7b43, org.springframework.test.context.support.DirtiesContextTestExecutionListener@2f4a2615, org.springframework.test.context.transaction.TransactionalTestExecutionListener@437be23e, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@29695d96, org.springframework.test.context.event.EventPublishingTestExecutionListener@7623ae9b, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@8a744c4, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@14d13dfc, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@7737571d, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@1c8b7816, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@2e388e27, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@339b78c1]
-23:13:15.182 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@4758a8b8 testClass = PipelineServiceTests, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@5687501c testClass = PipelineServiceTests, locations = '{}', classes = '{class com.example.demo.DemoApplication}', contextInitializerClasses = '[]', activeProfiles = '{test}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@299229f5, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@49493490, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@6680e4db, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@5e6418a2, org.springframework.boot.test.context.SpringBootTestArgs@1], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> true]], class annotated with @DirtiesContext [false] with mode [null].
-23:13:15.212 [Test worker] DEBUG org.springframework.core.env.StandardEnvironment - Activating profiles [test]
-23:13:15.217 [Test worker] DEBUG org.springframework.test.context.support.TestPropertySourceUtils - Adding inlined properties to environment: {spring.jmx.enabled=false, org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}
+  <testcase name="runPipelineTest()" classname="com.example.demo.PipelineServiceTests" time="0.151"/>
+  <system-out><![CDATA[23:41:37.776 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+23:41:37.789 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+23:41:37.821 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.example.demo.PipelineServiceTests] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
+23:41:37.836 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.example.demo.PipelineServiceTests], using SpringBootContextLoader
+23:41:37.840 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.example.demo.PipelineServiceTests]: class path resource [com/example/demo/PipelineServiceTests-context.xml] does not exist
+23:41:37.840 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.example.demo.PipelineServiceTests]: class path resource [com/example/demo/PipelineServiceTestsContext.groovy] does not exist
+23:41:37.841 [Test worker] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.example.demo.PipelineServiceTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+23:41:37.841 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.demo.PipelineServiceTests]: PipelineServiceTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+23:41:37.956 [Test worker] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [/Users/minjaekam/Desktop/genetica-backend/build/classes/java/main/com/example/demo/DemoApplication.class]
+23:41:37.957 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.demo.DemoApplication for test class com.example.demo.PipelineServiceTests
+23:41:38.081 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [com.example.demo.PipelineServiceTests]: using defaults.
+23:41:38.082 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+23:41:38.097 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@7c2e06dc, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@9349d2e, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@4d80e98b, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@6c0325, org.springframework.test.context.support.DirtiesContextTestExecutionListener@cf8fd12, org.springframework.test.context.transaction.TransactionalTestExecutionListener@2188dc4e, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@6b8ea545, org.springframework.test.context.event.EventPublishingTestExecutionListener@b9be63a, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@40c08a36, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@27cd54cc, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@39f769fd, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@6d09f2cf, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@295c5462, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@64fa1eb1]
+23:41:38.101 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@2ec17e32 testClass = PipelineServiceTests, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@61fbaa48 testClass = PipelineServiceTests, locations = '{}', classes = '{class com.example.demo.DemoApplication}', contextInitializerClasses = '[]', activeProfiles = '{test}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@47bbc34c, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@2e53ae1a, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@1aef6d9d, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@f45b132, org.springframework.boot.test.context.SpringBootTestArgs@1], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> true]], class annotated with @DirtiesContext [false] with mode [null].
+23:41:38.126 [Test worker] DEBUG org.springframework.core.env.StandardEnvironment - Activating profiles [test]
+23:41:38.131 [Test worker] DEBUG org.springframework.test.context.support.TestPropertySourceUtils - Adding inlined properties to environment: {spring.jmx.enabled=false, org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -127,40 +27,41 @@ but was not.
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::        (v2.3.1.RELEASE)
 
-2020-08-02 23:13:15.550  INFO 52545 --- [    Test worker] com.example.demo.PipelineServiceTests    : Starting PipelineServiceTests on MinJaeui-MacBookPro.local with PID 52545 (started by minjaekam in /Users/minjaekam/Desktop/genetica-backend)
-2020-08-02 23:13:15.551  INFO 52545 --- [    Test worker] com.example.demo.PipelineServiceTests    : The following profiles are active: test
-2020-08-02 23:13:16.230  INFO 52545 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
-2020-08-02 23:13:16.232  INFO 52545 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
-2020-08-02 23:13:16.294  INFO 52545 --- [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data JPA - Could not safely identify store assignment for repository candidate interface com.example.demo.repository.mongo.PipelineRepository. If you want this repository to be a JPA repository, consider annotating your entities with one of these annotations: javax.persistence.Entity, javax.persistence.MappedSuperclass (preferred), or consider extending one of the following types with your repository: org.springframework.data.jpa.repository.JpaRepository.
-2020-08-02 23:13:16.334  INFO 52545 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 91ms. Found 5 JPA repository interfaces.
-2020-08-02 23:13:16.364  INFO 52545 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
-2020-08-02 23:13:16.364  INFO 52545 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
-2020-08-02 23:13:16.376  INFO 52545 --- [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data MongoDB - Could not safely identify store assignment for repository candidate interface com.example.demo.repository.mysql.FileRepository. If you want this repository to be a MongoDB repository, consider annotating your entities with one of these annotations: org.springframework.data.mongodb.core.mapping.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.mongodb.repository.MongoRepository.
-2020-08-02 23:13:16.378  INFO 52545 --- [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data MongoDB - Could not safely identify store assignment for repository candidate interface com.example.demo.repository.mysql.JobFileRepository. If you want this repository to be a MongoDB repository, consider annotating your entities with one of these annotations: org.springframework.data.mongodb.core.mapping.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.mongodb.repository.MongoRepository.
-2020-08-02 23:13:16.379  INFO 52545 --- [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data MongoDB - Could not safely identify store assignment for repository candidate interface com.example.demo.repository.mysql.JobRepository. If you want this repository to be a MongoDB repository, consider annotating your entities with one of these annotations: org.springframework.data.mongodb.core.mapping.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.mongodb.repository.MongoRepository.
-2020-08-02 23:13:16.380  INFO 52545 --- [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data MongoDB - Could not safely identify store assignment for repository candidate interface com.example.demo.repository.mysql.RunRepository. If you want this repository to be a MongoDB repository, consider annotating your entities with one of these annotations: org.springframework.data.mongodb.core.mapping.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.mongodb.repository.MongoRepository.
-2020-08-02 23:13:16.381  INFO 52545 --- [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data MongoDB - Could not safely identify store assignment for repository candidate interface com.example.demo.repository.mysql.TaskRepository. If you want this repository to be a MongoDB repository, consider annotating your entities with one of these annotations: org.springframework.data.mongodb.core.mapping.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.mongodb.repository.MongoRepository.
-2020-08-02 23:13:16.387  INFO 52545 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 21ms. Found 1 MongoDB repository interfaces.
-2020-08-02 23:13:17.283  INFO 52545 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2020-08-02 23:13:17.370  INFO 52545 --- [         task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2020-08-02 23:13:17.419  INFO 52545 --- [         task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.17.Final
-2020-08-02 23:13:17.535  INFO 52545 --- [    Test worker] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[127.0.0.1:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms'}
-2020-08-02 23:13:17.571  INFO 52545 --- [         task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
-2020-08-02 23:13:17.642  INFO 52545 --- [127.0.0.1:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:1}] to 127.0.0.1:27017
-2020-08-02 23:13:17.651  INFO 52545 --- [127.0.0.1:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=127.0.0.1:27017, type=STANDALONE, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=8, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=6802319}
-2020-08-02 23:13:17.709  INFO 52545 --- [         task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2020-08-02 23:13:17.755  WARN 52545 --- [    Test worker] o.s.data.convert.CustomConversions       : Registering converter from class java.time.LocalDateTime to class org.joda.time.LocalDateTime as reading converter although it doesn't convert from a store-supported type! You might want to check your annotation setup at the converter implementation.
-2020-08-02 23:13:17.887  WARN 52545 --- [    Test worker] o.s.data.convert.CustomConversions       : Registering converter from class java.time.LocalDateTime to class org.joda.time.LocalDateTime as reading converter although it doesn't convert from a store-supported type! You might want to check your annotation setup at the converter implementation.
-2020-08-02 23:13:18.278  INFO 52545 --- [         task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2020-08-02 23:13:18.316  INFO 52545 --- [         task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-2020-08-02 23:13:18.378  WARN 52545 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2020-08-02 23:13:19.416  INFO 52545 --- [         task-1] org.hibernate.tuple.PojoInstantiator     : HHH000182: No default (no-argument) constructor for class: com.example.demo.domain.mysql.Task (class must be instantiated by Interceptor)
-2020-08-02 23:13:19.421  INFO 52545 --- [    Test worker] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
+2020-08-04 23:41:38.574  INFO 3999 --- [    Test worker] com.example.demo.PipelineServiceTests    : Starting PipelineServiceTests on MinJaeui-MacBookPro.local with PID 3999 (started by minjaekam in /Users/minjaekam/Desktop/genetica-backend)
+2020-08-04 23:41:38.575  INFO 3999 --- [    Test worker] com.example.demo.PipelineServiceTests    : The following profiles are active: test
+2020-08-04 23:41:39.219  INFO 3999 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-08-04 23:41:39.221  INFO 3999 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2020-08-04 23:41:39.271  INFO 3999 --- [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data JPA - Could not safely identify store assignment for repository candidate interface com.example.demo.repository.mongo.PipelineRepository. If you want this repository to be a JPA repository, consider annotating your entities with one of these annotations: javax.persistence.Entity, javax.persistence.MappedSuperclass (preferred), or consider extending one of the following types with your repository: org.springframework.data.jpa.repository.JpaRepository.
+2020-08-04 23:41:39.307  INFO 3999 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 76ms. Found 5 JPA repository interfaces.
+2020-08-04 23:41:39.341  INFO 3999 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-08-04 23:41:39.342  INFO 3999 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2020-08-04 23:41:39.350  INFO 3999 --- [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data MongoDB - Could not safely identify store assignment for repository candidate interface com.example.demo.repository.mysql.FileRepository. If you want this repository to be a MongoDB repository, consider annotating your entities with one of these annotations: org.springframework.data.mongodb.core.mapping.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.mongodb.repository.MongoRepository.
+2020-08-04 23:41:39.351  INFO 3999 --- [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data MongoDB - Could not safely identify store assignment for repository candidate interface com.example.demo.repository.mysql.JobFileRepository. If you want this repository to be a MongoDB repository, consider annotating your entities with one of these annotations: org.springframework.data.mongodb.core.mapping.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.mongodb.repository.MongoRepository.
+2020-08-04 23:41:39.352  INFO 3999 --- [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data MongoDB - Could not safely identify store assignment for repository candidate interface com.example.demo.repository.mysql.JobRepository. If you want this repository to be a MongoDB repository, consider annotating your entities with one of these annotations: org.springframework.data.mongodb.core.mapping.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.mongodb.repository.MongoRepository.
+2020-08-04 23:41:39.353  INFO 3999 --- [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data MongoDB - Could not safely identify store assignment for repository candidate interface com.example.demo.repository.mysql.RunRepository. If you want this repository to be a MongoDB repository, consider annotating your entities with one of these annotations: org.springframework.data.mongodb.core.mapping.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.mongodb.repository.MongoRepository.
+2020-08-04 23:41:39.354  INFO 3999 --- [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data MongoDB - Could not safely identify store assignment for repository candidate interface com.example.demo.repository.mysql.TaskRepository. If you want this repository to be a MongoDB repository, consider annotating your entities with one of these annotations: org.springframework.data.mongodb.core.mapping.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.mongodb.repository.MongoRepository.
+2020-08-04 23:41:39.359  INFO 3999 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 17ms. Found 1 MongoDB repository interfaces.
+2020-08-04 23:41:40.139  INFO 3999 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-08-04 23:41:40.211  INFO 3999 --- [         task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-08-04 23:41:40.274  INFO 3999 --- [         task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.17.Final
+2020-08-04 23:41:40.333  INFO 3999 --- [    Test worker] org.mongodb.driver.cluster               : Cluster created with settings {hosts=[127.0.0.1:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms'}
+2020-08-04 23:41:40.419  INFO 3999 --- [127.0.0.1:27017] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:1, serverValue:25}] to 127.0.0.1:27017
+2020-08-04 23:41:40.427  INFO 3999 --- [127.0.0.1:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=127.0.0.1:27017, type=STANDALONE, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=8, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=5812732}
+2020-08-04 23:41:40.444  INFO 3999 --- [         task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-08-04 23:41:40.493  WARN 3999 --- [    Test worker] o.s.data.convert.CustomConversions       : Registering converter from class java.time.LocalDateTime to class org.joda.time.LocalDateTime as reading converter although it doesn't convert from a store-supported type! You might want to check your annotation setup at the converter implementation.
+2020-08-04 23:41:40.573  INFO 3999 --- [         task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-08-04 23:41:40.585  WARN 3999 --- [    Test worker] o.s.data.convert.CustomConversions       : Registering converter from class java.time.LocalDateTime to class org.joda.time.LocalDateTime as reading converter although it doesn't convert from a store-supported type! You might want to check your annotation setup at the converter implementation.
+2020-08-04 23:41:40.992  WARN 3999 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-08-04 23:41:41.045  INFO 3999 --- [         task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-08-04 23:41:41.069  INFO 3999 --- [         task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2020-08-04 23:41:41.806  INFO 3999 --- [    Test worker] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
+2020-08-04 23:41:41.902  INFO 3999 --- [         task-1] org.hibernate.tuple.PojoInstantiator     : HHH000182: No default (no-argument) constructor for class: com.example.demo.domain.mysql.Task (class must be instantiated by Interceptor)
+2020-08-04 23:41:41.916  INFO 3999 --- [         task-1] org.hibernate.tuple.PojoInstantiator     : HHH000182: No default (no-argument) constructor for class: com.example.demo.domain.mysql.File (class must be instantiated by Interceptor)
 Hibernate: alter table job drop foreign key FK254nno87adyfj7u782rofifjp
-2020-08-02 23:13:19.699  INFO 52545 --- [         task-1] p6spy                                    : #1596377599699 | took 21ms | statement | connection 1| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-08-04 23:41:42.106  INFO 3999 --- [         task-1] p6spy                                    : #1596552102106 | took 18ms | statement | connection 1| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 alter table job drop foreign key FK254nno87adyfj7u782rofifjp
 alter table job drop foreign key FK254nno87adyfj7u782rofifjp;
-2020-08-02 23:13:19.706  WARN 52545 --- [         task-1] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "alter table job drop foreign key FK254nno87adyfj7u782rofifjp" via JDBC Statement
+2020-08-04 23:41:42.111  WARN 3999 --- [         task-1] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "alter table job drop foreign key FK254nno87adyfj7u782rofifjp" via JDBC Statement
 
 org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "alter table job drop foreign key FK254nno87adyfj7u782rofifjp" via JDBC Statement
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67) ~[hibernate-core-5.4.17.Final.jar:5.4.17.Final]
@@ -196,30 +97,30 @@ Caused by: java.sql.SQLSyntaxErrorException: Can't DROP 'FK254nno87adyfj7u782rof
 	... 19 common frames omitted
 
 Hibernate: alter table job_file drop foreign key FK8knl4ogeiq0q72tlsjmegyp8b
-2020-08-02 23:13:19.817  INFO 52545 --- [         task-1] p6spy                                    : #1596377599817 | took 108ms | statement | connection 1| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-08-04 23:41:42.121  INFO 3999 --- [         task-1] p6spy                                    : #1596552102121 | took 8ms | statement | connection 1| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 alter table job_file drop foreign key FK8knl4ogeiq0q72tlsjmegyp8b
 alter table job_file drop foreign key FK8knl4ogeiq0q72tlsjmegyp8b;
 Hibernate: alter table job_file drop foreign key FK3akbfvw7xwgfotqtch0lfsgq0
-2020-08-02 23:13:20.044  INFO 52545 --- [         task-1] p6spy                                    : #1596377600044 | took 224ms | statement | connection 1| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-08-04 23:41:42.130  INFO 3999 --- [         task-1] p6spy                                    : #1596552102130 | took 7ms | statement | connection 1| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 alter table job_file drop foreign key FK3akbfvw7xwgfotqtch0lfsgq0
 alter table job_file drop foreign key FK3akbfvw7xwgfotqtch0lfsgq0;
 Hibernate: alter table run drop foreign key FKg9pq5w6yp29s73hcbcqetj2bj
-2020-08-02 23:13:20.169  INFO 52545 --- [         task-1] p6spy                                    : #1596377600169 | took 124ms | statement | connection 1| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-08-04 23:41:42.139  INFO 3999 --- [         task-1] p6spy                                    : #1596552102139 | took 7ms | statement | connection 1| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 alter table run drop foreign key FKg9pq5w6yp29s73hcbcqetj2bj
 alter table run drop foreign key FKg9pq5w6yp29s73hcbcqetj2bj;
 Hibernate: drop table if exists file
-2020-08-02 23:13:20.207  INFO 52545 --- [         task-1] p6spy                                    : #1596377600207 | took 36ms | statement | connection 1| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-08-04 23:41:42.144  INFO 3999 --- [         task-1] p6spy                                    : #1596552102144 | took 4ms | statement | connection 1| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 drop table if exists file
 drop table if exists file;
 Hibernate: drop table if exists hibernate_sequence
-2020-08-02 23:13:20.224  INFO 52545 --- [         task-1] p6spy                                    : #1596377600224 | took 15ms | statement | connection 1| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-08-04 23:41:42.153  INFO 3999 --- [         task-1] p6spy                                    : #1596552102153 | took 6ms | statement | connection 1| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 drop table if exists hibernate_sequence
 drop table if exists hibernate_sequence;
 Hibernate: drop table if exists job
-2020-08-02 23:13:20.226  INFO 52545 --- [         task-1] p6spy                                    : #1596377600226 | took 1ms | statement | connection 1| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-08-04 23:41:42.156  INFO 3999 --- [         task-1] p6spy                                    : #1596552102156 | took 1ms | statement | connection 1| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 drop table if exists job
 drop table if exists job;
-2020-08-02 23:13:20.227  WARN 52545 --- [         task-1] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "drop table if exists job" via JDBC Statement
+2020-08-04 23:41:42.156  WARN 3999 --- [         task-1] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "drop table if exists job" via JDBC Statement
 
 org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "drop table if exists job" via JDBC Statement
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67) ~[hibernate-core-5.4.17.Final.jar:5.4.17.Final]
@@ -254,50 +155,50 @@ Caused by: java.sql.SQLException: Cannot drop table 'job' referenced by a foreig
 	... 18 common frames omitted
 
 Hibernate: drop table if exists job_file
-2020-08-02 23:13:20.248  INFO 52545 --- [         task-1] p6spy                                    : #1596377600248 | took 20ms | statement | connection 1| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-08-04 23:41:42.163  INFO 3999 --- [         task-1] p6spy                                    : #1596552102163 | took 5ms | statement | connection 1| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 drop table if exists job_file
 drop table if exists job_file;
 Hibernate: drop table if exists run
-2020-08-02 23:13:20.258  INFO 52545 --- [         task-1] p6spy                                    : #1596377600258 | took 8ms | statement | connection 1| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-08-04 23:41:42.170  INFO 3999 --- [         task-1] p6spy                                    : #1596552102170 | took 5ms | statement | connection 1| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 drop table if exists run
 drop table if exists run;
 Hibernate: drop table if exists task
-2020-08-02 23:13:20.291  INFO 52545 --- [         task-1] p6spy                                    : #1596377600291 | took 32ms | statement | connection 1| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-08-04 23:41:42.176  INFO 3999 --- [         task-1] p6spy                                    : #1596552102176 | took 4ms | statement | connection 1| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 drop table if exists task
 drop table if exists task;
 Hibernate: create table file (file_id bigint not null, name varchar(255), sample_id varchar(255), size bigint, primary key (file_id)) engine=InnoDB
-2020-08-02 23:13:20.299  INFO 52545 --- [         task-1] p6spy                                    : #1596377600299 | took 5ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-08-04 23:41:42.188  INFO 3999 --- [         task-1] p6spy                                    : #1596552102188 | took 7ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 create table file (file_id bigint not null, name varchar(255), sample_id varchar(255), size bigint, primary key (file_id)) engine=InnoDB
 create table file (file_id bigint not null, name varchar(255), sample_id varchar(255), size bigint, primary key (file_id)) engine=InnoDB;
 Hibernate: create table hibernate_sequence (next_val bigint) engine=InnoDB
-2020-08-02 23:13:20.305  INFO 52545 --- [         task-1] p6spy                                    : #1596377600305 | took 4ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-08-04 23:41:42.195  INFO 3999 --- [         task-1] p6spy                                    : #1596552102195 | took 6ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 create table hibernate_sequence (next_val bigint) engine=InnoDB
 create table hibernate_sequence (next_val bigint) engine=InnoDB;
 Hibernate: insert into hibernate_sequence values ( 1 )
-2020-08-02 23:13:20.307  INFO 52545 --- [         task-1] p6spy                                    : #1596377600307 | took 1ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-08-04 23:41:42.199  INFO 3999 --- [         task-1] p6spy                                    : #1596552102199 | took 2ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 insert into hibernate_sequence values ( 1 )
 insert into hibernate_sequence values ( 1 );
 Hibernate: insert into hibernate_sequence values ( 1 )
-2020-08-02 23:13:20.309  INFO 52545 --- [         task-1] p6spy                                    : #1596377600309 | took 1ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-08-04 23:41:42.202  INFO 3999 --- [         task-1] p6spy                                    : #1596552102202 | took 1ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 insert into hibernate_sequence values ( 1 )
 insert into hibernate_sequence values ( 1 );
 Hibernate: insert into hibernate_sequence values ( 1 )
-2020-08-02 23:13:20.311  INFO 52545 --- [         task-1] p6spy                                    : #1596377600311 | took 0ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-08-04 23:41:42.205  INFO 3999 --- [         task-1] p6spy                                    : #1596552102205 | took 1ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 insert into hibernate_sequence values ( 1 )
 insert into hibernate_sequence values ( 1 );
 Hibernate: insert into hibernate_sequence values ( 1 )
-2020-08-02 23:13:20.312  INFO 52545 --- [         task-1] p6spy                                    : #1596377600312 | took 1ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-08-04 23:41:42.207  INFO 3999 --- [         task-1] p6spy                                    : #1596552102207 | took 1ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 insert into hibernate_sequence values ( 1 )
 insert into hibernate_sequence values ( 1 );
 Hibernate: insert into hibernate_sequence values ( 1 )
-2020-08-02 23:13:20.314  INFO 52545 --- [         task-1] p6spy                                    : #1596377600314 | took 1ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-08-04 23:41:42.209  INFO 3999 --- [         task-1] p6spy                                    : #1596552102209 | took 1ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 insert into hibernate_sequence values ( 1 )
 insert into hibernate_sequence values ( 1 );
 Hibernate: create table job (job_id bigint not null, finish_time datetime(6), name varchar(255), start_time datetime(6), task_id bigint, primary key (job_id)) engine=InnoDB
-2020-08-02 23:13:20.316  INFO 52545 --- [         task-1] p6spy                                    : #1596377600316 | took 1ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-08-04 23:41:42.211  INFO 3999 --- [         task-1] p6spy                                    : #1596552102211 | took 1ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 create table job (job_id bigint not null, finish_time datetime(6), name varchar(255), start_time datetime(6), task_id bigint, primary key (job_id)) engine=InnoDB
 create table job (job_id bigint not null, finish_time datetime(6), name varchar(255), start_time datetime(6), task_id bigint, primary key (job_id)) engine=InnoDB;
-2020-08-02 23:13:20.316  WARN 52545 --- [         task-1] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "create table job (job_id bigint not null, finish_time datetime(6), name varchar(255), start_time datetime(6), task_id bigint, primary key (job_id)) engine=InnoDB" via JDBC Statement
+2020-08-04 23:41:42.212  WARN 3999 --- [         task-1] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "create table job (job_id bigint not null, finish_time datetime(6), name varchar(255), start_time datetime(6), task_id bigint, primary key (job_id)) engine=InnoDB" via JDBC Statement
 
 org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "create table job (job_id bigint not null, finish_time datetime(6), name varchar(255), start_time datetime(6), task_id bigint, primary key (job_id)) engine=InnoDB" via JDBC Statement
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67) ~[hibernate-core-5.4.17.Final.jar:5.4.17.Final]
@@ -332,22 +233,22 @@ Caused by: java.sql.SQLSyntaxErrorException: Table 'job' already exists
 	... 18 common frames omitted
 
 Hibernate: create table job_file (id bigint not null, io_type varchar(255), target_id varchar(255), file_id bigint, job_id bigint, primary key (id)) engine=InnoDB
-2020-08-02 23:13:20.325  INFO 52545 --- [         task-1] p6spy                                    : #1596377600325 | took 7ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-08-04 23:41:42.224  INFO 3999 --- [         task-1] p6spy                                    : #1596552102224 | took 11ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 create table job_file (id bigint not null, io_type varchar(255), target_id varchar(255), file_id bigint, job_id bigint, primary key (id)) engine=InnoDB
 create table job_file (id bigint not null, io_type varchar(255), target_id varchar(255), file_id bigint, job_id bigint, primary key (id)) engine=InnoDB;
 Hibernate: create table run (run_id bigint not null, finish_time datetime(6), start_time datetime(6), status varchar(255), step_id varchar(255), job_id bigint, primary key (run_id)) engine=InnoDB
-2020-08-02 23:13:20.332  INFO 52545 --- [         task-1] p6spy                                    : #1596377600332 | took 6ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-08-04 23:41:42.238  INFO 3999 --- [         task-1] p6spy                                    : #1596552102238 | took 9ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 create table run (run_id bigint not null, finish_time datetime(6), start_time datetime(6), status varchar(255), step_id varchar(255), job_id bigint, primary key (run_id)) engine=InnoDB
 create table run (run_id bigint not null, finish_time datetime(6), start_time datetime(6), status varchar(255), step_id varchar(255), job_id bigint, primary key (run_id)) engine=InnoDB;
 Hibernate: create table task (task_id bigint not null, finish_time datetime(6), name varchar(255), pipeline_id varchar(255), start_time datetime(6), primary key (task_id)) engine=InnoDB
-2020-08-02 23:13:20.339  INFO 52545 --- [         task-1] p6spy                                    : #1596377600339 | took 5ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-08-04 23:41:42.246  INFO 3999 --- [         task-1] p6spy                                    : #1596552102246 | took 6ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 create table task (task_id bigint not null, finish_time datetime(6), name varchar(255), pipeline_id varchar(255), start_time datetime(6), primary key (task_id)) engine=InnoDB
 create table task (task_id bigint not null, finish_time datetime(6), name varchar(255), pipeline_id varchar(255), start_time datetime(6), primary key (task_id)) engine=InnoDB;
 Hibernate: alter table job add constraint FK254nno87adyfj7u782rofifjp foreign key (task_id) references task (task_id)
-2020-08-02 23:13:20.346  INFO 52545 --- [         task-1] p6spy                                    : #1596377600346 | took 6ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-08-04 23:41:42.255  INFO 3999 --- [         task-1] p6spy                                    : #1596552102255 | took 7ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 alter table job add constraint FK254nno87adyfj7u782rofifjp foreign key (task_id) references task (task_id)
 alter table job add constraint FK254nno87adyfj7u782rofifjp foreign key (task_id) references task (task_id);
-2020-08-02 23:13:20.347  WARN 52545 --- [         task-1] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "alter table job add constraint FK254nno87adyfj7u782rofifjp foreign key (task_id) references task (task_id)" via JDBC Statement
+2020-08-04 23:41:42.256  WARN 3999 --- [         task-1] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "alter table job add constraint FK254nno87adyfj7u782rofifjp foreign key (task_id) references task (task_id)" via JDBC Statement
 
 org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "alter table job add constraint FK254nno87adyfj7u782rofifjp foreign key (task_id) references task (task_id)" via JDBC Statement
 	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67) ~[hibernate-core-5.4.17.Final.jar:5.4.17.Final]
@@ -369,7 +270,7 @@ org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "a
 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) ~[na:1.8.0_192]
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) ~[na:1.8.0_192]
 	at java.lang.Thread.run(Thread.java:748) ~[na:1.8.0_192]
-Caused by: java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`test`.`#sql-239_12`, CONSTRAINT `FK254nno87adyfj7u782rofifjp` FOREIGN KEY (`task_id`) REFERENCES `task` (`task_id`))
+Caused by: java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`test`.`#sql-239_d0`, CONSTRAINT `FK254nno87adyfj7u782rofifjp` FOREIGN KEY (`task_id`) REFERENCES `task` (`task_id`))
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:117) ~[mysql-connector-java-8.0.20.jar:8.0.20]
 	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97) ~[mysql-connector-java-8.0.20.jar:8.0.20]
 	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-java-8.0.20.jar:8.0.20]
@@ -382,124 +283,24 @@ Caused by: java.sql.SQLIntegrityConstraintViolationException: Cannot add or upda
 	... 18 common frames omitted
 
 Hibernate: alter table job_file add constraint FK8knl4ogeiq0q72tlsjmegyp8b foreign key (file_id) references file (file_id)
-2020-08-02 23:13:20.369  INFO 52545 --- [         task-1] p6spy                                    : #1596377600369 | took 20ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-08-04 23:41:42.275  INFO 3999 --- [         task-1] p6spy                                    : #1596552102275 | took 18ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 alter table job_file add constraint FK8knl4ogeiq0q72tlsjmegyp8b foreign key (file_id) references file (file_id)
 alter table job_file add constraint FK8knl4ogeiq0q72tlsjmegyp8b foreign key (file_id) references file (file_id);
 Hibernate: alter table job_file add constraint FK3akbfvw7xwgfotqtch0lfsgq0 foreign key (job_id) references job (job_id)
-2020-08-02 23:13:20.386  INFO 52545 --- [         task-1] p6spy                                    : #1596377600386 | took 16ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-08-04 23:41:42.294  INFO 3999 --- [         task-1] p6spy                                    : #1596552102294 | took 18ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 alter table job_file add constraint FK3akbfvw7xwgfotqtch0lfsgq0 foreign key (job_id) references job (job_id)
 alter table job_file add constraint FK3akbfvw7xwgfotqtch0lfsgq0 foreign key (job_id) references job (job_id);
 Hibernate: alter table run add constraint FKg9pq5w6yp29s73hcbcqetj2bj foreign key (job_id) references job (job_id)
-2020-08-02 23:13:20.402  INFO 52545 --- [         task-1] p6spy                                    : #1596377600402 | took 14ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
+2020-08-04 23:41:42.311  INFO 3999 --- [         task-1] p6spy                                    : #1596552102311 | took 15ms | statement | connection 2| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
 alter table run add constraint FKg9pq5w6yp29s73hcbcqetj2bj foreign key (job_id) references job (job_id)
 alter table run add constraint FKg9pq5w6yp29s73hcbcqetj2bj foreign key (job_id) references job (job_id);
-2020-08-02 23:13:20.403  INFO 52545 --- [         task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2020-08-02 23:13:20.410  INFO 52545 --- [         task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2020-08-02 23:13:20.817  INFO 52545 --- [    Test worker] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
-2020-08-02 23:13:20.826  INFO 52545 --- [    Test worker] com.example.demo.PipelineServiceTests    : Started PipelineServiceTests in 5.598 seconds (JVM running for 6.791)
-2020-08-02 23:13:20.938  INFO 52545 --- [    Test worker] org.mongodb.driver.connection            : Opened connection [connectionId{localValue:2, serverValue:2}] to 127.0.0.1:27017
-Hibernate: select next_val as id_val from hibernate_sequence for update
-2020-08-02 23:13:21.002  INFO 52545 --- [    Test worker] p6spy                                    : #1596377601002 | took 4ms | statement | connection 4| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
-select next_val as id_val from hibernate_sequence for update
-select next_val as id_val from hibernate_sequence for update;
-Hibernate: update hibernate_sequence set next_val= ? where next_val=?
-2020-08-02 23:13:21.005  INFO 52545 --- [    Test worker] p6spy                                    : #1596377601005 | took 0ms | statement | connection 4| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
-update hibernate_sequence set next_val= ? where next_val=?
-update hibernate_sequence set next_val= 2 where next_val=1;
-2020-08-02 23:13:21.007  INFO 52545 --- [    Test worker] p6spy                                    : #1596377601007 | took 1ms | commit | connection 4| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
-
-;
-Hibernate: insert into file (name, sample_id, size, file_id) values (?, ?, ?, ?)
-2020-08-02 23:13:21.034  INFO 52545 --- [    Test worker] p6spy                                    : #1596377601034 | took 2ms | statement | connection 3| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
-insert into file (name, sample_id, size, file_id) values (?, ?, ?, ?)
-insert into file (name, sample_id, size, file_id) values ('human_g1k_v37_decoy.fasta.tar', NULL, 100000, 1);
-2020-08-02 23:13:21.037  INFO 52545 --- [    Test worker] p6spy                                    : #1596377601037 | took 0ms | commit | connection 3| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
-
-;
-Hibernate: select next_val as id_val from hibernate_sequence for update
-2020-08-02 23:13:21.040  INFO 52545 --- [    Test worker] p6spy                                    : #1596377601040 | took 0ms | statement | connection 6| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
-select next_val as id_val from hibernate_sequence for update
-select next_val as id_val from hibernate_sequence for update;
-Hibernate: update hibernate_sequence set next_val= ? where next_val=?
-2020-08-02 23:13:21.041  INFO 52545 --- [    Test worker] p6spy                                    : #1596377601041 | took 0ms | statement | connection 6| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
-update hibernate_sequence set next_val= ? where next_val=?
-update hibernate_sequence set next_val= 3 where next_val=2;
-2020-08-02 23:13:21.042  INFO 52545 --- [    Test worker] p6spy                                    : #1596377601042 | took 0ms | commit | connection 6| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
-
-;
-Hibernate: insert into file (name, sample_id, size, file_id) values (?, ?, ?, ?)
-2020-08-02 23:13:21.044  INFO 52545 --- [    Test worker] p6spy                                    : #1596377601044 | took 0ms | statement | connection 5| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
-insert into file (name, sample_id, size, file_id) values (?, ?, ?, ?)
-insert into file (name, sample_id, size, file_id) values ('TESTX_H7YRLADXX_S1_L001_R1_001.fastq.gz', 'TESTX_H7YRLADXX_S1_L001', 1000, 2);
-2020-08-02 23:13:21.045  INFO 52545 --- [    Test worker] p6spy                                    : #1596377601045 | took 0ms | commit | connection 5| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
-
-;
-Hibernate: select next_val as id_val from hibernate_sequence for update
-2020-08-02 23:13:21.048  INFO 52545 --- [    Test worker] p6spy                                    : #1596377601048 | took 0ms | statement | connection 8| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
-select next_val as id_val from hibernate_sequence for update
-select next_val as id_val from hibernate_sequence for update;
-Hibernate: update hibernate_sequence set next_val= ? where next_val=?
-2020-08-02 23:13:21.049  INFO 52545 --- [    Test worker] p6spy                                    : #1596377601049 | took 0ms | statement | connection 8| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
-update hibernate_sequence set next_val= ? where next_val=?
-update hibernate_sequence set next_val= 4 where next_val=3;
-2020-08-02 23:13:21.050  INFO 52545 --- [    Test worker] p6spy                                    : #1596377601050 | took 0ms | commit | connection 8| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
-
-;
-Hibernate: insert into file (name, sample_id, size, file_id) values (?, ?, ?, ?)
-2020-08-02 23:13:21.052  INFO 52545 --- [    Test worker] p6spy                                    : #1596377601052 | took 0ms | statement | connection 7| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
-insert into file (name, sample_id, size, file_id) values (?, ?, ?, ?)
-insert into file (name, sample_id, size, file_id) values ('TESTX_H7YRLADXX_S1_L001_R2_001.fastq.gz', 'TESTX_H7YRLADXX_S1_L001', 1000, 3);
-2020-08-02 23:13:21.053  INFO 52545 --- [    Test worker] p6spy                                    : #1596377601053 | took 0ms | commit | connection 7| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
-
-;
-Hibernate: select next_val as id_val from hibernate_sequence for update
-2020-08-02 23:13:21.056  INFO 52545 --- [    Test worker] p6spy                                    : #1596377601056 | took 0ms | statement | connection 10| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
-select next_val as id_val from hibernate_sequence for update
-select next_val as id_val from hibernate_sequence for update;
-Hibernate: update hibernate_sequence set next_val= ? where next_val=?
-2020-08-02 23:13:21.058  INFO 52545 --- [    Test worker] p6spy                                    : #1596377601058 | took 0ms | statement | connection 10| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
-update hibernate_sequence set next_val= ? where next_val=?
-update hibernate_sequence set next_val= 5 where next_val=4;
-2020-08-02 23:13:21.059  INFO 52545 --- [    Test worker] p6spy                                    : #1596377601059 | took 0ms | commit | connection 10| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
-
-;
-Hibernate: insert into file (name, sample_id, size, file_id) values (?, ?, ?, ?)
-2020-08-02 23:13:21.061  INFO 52545 --- [    Test worker] p6spy                                    : #1596377601061 | took 0ms | statement | connection 9| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
-insert into file (name, sample_id, size, file_id) values (?, ?, ?, ?)
-insert into file (name, sample_id, size, file_id) values ('TESTX_H7YRLADXX_S1_L002_R1_001.fastq.gz', 'TESTX_H7YRLADXX_S1_L002', 1000, 4);
-2020-08-02 23:13:21.063  INFO 52545 --- [    Test worker] p6spy                                    : #1596377601063 | took 0ms | commit | connection 9| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
-
-;
-Hibernate: select next_val as id_val from hibernate_sequence for update
-2020-08-02 23:13:21.066  INFO 52545 --- [    Test worker] p6spy                                    : #1596377601066 | took 0ms | statement | connection 12| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
-select next_val as id_val from hibernate_sequence for update
-select next_val as id_val from hibernate_sequence for update;
-Hibernate: update hibernate_sequence set next_val= ? where next_val=?
-2020-08-02 23:13:21.067  INFO 52545 --- [    Test worker] p6spy                                    : #1596377601067 | took 0ms | statement | connection 12| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
-update hibernate_sequence set next_val= ? where next_val=?
-update hibernate_sequence set next_val= 6 where next_val=5;
-2020-08-02 23:13:21.068  INFO 52545 --- [    Test worker] p6spy                                    : #1596377601068 | took 0ms | commit | connection 12| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
-
-;
-Hibernate: insert into file (name, sample_id, size, file_id) values (?, ?, ?, ?)
-2020-08-02 23:13:21.070  INFO 52545 --- [    Test worker] p6spy                                    : #1596377601070 | took 0ms | statement | connection 11| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
-insert into file (name, sample_id, size, file_id) values (?, ?, ?, ?)
-insert into file (name, sample_id, size, file_id) values ('TESTX_H7YRLADXX_S1_L002_R2_001.fastq.gz', 'TESTX_H7YRLADXX_S1_L002', 1000, 5);
-2020-08-02 23:13:21.071  INFO 52545 --- [    Test worker] p6spy                                    : #1596377601071 | took 0ms | commit | connection 11| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
-
-;
-Hibernate: select file0_.file_id as file_id1_0_, file0_.name as name2_0_, file0_.sample_id as sample_i3_0_, file0_.size as size4_0_ from file file0_ where file0_.file_id in (?)
-2020-08-02 23:13:21.228  INFO 52545 --- [    Test worker] p6spy                                    : #1596377601228 | took 0ms | statement | connection 13| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
-select file0_.file_id as file_id1_0_, file0_.name as name2_0_, file0_.sample_id as sample_i3_0_, file0_.size as size4_0_ from file file0_ where file0_.file_id in (?)
-select file0_.file_id as file_id1_0_, file0_.name as name2_0_, file0_.sample_id as sample_i3_0_, file0_.size as size4_0_ from file file0_ where file0_.file_id in (1);
-Hibernate: select file0_.file_id as file_id1_0_, file0_.name as name2_0_, file0_.sample_id as sample_i3_0_, file0_.size as size4_0_ from file file0_ where file0_.file_id in (?)
-2020-08-02 23:13:21.235  INFO 52545 --- [    Test worker] p6spy                                    : #1596377601235 | took 0ms | statement | connection 14| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
-select file0_.file_id as file_id1_0_, file0_.name as name2_0_, file0_.sample_id as sample_i3_0_, file0_.size as size4_0_ from file file0_ where file0_.file_id in (?)
-select file0_.file_id as file_id1_0_, file0_.name as name2_0_, file0_.sample_id as sample_i3_0_, file0_.size as size4_0_ from file file0_ where file0_.file_id in (2);
-Hibernate: select file0_.file_id as file_id1_0_, file0_.name as name2_0_, file0_.sample_id as sample_i3_0_, file0_.size as size4_0_ from file file0_ where file0_.file_id in (?)
-2020-08-02 23:13:21.237  INFO 52545 --- [    Test worker] p6spy                                    : #1596377601237 | took 0ms | statement | connection 15| url jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC
-select file0_.file_id as file_id1_0_, file0_.name as name2_0_, file0_.sample_id as sample_i3_0_, file0_.size as size4_0_ from file file0_ where file0_.file_id in (?)
-select file0_.file_id as file_id1_0_, file0_.name as name2_0_, file0_.sample_id as sample_i3_0_, file0_.size as size4_0_ from file file0_ where file0_.file_id in (3);
+2020-08-04 23:41:42.313  INFO 3999 --- [         task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-08-04 23:41:42.322  INFO 3999 --- [         task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-08-04 23:41:42.807  INFO 3999 --- [    Test worker] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+2020-08-04 23:41:42.818  INFO 3999 --- [    Test worker] com.example.demo.PipelineServiceTests    : Started PipelineServiceTests in 4.675 seconds (JVM running for 5.89)
+Optional[com.example.demo.domain.mongo.Pipeline@2eb425aa]@@@
+{input_read_2=[com.example.demo.domain.mysql.File@3a4e5b1c, com.example.demo.domain.mysql.File@3558a08a], input_read_1=[com.example.demo.domain.mysql.File@15f7112a, com.example.demo.domain.mysql.File@68fa3e2e], input_tar_with_reference=[com.example.demo.domain.mysql.File@20a41e96]}
+{input_read_2=[com.example.demo.domain.mysql.File@3a4e5b1c, com.example.demo.domain.mysql.File@3558a08a], input_read_1=[com.example.demo.domain.mysql.File@15f7112a, com.example.demo.domain.mysql.File@68fa3e2e], input_tar_with_reference=[com.example.demo.domain.mysql.File@20a41e96]}
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

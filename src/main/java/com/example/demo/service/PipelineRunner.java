@@ -37,6 +37,7 @@ public class PipelineRunner {
         Map<String, List<File>> inputsMap = createInputFileMap(request.getData());
         int maxLen = getMaxNumOfInputFile(inputsMap);
 
+        System.out.println(pipelineRepository.findById("123") + "@@@");
         Pipeline pipeline = pipelineRepository.findById(request.getPipelineId()).orElseThrow(() -> new RuntimeException());
         Task newTask = new Task(pipeline);
         taskRepository.save(newTask);
@@ -46,18 +47,19 @@ public class PipelineRunner {
             jobRepository.save(job);
 
             List<Run> runs = pipeline.getAllRuns(job);
+            Run initializeRun = new Run(job, "");
+            runs.add(initializeRun);
             runRepository.saveAll(runs);
 
+            System.out.println(inputsMap);
             Map<String, File> jobInputFileMap = getEachJobInputFileMap(inputsMap, i);
             jobFileRepository.saveAll(createJobFilesFromInputsMap(jobInputFileMap, job));
 
             List<V1EnvVar> kubeEnvs = createKubeEnvsFromInputFile(jobInputFileMap);
 
-            kubeJobs.add()
+            kubeJobs.add(new KubeJob(newTask.getId(), job.getId(), initializeRun.getId(), kubeEnvs));
         }
-        return taskData;
-
-
+        return kubeJobs;
     }
 
 

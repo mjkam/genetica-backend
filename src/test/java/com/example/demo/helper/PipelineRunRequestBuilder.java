@@ -8,7 +8,7 @@ import com.example.demo.dto.request.RunPipelineRequest;
 import java.util.Arrays;
 import java.util.List;
 
-public class RequestManager {
+public class PipelineRunRequestBuilder {
     public static RunPipelineRequest createRunPipelineRequest(Pipeline pipeline) {
         RunPipelineRequest request = new RunPipelineRequest();
 
@@ -18,13 +18,13 @@ public class RequestManager {
 
         InputFileInfo insertFileInfo2 = new InputFileInfo();
         insertFileInfo2.setId("input_read_1");
-        insertFileInfo2.setFileIds(Arrays.asList(2L));
+        insertFileInfo2.setFileIds(Arrays.asList(2L, 4L));
 
         InputFileInfo insertFileInfo3 = new InputFileInfo();
         insertFileInfo3.setId("input_read_2");
-        insertFileInfo3.setFileIds(Arrays.asList(3L));
+        insertFileInfo3.setFileIds(Arrays.asList(3L, 5L));
 
-        request.setPipelineId(pipeline.getId());
+        request.setPipelineId("");
         request.setData(Arrays.asList(insertFileInfo1, insertFileInfo2, insertFileInfo3));
 
         return request;

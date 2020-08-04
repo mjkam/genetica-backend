@@ -45,7 +45,7 @@ public class TaskData {
             List<Run> filteredRuns = runs.stream().filter(r -> r.getJob().equals(job)).collect(Collectors.toList());
             for(Run filteredRun: filteredRuns) {
                 List<V1EnvVar> jobEnvs = this.envs.get(job);
-                kubeJobs.add(new KubeJob(this.task.getId(), job.getId(), filteredRun.getId(), KubeJobType.INITIALIZER, jobEnvs));
+                kubeJobs.add(new KubeJob(this.task.getId(), job.getId(), filteredRun.getId(), jobEnvs));
             }
         }
         return kubeJobs;

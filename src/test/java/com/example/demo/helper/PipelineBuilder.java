@@ -5,7 +5,7 @@ import com.example.demo.repository.mongo.PipelineRepository;
 
 import java.util.Arrays;
 
-public class PipelineManager {
+public class PipelineBuilder {
     public static Pipeline createSmallPipeline() {
         ToolIO tio6 = ToolIO.builder().id("input_tar_with_reference").label("Input archive file with fasta").type("file").build();
         ToolIO tio7 = ToolIO.builder().id("output_fasta").label("Unpacked fasta file").type("file").script("${input_tar_with_reference::${#input_tar_with_reference}-4}").build();
@@ -38,14 +38,14 @@ public class PipelineManager {
                 .label("Untar fasta")
                 .in(Arrays.asList(StepIO.builder().id("input_tar_with_reference").source("input_tar_with_reference").build()))
                 .out(Arrays.asList(StepIO.builder().id("output_fasta").script("${input_tar_with_reference::${#input_tar_with_reference}-4}").build()))
-                .run(unTarTool).build();
+                .tool(unTarTool).build();
 
         Step step2 = Step.builder()
                 .id("bwa_mem_bundle_0_7_17")
                 .label("BWA MEM Bundle 0.7.17")
                 .in(Arrays.asList(new StepIO("reference_fasta", "untar_fasta.output_fasta", ""), new StepIO("input_read_1", "input_read_1", ""), new StepIO("input_read_2", "input_read_2", "")))
                 .out(Arrays.asList(new StepIO("aligned_bam", "", "${sample}_sorted.bam"), new StepIO("aligned_bam_bai", "", "${sample}_sorted.bam.bai")))
-                .run(bwaTool).build();
+                .tool(bwaTool).build();
 
 
         Pipeline pipe = Pipeline.builder()
