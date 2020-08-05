@@ -20,7 +20,7 @@ import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 @Service
-public class KubeClientService {
+public class KubeClient {
     public void addLabelToNode(String nodeName, Long jobId) {
         try {
             ApiClient strategicMergePatchClient =

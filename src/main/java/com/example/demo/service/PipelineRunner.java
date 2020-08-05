@@ -7,7 +7,6 @@ import com.example.demo.dto.request.InputFileInfo;
 import com.example.demo.dto.request.RunPipelineRequest;
 import com.example.demo.repository.mongo.PipelineRepository;
 import com.example.demo.repository.mysql.*;
-import com.example.demo.service.helper.TaskData;
 import com.example.demo.util.KubeUtil;
 import io.kubernetes.client.openapi.models.V1EnvVar;
 import lombok.RequiredArgsConstructor;
@@ -27,7 +26,7 @@ public class PipelineRunner {
     private final JobRepository jobRepository;
     private final JobFileRepository jobFileRepository;
     private final RunRepository runRepository;
-    private final KubeClientService kubeClientService;
+    private final KubeClient kubeClientService;
     private final TaskRepository taskRepository;
 
 

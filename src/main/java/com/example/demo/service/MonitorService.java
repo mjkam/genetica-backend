@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @Transactional
 public class MonitorService {
-    private final KubeClientService kubeClientService;
+    private final KubeClient kubeClientService;
     private final PipelineRepository pipelineRepository;
     private final RunRepository runRepository;
     private final JobFileRepository jobFileRepository;
@@ -32,6 +32,14 @@ public class MonitorService {
     private final FileRepository fileRepository;
 
     public void handleJobEvent(Long taskId, Long jobId, Long runId, List<V1EnvVar> kubeEnvs, JobStatus resultStatus, String nodeName, KubeJobType kubeJobType) {
+        //해당 잡 찾아서 상태 업데이트
+        //끝난 잡의 아웃풋 파일이 최종 아웃풋 파일이면 파일 생성 및 잡파일 추가
+        //
+        //다음 런 찾아서 실행
+        //환경변수 input, output 용 등록해줘야함
+
+
+
         Run run = runRepository.findRunWithJoinById(runId);
         Job job = run.getJob();
         Task task = job.getTask();

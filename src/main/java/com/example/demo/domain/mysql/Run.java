@@ -38,6 +38,11 @@ public class Run {
         this.status = JobStatus.Queued;
     }
 
+    public boolean isSucceeded() {
+        if(status.equals(JobStatus.Succeeded)) return true;
+        return false;
+    }
+
     public void changeStatus(JobStatus status) {
         this.status = status;
 

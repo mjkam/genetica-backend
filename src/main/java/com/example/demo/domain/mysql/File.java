@@ -1,6 +1,7 @@
 package com.example.demo.domain.mysql;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Column;
@@ -10,6 +11,7 @@ import javax.persistence.Id;
 
 @Entity
 @Getter
+@NoArgsConstructor
 public class File {
     @Id
     @GeneratedValue
