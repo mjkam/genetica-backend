@@ -1,7 +1,7 @@
 package com.example.demo;
 
 import com.example.demo.domain.mongo.Pipeline;
-import com.example.demo.domain.mysql.File;
+import com.example.demo.domain.mysql.*;
 import com.example.demo.dto.KubeJob;
 import com.example.demo.dto.request.RunPipelineRequest;
 import com.example.demo.helper.FileBuilder;
@@ -11,10 +11,11 @@ import com.example.demo.repository.mongo.PipelineRepository;
 import com.example.demo.repository.mysql.*;
 import com.example.demo.service.PipelineRunner;
 import io.kubernetes.client.openapi.models.V1EnvVar;
+import org.hamcrest.Matchers;
+import org.hamcrest.collection.IsCollectionWithSize;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
+import org.mockito.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
@@ -26,9 +27,10 @@ import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.internal.bytebuddy.matcher.ElementMatchers.is;
-import static org.mockito.ArgumentMatchers.anyLong;
-import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 
 @ActiveProfiles("test")
 @SpringBootTest
@@ -90,5 +92,20 @@ public class PipelineServiceTests {
         assertThat(kubeJobs.size()).isEqualTo(2);
         assertThat(kubeJobs.get(0).getKubeEnvs()).extracting("name").containsAll(names);
         assertThat(kubeJobs).extracting("kubeEnvs").flatExtracting(l -> (List<V1EnvVar>)l).extracting("value").containsAll(values);
+
+        verify(taskRepository, times(1)).save(any(Task.class));
+        verify(jobRepository, times(2)).save(any(Job.class));
+
+        ArgumentCaptor<List> captor = ArgumentCaptor.forClass(List.class);
+        verify(runRepository, times(2)).saveAll(captor.capture());
+        assertThat(captor.getAllValues().size()).isEqualTo(2);
+        assertThat(captor.getAllValues().get(0).size()).isEqualTo(3);
+        assertThat(captor.getAllValues().get(1).size()).isEqualTo(3);
+
+        captor = ArgumentCaptor.forClass(List.class);
+        verify(jobFileRepository, times(2)).saveAll(captor.capture());
+        assertThat(captor.getAllValues().size()).isEqualTo(2);
+        assertThat(captor.getAllValues().get(0).size()).isEqualTo(3);
+        assertThat(captor.getAllValues().get(1).size()).isEqualTo(3);
     }
 }
