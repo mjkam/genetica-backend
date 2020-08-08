@@ -12,7 +12,6 @@ import java.util.stream.Collectors;
 
 @Getter
 public class KubeJob {
-    private Long taskId;
     private Long jobId;
     private Long runId;
     private KubeJobType kubeJobType;
@@ -20,8 +19,7 @@ public class KubeJob {
     private String imageName;
     private List<String> command;
 
-    public KubeJob(Long taskId, Long jobId, Long runId, KubeJobType kubeJobType, List<V1EnvVar> kubeEnvs, String imageName, List<String> command) {
-        this.taskId = taskId;
+    KubeJob(Long jobId, Long runId, KubeJobType kubeJobType, List<V1EnvVar> kubeEnvs, String imageName, List<String> command) {
         this.jobId = jobId;
         this.runId = runId;
         this.kubeJobType = kubeJobType;
@@ -30,14 +28,14 @@ public class KubeJob {
         this.command = command;
     }
 
-    public KubeJob(Long taskId, Long jobId, Long runId, List<V1EnvVar> jobEnvs) {
-        this.taskId = taskId;
-        this.jobId = jobId;
-        this.runId = runId;
-        this.kubeJobType = KubeJobType.INITIALIZER;
-        this.kubeEnvs = jobEnvs;
-        this.imageName = "338282184009.dkr.ecr.ap-northeast-2.amazonaws.com/myrepo:genetica_base";
-        this.command = Arrays.asList("rm -rf *");
+    public static KubeJob createInitializer(Long jobId, Long runId, List<V1EnvVar> envs) {
+        String baseImageName = "338282184009.dkr.ecr.ap-northeast-2.amazonaws.com/myrepo:genetica_base";
+        List<String> commands = Arrays.asList("rm -rf *");
+        return new KubeJob(jobId, runId, KubeJobType.INITIALIZER, envs, baseImageName, commands);
+    }
+
+    public static KubeJob createJob(Long jobId, Long runId, List<V1EnvVar> envs, String imageName, List<String> commands) {
+        return new KubeJob(jobId, runId, KubeJobType.ANALYSIS, envs, imageName, commands);
     }
 
     public String getCommandStr() {
@@ -47,7 +45,6 @@ public class KubeJob {
     public Map<String, String> getLabels() {
         Map<String, String> labels = new HashMap<>();
         labels.put("type", kubeJobType.toString());
-        labels.put("taskId", String.valueOf(taskId));
         labels.put("jobId", String.valueOf(jobId));
         labels.put("runId", String.valueOf(runId));
         return labels;
@@ -58,7 +55,7 @@ public class KubeJob {
     }
 
     public String getJobName() {
-        return String.format("%d-%d-%d", taskId, jobId, runId);
+        return String.format("%d-%d", jobId, runId);
     }
 
     public Map<String, String> getNodeSelector() {
@@ -77,4 +74,5 @@ public class KubeJob {
         }
         return limit;
     }
+    
 }

@@ -1,12 +1,14 @@
 package com.example.demo.domain.mongo;
 
+import com.example.demo.domain.mysql.JobFile;
 import com.example.demo.domain.mysql.Run;
+import com.example.demo.service.AwsCommand;
+import com.example.demo.util.Bash;
 import io.kubernetes.client.openapi.models.V1EnvVar;
 import lombok.*;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 
 @Getter
@@ -25,12 +27,30 @@ public class Step {
         return in.stream().allMatch(input -> input.isReady(finishedRuns));
     }
 
-    public Map<String,String> createEnvMap(List<V1EnvVar> kubeEnvs) {
+    public Map<String,String> createEnvMap(List<JobFile> jobFiles) {
         Map<String, String> env = new HashMap<>();
         for(StepIO io: in) {
-            V1EnvVar kubeEnv = kubeEnvs.stream().filter(e -> e.getName().equals(io.getSource())).findFirst().orElseThrow(() -> new RuntimeException());
-            env.put(io.getId(), kubeEnv.getValue());
+            JobFile inputJobFile = jobFiles.stream().filter(jf -> jf.getTargetId().equals(io.getSource())).findFirst().orElseThrow(() -> new RuntimeException());
+            env.put(io.getId(), inputJobFile.getFile().getName());
         }
         return env;
+    }
+
+    public List<String> createCopyInputCmds(Map<String, String> bashEnvs) {
+        List<String> inputFileNames = in.stream().map(input -> bashEnvs.get(input.getId())).collect(Collectors.toList());
+        return inputFileNames.stream().map(name -> AwsCommand.createFileDownloadCmd(name)).collect(Collectors.toList());
+    }
+
+    public String getImageName() {
+        return tool.getImage();
+    }
+
+    public String getCmd(Map<String, String> bashEnvs) {
+        return Bash.runEcho(bashEnvs, tool.getCommand());
+    }
+
+    public List<String> createCopyOutputCmds(Map<String, String> bashEnvs) {
+        List<String> fileNames = out.stream().map(o -> Bash.runEcho(bashEnvs, o.getScript())).collect(Collectors.toList());
+        return fileNames.stream().map(name -> AwsCommand.createFileUploadCmd(name)).collect(Collectors.toList());
     }
 }

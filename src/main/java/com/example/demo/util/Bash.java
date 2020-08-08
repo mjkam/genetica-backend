@@ -1,41 +1,18 @@
-package com.example.demo.service;
+package com.example.demo.util;
 
-import org.springframework.stereotype.Service;
+import com.example.demo.domain.mysql.JobFile;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.List;
 import java.util.Map;
 
-@Service
-public class CommandLineService {
-
-//    public String getEchoString(List<JobEnv> jobEnvs, String script) {
-//        ProcessBuilder pb = new ProcessBuilder("/bin/bash", "-c", "echo " + script);
-//        Map<String, String> envMap = pb.environment();
-//        for(JobEnv env: jobEnvs) {
-//            envMap.put(env.getEnvKey(), env.getEnvVal());
-//        }
-//
-//        try {
-//            Process p = pb.start();
-//            String output = loadStream(p.getInputStream());
-//            String error = loadStream(p.getErrorStream());
-//            int rc = p.waitFor();
-//            //System.out.println("Process ended with rc=" + rc);
-//            //System.out.println("\nStandard Output:\n");
-//            //System.out.println(output);
-//            //System.out.println("\nStandard Error:\n");
-//            //System.out.println(error);
-//            return output.replace("\n", "").replace("\r", "");
-//        } catch (Exception e) {
-//            throw new RuntimeException();
-//        }
-//    }
-    public String getEchoString(Map<String, String> envs, String script) {
+public class Bash {
+    public static String runEcho(Map<String, String> env, String script) {
         ProcessBuilder pb = new ProcessBuilder("/bin/bash", "-c", "echo " + script);
         Map<String, String> envMap = pb.environment();
-        for(Map.Entry<String, String> e: envs.entrySet()) {
+        for(Map.Entry<String, String> e: env.entrySet()) {
             envMap.put(e.getKey(), e.getValue());
         }
 

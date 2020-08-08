@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface JobFileRepository extends JpaRepository<JobFile, Long> {
     @Query("SELECT jf FROM JobFile jf JOIN FETCH jf.file f WHERE jf.job.id = :jobId")
-    List<JobFile> findJobFilesInJob(Long jobId);
+    List<JobFile> findByJobId(Long jobId);
 }

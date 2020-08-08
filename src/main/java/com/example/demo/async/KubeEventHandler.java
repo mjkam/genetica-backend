@@ -32,7 +32,12 @@ public class KubeEventHandler implements Runnable {
         Long taskId = Long.valueOf(labels.get("taskId"));
         Long jobId = Long.valueOf(labels.get("jobId"));
         Long runId = Long.valueOf(labels.get("runId"));
+        String sampleId = null;
+        Optional<V1EnvVar> env  = kubeEnvs.stream().filter(e -> e.getName().equals("sample")).findAny();
+        if(env.isPresent()) {
+            sampleId = env.get().getValue();
+        }
 
-        monitorService.handleJobEvent(taskId, jobId, runId, kubeEnvs, resultStatus, nodeName, kubeJobType);
+        monitorService.handleJobEvent(runId, sampleId, resultStatus, nodeName, kubeJobType);
     }
 }
