@@ -8,7 +8,7 @@ public class AwsCommand {
     }
 
     public static String createFileUploadCmd(String fileName) {
-        return String.format("aws s3 %s s3://genetica/", fileName);
+        return String.format("aws s3 cp %s s3://genetica/", fileName);
     }
 }
 

@@ -14,7 +14,6 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-@Transactional
 public class MonitorService {
     private final JobEventHandler jobEventHandler;
     private final RunRepository runRepository;

@@ -1,6 +1,5 @@
 package com.example.demo.service;
 
-import com.example.demo.domain.mysql.Job;
 import com.example.demo.dto.KubeJob;
 import io.kubernetes.client.custom.V1Patch;
 import io.kubernetes.client.openapi.ApiClient;

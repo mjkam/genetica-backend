@@ -23,7 +23,7 @@ public class Step {
     private List<StepIO> out;
     private Tool tool;
 
-    public Boolean isRunnable(List<Run> finishedRuns) {
+    public Boolean isRunnable(List<JobFile> finishedRuns) {
         return in.stream().allMatch(input -> input.isReady(finishedRuns));
     }
 
@@ -49,8 +49,15 @@ public class Step {
         return Bash.runEcho(bashEnvs, tool.getCommand());
     }
 
-    public List<String> createCopyOutputCmds(Map<String, String> bashEnvs) {
-        List<String> fileNames = out.stream().map(o -> Bash.runEcho(bashEnvs, o.getScript())).collect(Collectors.toList());
+    public List<String> createCopyOutputCmds(Map<String, String> bashEnvs, Pipeline pipeline) {
+        List<String> fileNames = new ArrayList<>();
+        for(StepIO stepIO: out) {
+            String ioId = id + "." + stepIO.getId();
+            if(pipeline.isOutput(ioId)) {
+                fileNames.add(Bash.runEcho(bashEnvs, stepIO.getScript()));
+            }
+        }
+
         return fileNames.stream().map(name -> AwsCommand.createFileUploadCmd(name)).collect(Collectors.toList());
     }
 }

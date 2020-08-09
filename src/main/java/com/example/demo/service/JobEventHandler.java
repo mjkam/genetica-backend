@@ -48,9 +48,11 @@ public class JobEventHandler {
         if(sampleId != null) bashEnvs.put("sample", sampleId);
 
         for(StepIO stepIO: step.getOut()) {
+            String ioId = step.getId() + "." + stepIO.getId();
             String fileName = Bash.runEcho(bashEnvs, stepIO.getScript());
             File file = new File(fileName, 1000L, sampleId);
-            JobFile jobFile = new JobFile(run.getJob(), file, step.getId() + "." + stepIO.getId());
+            if(!pipeline.isOutput(ioId)) file.setUnusable();
+            JobFile jobFile = new JobFile(run.getJob(), file, ioId);
             fileRepository.save(file);
             jobFileRepository.save(jobFile);
         }

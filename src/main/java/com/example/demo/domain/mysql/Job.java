@@ -30,27 +30,8 @@ public class Job {
 
     private String name;
 
-    private LocalDateTime startTime;
-
-    private LocalDateTime finishTime;
-
     public Job(Task task, int idx) {
         this.task = task;
         this.name = task.getName() + "-" + (idx + 1);
-    }
-
-    public void changeStatus(JobStatus status) {
-        if(status.equals(JobStatus.Running)) {
-            status = JobStatus.Running;
-            startTime = LocalDateTime.now();
-        } else if(status.equals(JobStatus.Failed)) {
-
-        } else if(status.equals(JobStatus.Succeeded)) {
-
-        }
-    }
-
-    public List<Run> getFinishedRuns() {
-        return runs.stream().filter(r -> r.getStatus().equals(JobStatus.Succeeded)).collect(Collectors.toList());
     }
 }

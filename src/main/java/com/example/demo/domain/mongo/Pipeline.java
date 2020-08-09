@@ -1,6 +1,7 @@
 package com.example.demo.domain.mongo;
 
 import com.example.demo.domain.mysql.Job;
+import com.example.demo.domain.mysql.JobFile;
 import com.example.demo.domain.mysql.Run;
 import lombok.*;
 import org.springframework.data.annotation.Id;
@@ -32,11 +33,15 @@ public class Pipeline {
         return runs;
     }
 
-    public List<Step> getNextSteps(List<Run> finishedRuns) {
+    public List<Step> getNextSteps(List<JobFile> finishedRuns) {
         return steps.stream().filter(step -> step.isRunnable(finishedRuns)).collect(Collectors.toList());
     }
 
     public Step getStep(String stepId) {
         return steps.stream().filter(s -> s.getId().equals(stepId)).findFirst().orElseThrow(()-> new RuntimeException());
+    }
+
+    public boolean isOutput(String ioId) {
+        return outputs.stream().anyMatch(output -> output.getSource().equals(ioId));
     }
 }

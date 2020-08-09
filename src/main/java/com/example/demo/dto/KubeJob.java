@@ -2,7 +2,9 @@ package com.example.demo.dto;
 
 import io.kubernetes.client.custom.Quantity;
 import io.kubernetes.client.openapi.models.V1EnvVar;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.ToString;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -11,6 +13,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Getter
+@EqualsAndHashCode
+@ToString
 public class KubeJob {
     private Long jobId;
     private Long runId;
@@ -18,7 +22,6 @@ public class KubeJob {
     private List<V1EnvVar> kubeEnvs;
     private String imageName;
     private List<String> command;
-
     KubeJob(Long jobId, Long runId, KubeJobType kubeJobType, List<V1EnvVar> kubeEnvs, String imageName, List<String> command) {
         this.jobId = jobId;
         this.runId = runId;

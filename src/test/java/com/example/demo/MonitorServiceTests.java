@@ -10,6 +10,7 @@ import com.example.demo.repository.mysql.JobFileRepository;
 import com.example.demo.service.JobEventHandler;
 import com.example.demo.service.KubeClient;
 import com.example.demo.service.NextRunFinder;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -40,7 +41,29 @@ public class MonitorServiceTests {
     @InjectMocks
     private NextRunFinder nextRunFinder;
 
+    private Pipeline pipeline;
+
+    @BeforeEach
+    void setUp() {
+        pipeline = PipelineBuilder.createSmallPipeline();
+    }
+
     @Test
+    public void Initializer_Pending_Test() {
+        Task task = new Task(pipeline);
+        Job job = new Job(task, 0);
+        Run run = new Run(job, "bwa_mem_bundle_0_7_17");
+
+        jobEventHandler.handle(run, pipeline, "L001", KubeJobType.INITIALIZER, JobStatus.Pending, "nodeName");
+
+        assertThat(run.getStatus()).isEqualTo(JobStatus.Pending);
+        assertThat(run.getStartTime()).isNull();
+    }
+}
+
+
+/*
+@Test
     public void test2() {
         Pipeline pipeline = PipelineBuilder.createSmallPipeline();
         Job job = mock(Job.class);
@@ -82,4 +105,4 @@ public class MonitorServiceTests {
 
         verify(kubeClient).addLabelToNode(anyString(), anyLong());
     }
-}
+ */
