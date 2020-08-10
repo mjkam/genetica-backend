@@ -67,6 +67,18 @@ public class NextRunFinderTests {
     }
 
     @Test
+    public void 두번째잡_끝난후_종료_테스트() {
+        Run secondRun = mock(Run.class);
+        given(secondRun.getJob()).willReturn(job);
+        given(runRepository.findNotStarted(1L)).willReturn(Arrays.asList());
+        given(jobFileRepository.findByJobId(1L)).willReturn(Arrays.asList(jobFile1, jobFile2, jobFile3, jobFile4, jobFile5, jobFile6));
+
+        List<KubeJob> kubeJobs = nextRunFinder.find(secondRun, "L001", pipeline);
+
+        assertThat(kubeJobs.size()).isEqualTo(0);
+    }
+
+    @Test
     public void 첫번째잡_끝난후_다음잡찾기_테스트() {
         Run firstRun = mock(Run.class);
         given(firstRun.getJob()).willReturn(job);

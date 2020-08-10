@@ -51,7 +51,7 @@ public class PipelineRunner {
             Map<String, File> jobInputFileMap = getEachJobInputFileMap(inputsMap, i);
             jobFileRepository.saveAll(createJobFilesFromInputsMap(jobInputFileMap, job));
 
-            List<V1EnvVar> kubeEnvs = createKubeEnvsFromInputFile(jobInputFileMap);
+            List<V1EnvVar> kubeEnvs = createSampleIdKubeEnv(jobInputFileMap);
 
             kubeJobs.add(KubeJob.createInitializer(job.getId(), initializeRun.getId(), kubeEnvs));
         }
@@ -64,20 +64,20 @@ public class PipelineRunner {
         return jobInputFileMap.entrySet().stream().map(e -> new JobFile(job, e.getValue(), e.getKey())).collect(Collectors.toList());
     }
 
-    public List<V1EnvVar> createKubeEnvsFromInputFile(Map<String, File> jobInputFileMap) {
-        List<V1EnvVar> jobEnvs = new ArrayList<>();
-        for (String ioId : jobInputFileMap.keySet()) {
-            jobEnvs.add(KubeUtil.createKubeEnv(ioId, jobInputFileMap.get(ioId).getName()));
-            if (jobInputFileMap.get(ioId).getSampleId() != null) {
-                jobEnvs.add(KubeUtil.createKubeEnv("sample", jobInputFileMap.get(ioId).getSampleId()));
+    public List<V1EnvVar> createSampleIdKubeEnv(Map<String, File> jobInputFileMap) {
+        //Todo: 임시방편
+        List<V1EnvVar> result = new ArrayList<>();
+        for(Map.Entry<String, File> e: jobInputFileMap.entrySet()) {
+            String sampleId = e.getValue().getSampleId();
+            if(sampleId != null) {
+                result.add(KubeUtil.createKubeEnv("sample", sampleId));
             }
         }
-        return jobEnvs;
+        return result;
     }
 
     private Map<String, List<File>> createInputFileMap(List<InputFileInfo> inputFileInfos) {
         Map<String, List<File>> inputs = new HashMap<>();
-
         for(InputFileInfo inputFileInfo: inputFileInfos) {
             List<File> files = fileRepository.findByIdIn(inputFileInfo.getFileIds());
             inputs.put(inputFileInfo.getId(), files);

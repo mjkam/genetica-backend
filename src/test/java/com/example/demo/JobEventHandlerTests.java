@@ -67,6 +67,7 @@ public class JobEventHandlerTests {
         file4 = new File("human_g1k_v37_decoy.fasta", 1000L);
         file5 = new File("L001_sorted.bam", 1000L, "L001");
         file6 = new File("L001_sorted.bam.bai", 1000L, "L001");
+        file6.setUnusable();
         jobFile1 = new JobFile(job, file1, "input_read_1");
         jobFile2 = new JobFile(job, file2, "input_read_2");
         jobFile3 = new JobFile(job, file3, "input_tar_with_reference");

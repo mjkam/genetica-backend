@@ -20,8 +20,6 @@ public class Task {
 
     private LocalDateTime startTime;
 
-    private LocalDateTime finishTime;
-
     public Task(Pipeline pipeline) {
         LocalDateTime nowTime = LocalDateTime.now();
         this.setName(pipeline.getNameId() + nowTime);
